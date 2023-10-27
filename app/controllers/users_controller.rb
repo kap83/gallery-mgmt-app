@@ -7,4 +7,18 @@ class UsersController < ApplicationController
         render json: user
     end
 
+    def show 
+        user = @current_user
+        if user
+            render json: user
+        else
+            render json: {error: "Please Sign In"}, status: :unauthorized
+        end
+    end
+
+    def destroy
+        session.delete :user_id
+        head :no_content 
+    end
+
 end

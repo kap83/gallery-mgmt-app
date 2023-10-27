@@ -1,11 +1,10 @@
-import React from 'react'
-import { useState } from 'react'
+import React, {useState, useContext} from 'react'
+import {UserContext} from '../Context/User'
 
 export default function Login() {
-
 const [username, setUsername] = useState('')
 const [password, setPassword] = useState('')
-const [loggedIn, setLoggedIn] = useState(false)
+const {setLoggedIn, setCurrentUser} = useContext(UserContext)
 
 function handleSubmit(e) {
     e.preventDefault()
@@ -25,8 +24,8 @@ function handleSubmit(e) {
         if(res.ok) {
           res.json()
           .then(data => {
-            //setCurrentUser(data)
-            setLoggedIn(!loggedIn)
+            setCurrentUser(data)
+            setLoggedIn(true)
             setUsername('')
             setPassword('')
           })
@@ -41,8 +40,12 @@ function handleSubmit(e) {
       })
 }
 
+
+
+
   return (
-    <div>
+    <>
+        <div>
       <form onSubmit={handleSubmit}>
         <label>
             USERNAME:
@@ -61,9 +64,10 @@ function handleSubmit(e) {
             />
         </label>
         <button type='submit'>LOGIN</button>
-        {loggedIn ? <p>👋</p> : <p>😔</p> }
+        
 
       </form>
     </div>
+    </>
   )
 }
