@@ -47,6 +47,7 @@ export function UserProvider({ children }) {
     setLoggedIn,
     loggedIn,
     setCurrentUser,
+    currentUser,
     handleLogout
 
   }
