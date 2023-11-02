@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-#user create, show, destroy
+resources :exhibitions 
 
 post '/login', to: 'sessions#create'
 get '/me', to: 'users#show'
