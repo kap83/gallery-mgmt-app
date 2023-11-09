@@ -20,20 +20,20 @@ body {
 .loginStyle {
   display: flex;
   align-items: flex-start;
-  background-color: lightblue;
+  background-color: rgba(237, 240, 241);
 }
 
 .logo {
-  background-color: inherit;
-  padding-left: 1%;
+  /* background-color: inherit; */
+  padding-left: .3%;
   max-width: 3%;
   /* max-height: 10% */
 }
 
 .loginLabelStyle {
   font-weight: bold;
-  background-color: inherit;
-  margin: 30px 3px 20px;
+  /* background-color: inherit; */
+  margin: 30px 3px 15px;
   /* padding-right: 3px;
   padding-top: 10px; */
 }
@@ -47,7 +47,7 @@ body {
   background-color: rgb(211, 211, 211);
   padding: 3px;
   border-radius: 4px;
-   margin: 31px 3px 20px;
+   margin: 31px 3px 15px;
 }
 
 
