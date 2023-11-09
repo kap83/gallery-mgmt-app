@@ -7,14 +7,14 @@ class ExhibitionsController < ApplicationController
  
  
      def create
-       exhibition = Exhibition.create!(book_params)
-       render json: book
+       exhibition = Exhibition.create!(exhibition_params)
+       render json: exhibition
      end
  
      def update 
         #only the curator who created the exhibition can update it
           exhibition = find_exhibition
-          exhibition.update!(book_params)
+          exhibition.update!(exhibition_params)
           render json: exhibition
      end
  

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+resources :users, only: [:index]
 resources :exhibitions 
 
 post '/login', to: 'sessions#create'

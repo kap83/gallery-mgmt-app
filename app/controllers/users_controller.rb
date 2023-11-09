@@ -10,6 +10,10 @@ class UsersController < ApplicationController
         end
     end
 
+    def index
+        users = User.all.with_attached_avatar
+        render json: users
+    end
 
 
 

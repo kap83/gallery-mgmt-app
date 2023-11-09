@@ -18,12 +18,12 @@ export default function Exhibitions() {
 
   return (
     <>
+    {/* style: may not need to be a link, maybe on the same page */}
       <Link 
       to={`/addexhibitions`}>
         <p>ADD EXHIBITION</p>
       </Link>
 
-    
     {exhibitions.map(e => {
       return (
     <>

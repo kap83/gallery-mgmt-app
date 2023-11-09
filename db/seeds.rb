@@ -1,7 +1,11 @@
 puts "🌱 Seeding spices..."
 
-User.create(name: 'Sophie Devereaux', username: "grifter", password: "testing" )
-User.create(name: 'Alec Hardison', username: "geek", password: "testing" )
+
+user1 = User.create(name: 'Sophie Devereaux', username: "grifter", password: "testing")
+user2 = User.create(name: 'Alec Hardison', username: "geek", password: "password")
+
+user1.avatar.attach(io: File.open(Rails.root.join('db/avatars/sophie.jpg')), filename: 'sophie.jpg')
+user2.avatar.attach(io: File.open(Rails.root.join('db/avatars/hardison.jpg')), filename: 'hardison.jpg')
 
 Exhibition.create(title: 'Latinx Art', gallery: 'A', start_date: '2023-01-01', end_date: '2023-06-30', user_id: 1 )
 Exhibition.create(title: 'Black American Art', gallery: 'B', start_date: '2023-03-13', end_date: '2023-12-01', user_id: 1 )
