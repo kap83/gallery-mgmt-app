@@ -7,6 +7,50 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+*{
+  background-color: #edf0f1;
+  /* box-sizing: border-box; */
+}
+
+.galleryImg {
+  max-width: 100%;
+  height: auto;
+}
+
+.loginStyle {
+  display: flex;
+  align-items: flex-start;
+  background-color: lightblue;
+}
+
+.logo {
+  background-color: inherit;
+  padding-left: 1%;
+  max-width: 3%;
+  /* max-height: 10% */
+}
+
+.loginLabelStyle {
+  font-weight: bold;
+  background-color: inherit;
+  margin: 30px 3px 20px;
+  /* padding-right: 3px;
+  padding-top: 10px; */
+}
+.loginInputStyle {
+  margin-left: 5px;
+}
+
+.loginBtnStyle {
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgb(211, 211, 211);
+  padding: 3px;
+  border-radius: 4px;
+   margin: 31px 3px 20px;
+}
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

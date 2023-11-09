@@ -1,5 +1,8 @@
 import React, {useState, useContext} from 'react'
 import {UserContext} from '../Context/User'
+import logo from '../images/logo.jpg'
+
+import '../index.css'
 
 export default function Login() {
 const [username, setUsername] = useState('')
@@ -41,33 +44,29 @@ function handleSubmit(e) {
 }
 
 
-
-
   return (
-    <>
-        <div>
-      <form onSubmit={handleSubmit}>
-        <label>
+    <div className='loginStyle'>
+      <img className='logo' src={logo} alt='logo' />
+      <form className='loginStyle' onSubmit={handleSubmit}>
+        <label className='loginLabelStyle'>
             USERNAME:
-            <input
+            <input className='loginInputStyle'
               type='text'
               value={username}
               onChange={(e)=> setUsername(e.target.value)}
             />
         </label>
-        <label>
+        <label className='loginLabelStyle'>
             PASSWORD:
-            <input
+            <input className='loginInputStyle'
               type='text'
               value={password}
               onChange={(e)=> setPassword(e.target.value)}
             />
         </label>
-        <button type='submit'>LOGIN</button>
-        
-
+        <button className='loginBtnStyle' type='submit'>LOGIN</button>
       </form>
+      
     </div>
-    </>
   )
 }

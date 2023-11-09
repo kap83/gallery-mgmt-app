@@ -5,6 +5,8 @@ import Login from './Login';
 import NavBar from './NavBar';
 import Exhibitions from './Exhibitions';
 import AddExhibition from './AddExhibition'
+import gallery from '../images/gallery.jpg'
+
 //import './App.css';
 
 
@@ -20,14 +22,13 @@ if(loggedIn) {
     <Route path='/' element={<Exhibitions />} />
     </Routes>
     
-   
     </>
   )}
   else {
     return (
     <>
       <Login />
-      <p>😔</p>
+      <img className='galleryImg' src={gallery} alt='gallery'/>
     </>
     )
   }
