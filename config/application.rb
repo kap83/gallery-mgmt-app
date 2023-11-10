@@ -18,7 +18,7 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Rails.application.config.active_storage.variant_processor = :vips
+
 
 
 module GalleryMgmtProject
