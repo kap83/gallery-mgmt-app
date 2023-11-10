@@ -47,8 +47,18 @@ body {
   background-color: rgb(211, 211, 211);
   padding: 3px;
   border-radius: 4px;
-   margin: 31px 3px 15px;
+  margin: 31px 3px 15px;
 }
+
+.navBar {
+  width: calc(100%-30px);
+  float: right;
+  background-color: teal;
+  color: white;
+  display: flex;
+  gap: 2rem;
+  padding: 0 1rem
+} 
 
 
 code {

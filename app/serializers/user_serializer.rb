@@ -1,10 +1,12 @@
 class UserSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
-  attributes :id, :username, :avatar
+  attributes :id, :username, :avatar_url
   has_many :exhibitions
 
-def avatar
-  rails_blob_path(object.avatar, only_path: true) if object.avatar.attached?
-end 
-
+  def avatar_url
+    if object.user.avatar.attached?
+      variant = object.user.avatar.variant(resize_to_limit: [100, nil])
+      return rails_representation_url(variant, only_path: true)
+    end
+  end
 end

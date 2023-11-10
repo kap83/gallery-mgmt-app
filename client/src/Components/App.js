@@ -8,7 +8,7 @@ import AddExhibition from './AddExhibition'
 import gallery from '../images/gallery.jpg'
 
 
-//import './App.css';
+
 
 
 function App() {

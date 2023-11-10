@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+//import { DirectUpload} from 'activestorage'
 
 export default function Exhibitions() {
    
   const [exhibitions, setExhibitions] = useState([])
 
-  //console.log("in exhibitions", exhibitions)
+  console.log("in exhibitions", exhibitions)
 
   useEffect(() => {
     fetch('/exhibitions')
@@ -28,12 +29,16 @@ export default function Exhibitions() {
       return (
     <>
     <table >
-      <tbody>
-        <tr key={e.id}>
+      <tbody key={e.id}>
+        <tr >
           <td>🖼️</td>
           <td>{e.title}</td>
           <td>{e.start_date} - {e.end_date}</td>
-          <td>CREATED BY: {e.curator}</td>
+          <td>
+            CREATED BY: {e.curator}
+            {/* 500 error for the img */}
+            <img src={e.avatar_url} alt='avatar' />
+          </td>
         </tr>
       </tbody>
     </table>

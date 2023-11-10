@@ -7,7 +7,7 @@ export default function NavBar() {
     const {handleLogout} = useContext(UserContext)
     
   return (
-    <>
+    <div className='navBar'>
     <NavLink
         to='/'
     >
@@ -20,6 +20,6 @@ export default function NavBar() {
     </NavLink>
 
     <button onClick={handleLogout}>LOGOUT</button>
-    </>
+    </div>
   )
 }

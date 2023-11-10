@@ -1,8 +1,17 @@
 class ExhibitionSerializer < ActiveModel::Serializer
-  attributes :id, :title, :gallery, :start_date, :end_date, :curator
+  include Rails.application.routes.url_helpers
+  attributes :id, :title, :gallery, :start_date, :end_date, :curator, 
+  :avatar_url
 
   def curator
     object.user.name.upcase
   end
-  
+
+  def avatar_url
+    if object.user.avatar.attached?
+      variant = object.user.avatar.variant(resize_to_limit: [100, nil])
+      return rails_representation_url(variant, only_path: true)
+    end
+  end
+ 
 end
