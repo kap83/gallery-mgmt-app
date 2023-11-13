@@ -1,7 +1,9 @@
 import React, {useContext} from 'react'
 import {UserContext} from '../Context/User'
 import { NavLink } from 'react-router-dom'
+import '../index.css'
 //import Header from './Header';
+
 
 export default function NavBar() {
     const {handleLogout} = useContext(UserContext)

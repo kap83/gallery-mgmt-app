@@ -1,5 +1,7 @@
 class ExhibitionsController < ApplicationController
 
+  skip_before_action :authorize, only: [:index]
+
     def index
         exhibition = Exhibition.all
         render json: exhibition
@@ -7,7 +9,7 @@ class ExhibitionsController < ApplicationController
  
  
      def create
-       exhibition = Exhibition.create!(exhibition_params)
+       exhibition = @current_user.exhibitions.create(exhibition_params)
        render json: exhibition
      end
  
@@ -28,7 +30,7 @@ class ExhibitionsController < ApplicationController
      private 
 
      def exhibition_params
-       params.permit(:id, :title, :gallery, :start_date, :end_date, :user_id)
+       params.permit(:id, :title, :gallery, :start_date, :end_date )
      end
 
      def find_exhibition

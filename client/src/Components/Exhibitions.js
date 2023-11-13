@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
-//import { DirectUpload} from 'activestorage'
+import '../index.css'
+
 
 export default function Exhibitions() {
    
@@ -16,6 +17,7 @@ export default function Exhibitions() {
     })
 },[])
 
+//create filter and sort options
 
   return (
     <>
@@ -26,18 +28,21 @@ export default function Exhibitions() {
       </Link>
 
     {exhibitions.map(e => {
+
       return (
     <>
-    <table >
-      <tbody key={e.id}>
-        <tr >
+    {/* sylting: increase broder width, add banners */}
+    <table style={{border: '2px solid'}}>
+      <tbody>
+        <tr key={e.id}>
           <td>🖼️</td>
           <td>{e.title}</td>
           <td>{e.start_date} - {e.end_date}</td>
           <td>
             CREATED BY: {e.curator}
-            {/* 500 error for the img */}
-            <img src={e.avatar_url} alt='avatar' />
+          </td>
+          <td>
+          <img className='avatarStyle' src={e.avatar_url}  alt='avatar' />
           </td>
         </tr>
       </tbody>

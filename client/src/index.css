@@ -60,6 +60,12 @@ body {
   padding: 0 1rem
 } 
 
+.avatarStyle {
+  border-radius: 50%;
+  width: 35%;
+  
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

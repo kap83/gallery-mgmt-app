@@ -1,50 +1,29 @@
-import React, {useState, useContext} from 'react'
+import React, { useContext} from 'react'
 import {UserContext} from '../Context/User'
+import '../index.css'
 
 export default function AddExhibition() {
 
+  // eslint-disable-next-line
   const {currentUser} = useContext (UserContext)
 
-  //console.log("in add", currentUser.id)
 
-  const [title, setTitle] = useState('')
-  const [gallery, setGallery] = useState('')
-  const [start_date, setStart_date] = useState('')
-  const [end_date, setEnd_date] = useState('')
+  // console.log(currentUser)
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const values = {
-      title: title,
-      gallery: gallery,
-      start_date: start_date,
-      end_date: end_date,
-      user_id: currentUser.id
-    }
-
-    fetch('/exhibitions', {
-      method: 'POST',
-      headers: {'Content-type': 'application/json'},
-      body: JSON.stringify(values)
-    })
-    .then(res => {
-      if(res.ok){
-        res.json()
-        .then(data => console.log("works", data))
-      } else {
-        res.json()
-        .then(data => console.log("didn't work", data))
-      }
-    })
+    const formData = new FormData(e.currentTarget)
+    const formInput = Object.fromEntries(formData)
+   
+    console.log(formInput)
+    //if there's a problem with fetch on the backend, see if the source is name='paintings[]' in the art input
 
 
   }
 
-
   return (
     <>
-      👋
     <form onSubmit={handleSubmit}>
       <table>
         <tbody>
@@ -53,9 +32,7 @@ export default function AddExhibition() {
             <td>
               <input
               type='text'
-              name='title'
-              value={title}
-              onChange={(e)=> setTitle(e.target.value)} 
+              name='title' 
               />
             </td>
           </tr>
@@ -64,9 +41,7 @@ export default function AddExhibition() {
             <td>
               <input
               type='text'
-              name='gallery'
-              value={gallery}
-              onChange={(e)=> setGallery(e.target.value)} 
+              name='gallery' 
               />
             </td>
           </tr>
@@ -76,8 +51,6 @@ export default function AddExhibition() {
               <input
               type='date'
               name='starts'
-              value={start_date}
-              onChange={(e)=> setStart_date(e.target.value)} 
               />
             </td>
           </tr>
@@ -86,10 +59,23 @@ export default function AddExhibition() {
             <td>
               <input
               type='date'
-              name='ends'
-              value={end_date}
-              onChange={(e)=> setEnd_date(e.target.value)} 
+              name='ends' 
               />
+            </td>
+          </tr>
+          <tr>
+          <td>PAINTINGS:</td>
+          <td>
+            <input
+              type='file'
+              name='paintings[]' 
+              multiple="multiple"
+              />
+          </td>
+          </tr>
+          <tr>
+            <td>
+              <img src={currentUser.avatar_url} alt={currentUser.username} />
             </td>
           </tr>
           <tr>
