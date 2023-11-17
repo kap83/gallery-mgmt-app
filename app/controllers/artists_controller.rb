@@ -8,13 +8,11 @@ class ArtistsController < ApplicationController
     
      def create
       artist = Artist.create!(artist_params)
-  
       if params[:artwork].present?
-        artwork_params = params.require(:artwork).permit(:title, :description, :paintings)
-        artist_with_artwork = artist.artworks.create!(artwork_params)
-        render json: artist_with_artwork
+        artist.artworks.create!(artwork_params)
+        render json: artist
       else
-        render json: artist, include: :artworks
+        render json: artist
       end
     end
 
@@ -23,6 +21,11 @@ class ArtistsController < ApplicationController
       def artist_params
         params.permit(:id, :name, :date_of_birth)
       end
+
+      def artwork_params
+        params.require(:artwork).permit(:title, :description, :paintings)
+      end
+
 
 
 end

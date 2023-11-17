@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import {ArtistContext} from '../Context/Artist'
 
 export default function AddArtist() {
+
+  const {handleAddedArtist} = useContext(ArtistContext)
 
 const [checked, setChecked] = useState(false)
 
@@ -22,13 +25,19 @@ const handleSubmit = (e) => {
     formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
 
 
+   
+
     fetch(`/artists`, {
       method: 'POST',
-    
+  
       body: formData
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log("in fetch", data)
+      handleAddedArtist(data)
+      
+    })
 
 }
 
@@ -70,6 +79,11 @@ const handleSubmit = (e) => {
                    
                 </td>
             </tr>
+            </tbody>
+      </table>
+      <table>
+      <tbody>
+    
             {checked ? 
             
                     <tr>
@@ -77,20 +91,28 @@ const handleSubmit = (e) => {
                      <td>
                      <label htmlFor='uploadFields'/>
                      TITLE:
+                     </td>
+                     <td>
                         <input 
                             type='text'
                             name='title'
                         />
+                        </td>
+                        <td>
                         DESCRIPTION: 
+                        </td>
+                      <td>
                         <input 
                             type='text'
                             name='description'
                         />
-                         <input 
+                        </td>
+                          <td>
+                        <input 
                             type='file'
                             name='paintings'
                         />
-                    </td>
+                        </td>
                     </tr>
                 : null }
           <tr>
