@@ -29,3 +29,31 @@ Photo by <a href="https://unsplash.com/@zalfaimani?utm_content=creditCopyText&ut
 
 
 
+const handleAddInput = () => {
+    //     setUploadFields([...uploadFields, {uploadFields: ''}])
+    // }
+    
+    // const handleRemoveInput = (index) => {
+    //     const inputField = [...uploadFields]
+    //     inputField.splice(index, 1)
+    //     setUploadFields(inputField)
+    // }
+
+    //const filterOutNull = uploadFields.filter(Boolean)
+   
+    // for (let index = 0; index < filterOutNull.length; index++) {
+    //     //const fields = filterOutNull[index]
+    //     formData.append('artwork[title]', fields.title)
+    //     formData.append('artwork[description]', fields.description)
+    //     formData.append('artwork[paintings_url]', fields.paintings_url)
+    // }
+
+
+    <!-- {uploadFields.length -1 === index && uploadFields.length < 10 && 
+        <td>
+            <button type='button' onClick={handleAddInput}>+</button> 
+        </td>}
+        {uploadFields.length > 1 && 
+        <td> 
+           <button type='button' onClick={()=> handleRemoveInput(index)}>-</button> 
+        </td>  -->

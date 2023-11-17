@@ -3,74 +3,29 @@ import React, {useState} from 'react'
 export default function AddArtist() {
 
 const [checked, setChecked] = useState(false)
-const [paintersName, setPaintersName] = useState('')
-const [dateOfBirth, setDateOfBirth] = useState('')
-const [uploadFields, setUploadFields] = useState([
-    {
-      title: '',
-      description: '',
-      paintings_url: ''
-    }
-  ])
-
-  //console.log(uploadFields) //does create multiple objs for each new painting + deets. 
 
 const handleChange = () => {
-    setChecked(!checked)
-}
-
-const handleAddInput = () => {
-    setUploadFields([...uploadFields, {uploadFields: ''}])
-}
-
-const handleRemoveInput = (index) => {
-    const inputField = [...uploadFields]
-    inputField.splice(index, 1)
-    setUploadFields(inputField)
-}
-
-const handlePaintingInputChange = (e, index) => {
-    const {name, value} = e.target
-    const inputField = [...uploadFields]
-    inputField[index][name]= value
-    setUploadFields(inputField)
+  setChecked(!checked)
 }
 
 const handleSubmit = (e) => {
-  setPaintersName('')
-  setDateOfBirth('')
+
 
     e.preventDefault()
 
     const formData = new FormData()
-  
-    // const filterOutNull = uploadFields.filter(Boolean)
 
-    // for (let index = 0; index < filterOutNull.length; index++) {
-    //     const fields = filterOutNull[index]
-    //     formData.append('artwork[title]', fields.title)
-    //     formData.append('artwork[description]', fields.description)
-    //     formData.append('artwork[paintings_url]', fields.paintings_url)
-    // }
-  
-    // formData.append('name', paintersName)
-    // formData.append('date_of_birth', dateOfBirth)
-
-
-    const formValues ={
-      name: paintersName,
-      date_of_birth: dateOfBirth
-    }
-
-  
+    formData.append('name', e.target.elements.artistName.value)
+    formData.append('date_of_birth', e.target.elements.dob.value)
+    formData.append('artwork[title]', e.target.elements.title.value)
+    formData.append('artwork[description]', e.target.elements.description.value)
+    formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
 
 
     fetch(`/artists`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formValues)
+    
+      body: formData
     })
     .then(res => res.json())
     .then(data => console.log(data))
@@ -87,8 +42,7 @@ const handleSubmit = (e) => {
             <td>
               <input
               type='text'
-              value={paintersName} 
-              onChange={(e)=> setPaintersName(e.target.value)}
+              name='artistName'
               />
             </td>
           </tr>
@@ -97,8 +51,7 @@ const handleSubmit = (e) => {
             <td>
               <input
               type='date'
-              value={dateOfBirth} 
-              onChange={(e)=> setDateOfBirth(e.target.value)}
+              name='dob'
               />
             </td>
           </tr>
@@ -114,50 +67,32 @@ const handleSubmit = (e) => {
             </tr> 
             <tr>
                 <td>
-                    <label htmlFor='uploadFields'/>
+                   
                 </td>
             </tr>
             {checked ? 
-                uploadFields.map((field, index) => (
-                    <tr  key={index}>
-                     <td >
+            
+                    <tr>
+                       
+                     <td>
+                     <label htmlFor='uploadFields'/>
                      TITLE:
                         <input 
                             type='text'
                             name='title'
-                            // to stop uncontrolled input to controlled input error
-                            value={field.title || ''}
-                            onChange={(e) => handlePaintingInputChange(e, index)}
                         />
                         DESCRIPTION: 
                         <input 
                             type='text'
                             name='description'
-                            value={field.description || ''}
-                            onChange={(e) => handlePaintingInputChange(e, index)}
                         />
                          <input 
                             type='file'
-                            name='paintings_url'
-                            value={field.paintings_url || ''}
-                            onChange={(e) => handlePaintingInputChange(e, index)}
+                            name='paintings'
                         />
                     </td>
-                    
-                    {uploadFields.length -1 === index && uploadFields.length < 10 && 
-                    <td>
-                        <button type='button' onClick={handleAddInput}>+</button> 
-                    </td>}
-                    {uploadFields.length > 1 && 
-                    <td> 
-                       <button type='button' onClick={()=> handleRemoveInput(index)}>-</button> 
-                    </td> }
                     </tr>
-                )
-                )
                 : null }
-           
-                
           <tr>
             <td>
               <button 
