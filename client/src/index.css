@@ -52,18 +52,34 @@ body {
 
 .navBar {
   width: calc(100%-30px);
-  float: right;
-  background-color: teal;
+  background-color:  #edf0f1;
+  border: 2px solid black;
   color: white;
   display: flex;
   gap: 2rem;
-  padding: 0 1rem
+  padding: 1% 45%;
+  position: relative
+  /* padding-top: 10px;
+  padding-left: 50; */
+  
 } 
+
+.navLogo {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  max-width: 2.8%;
+
+}
 
 .avatarStyle {
   border-radius: 50%;
   width: 35%;
   
+}
+
+ul {
+  list-style-type: none;
 }
 
 

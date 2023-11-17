@@ -3,8 +3,8 @@ class ExhibitionsController < ApplicationController
   skip_before_action :authorize, only: [:index]
 
     def index
-        exhibition = Exhibition.all
-        render json: exhibition
+        exhibitions = Exhibition.all
+        render json: exhibitions
      end
  
  

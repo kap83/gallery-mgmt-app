@@ -6,8 +6,9 @@ import NavBar from './NavBar';
 import Exhibitions from './Exhibitions';
 import AddExhibition from './AddExhibition'
 import gallery from '../images/gallery.jpg'
-import DisplayArtists from './DisplayArtists';
-import AddArtist from './AddArtist';
+import Artists from './Artists';
+import Artwork from './Artwork';
+
 
 
 function App() {
@@ -20,8 +21,8 @@ if(loggedIn) {
     <Routes>
     <Route path='/addexhibitions' element={<AddExhibition />} />
     <Route path='/' element={<Exhibitions />} />
-    <Route path='/artists' element={<DisplayArtists />} />
-    <Route path='/addartist' element={<AddArtist />} />
+    <Route path='/artists' element={<Artists />} />
+    <Route path='/artwork' element={<Artwork />} />
     </Routes>
     
     </>

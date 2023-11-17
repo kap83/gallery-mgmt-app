@@ -4,15 +4,23 @@ import './index.css';
 import App from './Components/App';
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './Context/User';
+import { ArtistProvider } from './Context/Artist';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <UserProvider>
-      <BrowserRouter>
-            <App />
-      </BrowserRouter>
+            <ArtistProvider>
+                  <BrowserRouter>
+                        <App />
+                  </BrowserRouter>
+            </ArtistProvider>
       </UserProvider>
+           
+
+
+
+      
      
 
      

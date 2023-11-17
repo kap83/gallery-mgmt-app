@@ -9,11 +9,11 @@ const [uploadFields, setUploadFields] = useState([
     {
       title: '',
       description: '',
-      paintings: ''
+      paintings_url: ''
     }
   ])
 
-  console.log(uploadFields) //does create multiple objs for each new painting + deets. 
+  //console.log(uploadFields) //does create multiple objs for each new painting + deets. 
 
 const handleChange = () => {
     setChecked(!checked)
@@ -36,23 +36,44 @@ const handlePaintingInputChange = (e, index) => {
     setUploadFields(inputField)
 }
 
-
 const handleSubmit = (e) => {
-    e.preventDefault()
-    const formData = new FormData()
-    formData.append('name', paintersName)
-    formData.append('date_of_birth', dateOfBirth)
-    const filterOutNull = uploadFields.filter(Boolean)
- 
+  setPaintersName('')
+  setDateOfBirth('')
 
-    for (let index = 0; index < filterOutNull.length; index++) {
-        const fields = filterOutNull[index]
-        formData.append('title', fields.title)
-        formData.append('description', fields.description)
-        formData.append('paintings', fields.paintings)
+    e.preventDefault()
+
+    const formData = new FormData()
+  
+    // const filterOutNull = uploadFields.filter(Boolean)
+
+    // for (let index = 0; index < filterOutNull.length; index++) {
+    //     const fields = filterOutNull[index]
+    //     formData.append('artwork[title]', fields.title)
+    //     formData.append('artwork[description]', fields.description)
+    //     formData.append('artwork[paintings_url]', fields.paintings_url)
+    // }
+  
+    // formData.append('name', paintersName)
+    // formData.append('date_of_birth', dateOfBirth)
+
+
+    const formValues ={
+      name: paintersName,
+      date_of_birth: dateOfBirth
     }
-    
-    console.log('test', formData.getAll('paintings')) //does produce correct information at the correct index
+
+  
+
+
+    fetch(`/artists`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formValues)
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
 
 }
 
@@ -117,8 +138,8 @@ const handleSubmit = (e) => {
                         />
                          <input 
                             type='file'
-                            name='paintings'
-                            value={field.paintings || ''}
+                            name='paintings_url'
+                            value={field.paintings_url || ''}
                             onChange={(e) => handlePaintingInputChange(e, index)}
                         />
                     </td>

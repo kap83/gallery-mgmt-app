@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 resources :users, only: [:index]
 resources :exhibitions 
-resources :artworks, only: [:index, :show, :create]
+resources :artworks, only: [:index, :show, :create] 
 resources :artists, only: [:index, :show, :create]
 
 
