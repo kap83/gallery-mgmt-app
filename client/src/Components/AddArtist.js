@@ -13,17 +13,21 @@ const handleChange = () => {
 
 const handleSubmit = (e) => {
 
-
     e.preventDefault()
 
     const formData = new FormData()
 
-    formData.append('name', e.target.elements.artistName.value)
-    formData.append('date_of_birth', e.target.elements.dob.value)
-    formData.append('artwork[title]', e.target.elements.title.value)
-    formData.append('artwork[description]', e.target.elements.description.value)
-    formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
+    if(checked === true) {
+      formData.append('name', e.target.elements.artistName.value)
+      formData.append('date_of_birth', e.target.elements.dob.value)
+      formData.append('artwork[title]', e.target.elements.title.value)
+      formData.append('artwork[description]', e.target.elements.description.value)
+      formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
 
+    } else {
+      formData.append('name', e.target.elements.artistName.value)
+      formData.append('date_of_birth', e.target.elements.dob.value)
+    }
 
    
 
