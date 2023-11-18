@@ -21,7 +21,7 @@ const handleSubmit = (e) => {
       formData.append('name', e.target.elements.artistName.value)
       formData.append('date_of_birth', e.target.elements.dob.value)
       formData.append('artwork[title]', e.target.elements.title.value)
-      formData.append('artwork[description]', e.target.elements.description.value)
+      formData.append('artwork[medium]', e.target.elements.medium.value)
       formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
 
     } else {
@@ -40,14 +40,14 @@ const handleSubmit = (e) => {
     .then(data => {
       console.log("in fetch", data)
       handleAddedArtist(data)
-      
+      document.getElementById("myForm").reset()
     })
 
 }
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form id='myForm' onSubmit={handleSubmit}>
       <table>
         <tbody>
           <tr>
@@ -103,12 +103,12 @@ const handleSubmit = (e) => {
                         />
                         </td>
                         <td>
-                        DESCRIPTION: 
+                        medium: 
                         </td>
                       <td>
                         <input 
                             type='text'
-                            name='description'
+                            name='medium'
                         />
                         </td>
                           <td>
