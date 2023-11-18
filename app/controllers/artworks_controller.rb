@@ -1,25 +1,24 @@
 class ArtworksController < ApplicationController
-    # before_action :set_artist
+    before_action :set_artist, only: [:create]
 
-    # def index
-    #     artwork = @artist.artworks
-    #     render json: artworks
-    # end
+    def index
+        render json: Artwork.all
+    end
 
-    # def create
-    #     artwork = @artist.artworks.create!(artwork_params)
-    #     render json: artwork
-    #   end
+    def create
+        artwork = @artist.artworks.create!(artwork_params)
+        render json: artwork
+      end
     
-    #   private
+      private
     
-    #   def set_artist
-    #     @artist = Artist.find(params[:artist_id])
-    #   end
+      def set_artist
+        @artist = Artist.find(params[:artist_id])
+      end
     
-    #   def artwork_params
-    #     params.require(:artwork).permit(:title, :medium)
-    #   end
-    # end
+      def artwork_params
+        params.permit(:title, :medium, :paintings)
+      end
+
 
 end

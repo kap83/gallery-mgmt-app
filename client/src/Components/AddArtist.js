@@ -29,7 +29,6 @@ const handleSubmit = (e) => {
       formData.append('date_of_birth', e.target.elements.dob.value)
     }
 
-   
 
     fetch(`/artists`, {
       method: 'POST',
