@@ -5,15 +5,18 @@ import App from './Components/App';
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './Context/User';
 import { ArtistProvider } from './Context/Artist';
+import { ArtworkProvider } from './Context/Artwork';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <UserProvider>
             <ArtistProvider>
-                  <BrowserRouter>
-                        <App />
-                  </BrowserRouter>
+                  <ArtworkProvider>
+                        <BrowserRouter>
+                              <App />
+                        </BrowserRouter>
+                  </ArtworkProvider>
             </ArtistProvider>
       </UserProvider>
            

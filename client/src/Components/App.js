@@ -8,6 +8,7 @@ import AddExhibition from './AddExhibition'
 import gallery from '../images/gallery.jpg'
 import Artists from './Artists';
 import Artwork from './Artwork';
+import ArtistDetails from './ArtistDetails';
 
 
 
@@ -23,6 +24,7 @@ if(loggedIn) {
     <Route path='/' element={<Exhibitions />} />
     <Route path='/artists' element={<Artists />} />
     <Route path='/artwork' element={<Artwork />} />
+    <Route path='artist/:id' element={<ArtistDetails />} />
     </Routes>
     
     </>

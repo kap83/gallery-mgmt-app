@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react'
 import {ArtistContext} from '../Context/Artist'
+import { ArtworkContext } from '../Context/Artwork'
 
 export default function AddArtwork() {
 
-    const {artistList} = useContext(ArtistContext)
+    const {artistList, handleArtistsAddedArtwork} = useContext(ArtistContext)
+    const { handledAddedArtwork} = useContext(ArtworkContext)
     const [artistId, setArtistId] = useState('')
 
     //console.log(artistId)
@@ -22,9 +24,10 @@ export default function AddArtwork() {
           })
           .then(res => res.json())
           .then(data => {
-            console.log("in fetch", data)
-            //handleAddedArtist(data)
-            //document.getElementById("artworkForm").reset()
+            //console.log("in fetch", data)
+            handleArtistsAddedArtwork(data)
+            handledAddedArtwork(data)
+            document.getElementById("artworkForm").reset()
           })
     }
 
@@ -69,8 +72,11 @@ export default function AddArtwork() {
         type='submit'>
         SUBMIT
         </button>
-   
     </form>
+        
+     
+
+
 
     </>
   )
