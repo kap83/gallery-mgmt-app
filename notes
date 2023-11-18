@@ -1,35 +1,35 @@
-overlap gem https://github.com/robinbortlik/validates_overlap 
+//overlap gem https://github.com/robinbortlik/validates_overlap 
 
-Photo by <a href="https://unsplash.com/@mejlivg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Guillaume Didelet</a> on <a href="https://unsplash.com/photos/a-room-filled-with-lots-of-art-and-paintings-h86S6CGiqJA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-Photo by <a href="https://unsplash.com/@zalfaimani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Zalfa Imani</a> on <a href="https://unsplash.com/photos/woman-in-black-coat-standing-in-front-of-paintings-1xp5VxvyKL0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+//Photo by <a href="https://unsplash.com/@mejlivg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Guillaume Didelet</a> on <a href="https://unsplash.com/photos/a-room-filled-with-lots-of-art-and-paintings-h86S6CGiqJA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+//Photo by <a href="https://unsplash.com/@zalfaimani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Zalfa Imani</a> on <a href="https://unsplash.com/photos/woman-in-black-coat-standing-in-front-of-paintings-1xp5VxvyKL0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
   
 
 
-<tr>
-    <td>
-    <label htmlFor='uploadFields'/>
-    </td>
-</tr>
+// <tr>
+//     <td>
+//     <label htmlFor='uploadFields'/>
+//     </td>
+// </tr>
 
 
 
-<tr>
-    <td>How Many?</td>
-    <td>
-    <input 
-        type='text' 
-        value={number}
-        pattern='[1-9]|10'
-        maxLength='2'
-        onChange={handleNumberOfPaintingSubmissions}
+// <tr>
+//     <td>How Many?</td>
+//     <td>
+//     <input 
+//         type='text' 
+//         value={number}
+//         pattern='[1-9]|10'
+//         maxLength='2'
+//         onChange={handleNumberOfPaintingSubmissions}
 
-        />
-    </td>
-</tr>
+//         />
+//     </td>
+// </tr>
 
 
 
-const handleAddInput = () => {
+//const handleAddInput = () => {
     //     setUploadFields([...uploadFields, {uploadFields: ''}])
     // }
     
@@ -49,11 +49,28 @@ const handleAddInput = () => {
     // }
 
 
-    <!-- {uploadFields.length -1 === index && uploadFields.length < 10 && 
-        <td>
-            <button type='button' onClick={handleAddInput}>+</button> 
-        </td>}
-        {uploadFields.length > 1 && 
-        <td> 
-           <button type='button' onClick={()=> handleRemoveInput(index)}>-</button> 
-        </td>  -->
+    // <!-- {uploadFields.length -1 === index && uploadFields.length < 10 && 
+    //     <td>
+    //         <button type='button' onClick={handleAddInput}>+</button> 
+    //     </td>}
+    //     {uploadFields.length > 1 && 
+    //     <td> 
+    //        <button type='button' onClick={()=> handleRemoveInput(index)}>-</button> 
+    //     </td>  -->
+
+
+
+
+
+    //       <select name='artists' value={artistId} onChange={(e)=>setArtistId(e.target.value)} id='artists'> 
+    //     <option value='default'>Select An Artist</option>
+    //     {artistList.map(artist => (
+
+    //     <option name='artist_id' key={artist.id} value={artist.id}>
+    //         {artist.name}
+    //     </option>
+   
+    //      ))}
+    //  </select>
+
+    const [artistId, setArtistId] = useState('')

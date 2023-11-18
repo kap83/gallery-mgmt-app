@@ -24,14 +24,6 @@ const handledAddedArtwork = (newArtwork) => {
 
 
 
-
-
-
-
-
-
-
-
     const artworkValues = {
         artworksData,
         handledAddedArtwork

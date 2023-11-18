@@ -25,12 +25,6 @@ export default function NavBar() {
            Artists
        </NavLink>
    
-       <NavLink
-           to='/artwork'
-       >
-           Artwork
-       </NavLink>
-   
        <button onClick={handleLogout}>LOGOUT</button>
        </div>
 

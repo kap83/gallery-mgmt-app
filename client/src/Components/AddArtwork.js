@@ -1,14 +1,15 @@
-import React, { useState, useContext } from 'react'
+import React, {useContext } from 'react'
+import {useParams} from 'react-router-dom'
 import {ArtistContext} from '../Context/Artist'
 import { ArtworkContext } from '../Context/Artwork'
 
 export default function AddArtwork() {
 
-    const {artistList, handleArtistsAddedArtwork} = useContext(ArtistContext)
+    const {handleArtistsAddedArtwork} = useContext(ArtistContext)
     const { handledAddedArtwork} = useContext(ArtworkContext)
-    const [artistId, setArtistId] = useState('')
 
-    //console.log(artistId)
+    const {id} = useParams()
+    const parseId = parseInt(id)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -16,7 +17,8 @@ export default function AddArtwork() {
         formData.append('title', e.target.elements.title.value)
         formData.append('medium', e.target.elements.medium.value)
         formData.append('paintings', e.target.elements.paintings.files[0])
-        formData.append('artist_id', artistId)
+        formData.append('artist_id', parseId)
+
 
         fetch(`/artworks`, {
             method: 'POST',
@@ -58,16 +60,7 @@ export default function AddArtwork() {
               />
         </li>
         </ul>
-        <select name='artists' value={artistId} onChange={(e)=>setArtistId(e.target.value)} id='artists'> 
-        <option value='default'>Select An Artist</option>
-        {artistList.map(artist => (
-
-        <option name='artist_id' key={artist.id} value={artist.id}>
-            {artist.name}
-        </option>
-   
-         ))}
-     </select>
+      
      <button 
         type='submit'>
         SUBMIT

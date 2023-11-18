@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {useParams} from 'react-router-dom'
 import {ArtworkContext} from '../Context/Artwork'
-
+import AddArtwork from './AddArtwork'
 
 export default function ArtistDetails() {
 
@@ -22,6 +22,8 @@ export default function ArtistDetails() {
     
   return (
     <>
+    <AddArtwork />
+
     {
       artworks.map(art =>   
         (

@@ -23,7 +23,6 @@ if(loggedIn) {
     <Route path='/addexhibitions' element={<AddExhibition />} />
     <Route path='/' element={<Exhibitions />} />
     <Route path='/artists' element={<Artists />} />
-    <Route path='/artwork' element={<Artwork />} />
     <Route path='artist/:id' element={<ArtistDetails />} />
     </Routes>
     
