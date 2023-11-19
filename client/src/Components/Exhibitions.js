@@ -7,7 +7,7 @@ export default function Exhibitions() {
    
   const [exhibitions, setExhibitions] = useState([])
 
-  console.log("in exhibitions", exhibitions)
+
 
   useEffect(() => {
     fetch('/exhibitions')
@@ -27,29 +27,29 @@ export default function Exhibitions() {
         <p>ADD EXHIBITION</p>
       </Link>
 
-    {exhibitions.map(e => {
+  {exhibitions.map(e => (
+  <table key={e.id} style={{ border: '2px solid' }}>
+    <tbody>
+      <tr>
+        <td>
+          <Link
+            to={{pathname: `/exhibition/${e.id}`}}
+            state = {{ e: e }}
+          >
+            🖼️
+          </Link>
+        </td>
+        <td>{e.title}</td>
+        <td>{`${e.start_date} - ${e.end_date}`}</td>
+        <td>CREATED BY: {e.curator}</td>
+        <td>
+          <img className='avatarStyle' src={e.avatar_url} alt='avatar' />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+))}
 
-      return (
-    <>
-    {/* sylting: increase broder width, add banners */}
-    <table style={{border: '2px solid'}}>
-      <tbody>
-        <tr key={e.id}>
-          <td>🖼️</td>
-          <td>{e.title}</td>
-          <td>{e.start_date} - {e.end_date}</td>
-          <td>
-            CREATED BY: {e.curator}
-          </td>
-          <td>
-          <img className='avatarStyle' src={e.avatar_url}  alt='avatar' />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    </>
-  )
-})}
     </>
   )
 }

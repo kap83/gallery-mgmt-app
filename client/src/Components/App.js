@@ -7,8 +7,8 @@ import Exhibitions from './Exhibitions';
 import AddExhibition from './AddExhibition'
 import gallery from '../images/gallery.jpg'
 import Artists from './Artists';
-import Artwork from './Artwork';
 import ArtistDetails from './ArtistDetails';
+import ExhibitionDetails from './ExhibitionDetails'
 
 
 
@@ -20,8 +20,9 @@ if(loggedIn) {
     <>
     <NavBar/>
     <Routes>
-    <Route path='/addexhibitions' element={<AddExhibition />} />
     <Route path='/' element={<Exhibitions />} />
+    <Route path='/addexhibitions' element={<AddExhibition />} />
+    <Route path='/exhibition/:id' element={<ExhibitionDetails />} />
     <Route path='/artists' element={<Artists />} />
     <Route path='artist/:id' element={<ArtistDetails />} />
     </Routes>
