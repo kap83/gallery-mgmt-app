@@ -1,0 +1,19 @@
+databases:
+  - name: gallery-mgmt-app
+    databaseName: gallery-mgmt-app
+    user: gallery-mgmt-app
+
+services:
+  - type: web
+    name: app_name
+    env: ruby
+    repo: https://github.com/kap83/gallery-mgmt-app
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: gallery-mgmt-app
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
