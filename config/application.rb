@@ -20,7 +20,6 @@ Bundler.require(*Rails.groups)
 
 
 
-
 module GalleryMgmtProject
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
