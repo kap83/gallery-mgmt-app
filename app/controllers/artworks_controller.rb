@@ -2,7 +2,7 @@ class ArtworksController < ApplicationController
     before_action :set_artist, only: [:create]
 
     def index
-        render json: Artwork.all
+        render json: Artwork.all.with_attached_paintings
     end
 
     def create
