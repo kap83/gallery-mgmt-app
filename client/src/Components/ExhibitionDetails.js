@@ -27,13 +27,13 @@ export default function ExhibitionDetails() {
    
     function enLargeImg (img) {
       if (img) {
-        const isEnlarged = img.style.transform === "scale(2)"
+        const isEnlarged = img.style.transform === "scale(3)"
 
       if (isEnlarged) {
         img.style.transform = ""
         img.style.transition = "transform 0.25s ease"
       } else {
-        img.style.transform = "scale(2)"
+        img.style.transform = "scale(3)"
         img.style.transition = "transform 0.25s ease"
       }
       }
