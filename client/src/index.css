@@ -100,7 +100,34 @@ ul {
   width: 200px;
   height: 200px;
   margin-bottom: 0;
+  
 }
+
+.imageContainer {
+  position: relative;
+  width: 100px; 
+  height: 100px;
+  
+}
+
+.checkbox {
+  width: 1.3em;
+  width: 1.3em;
+  position: absolute;
+  top: 1px;
+  bottom: 0px; 
+  left: 150px;
+  /* background-color: white; */
+  border-radius: 50%;
+  vertical-align: middle;
+  /* border: 1px solid #ddd; */
+  /* appearance: none;
+  outline: none; */
+  cursor: pointer;
+}
+/* .checkbox:checked {
+  background-color: gray;
+} */
 
 
 code {

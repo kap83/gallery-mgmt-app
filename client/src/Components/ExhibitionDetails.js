@@ -25,11 +25,23 @@ export default function ExhibitionDetails() {
     }, [artistId])
 
    
-    const myFunction =() => {
-      console.log("clicked")
+    function enLargeImg (img) {
+      if (img) {
+        const isEnlarged = img.style.transform === "scale(2)"
+
+      if (isEnlarged) {
+        img.style.transform = ""
+        img.style.transition = "transform 0.25s ease"
+      } else {
+        img.style.transform = "scale(2)"
+        img.style.transition = "transform 0.25s ease"
+      }
+      }
+
+
+      
     }
-
-
+ 
   return (
     <>
     <div className='exhibitionH2and3 '>
@@ -62,12 +74,17 @@ export default function ExhibitionDetails() {
         selectedArtist.map(artist => (
           artist.artworks.map(art => (
             <div className='container'>
-              <div>
-                <img key={art.id} id={art.id}
-                className='chooseImg' 
-                src={art.paintings_url[0]} 
-                alt={art.title}  
-                onClick={()=> myFunction()}/>
+              <div className='imageContainer'>   
+                {/* <input className='checkbox' type='checkbox' id='artCheckbox' /> */}
+                {/* <label for='artCheckbox'> */}
+                  <img key={art.id} id={art.id}
+                  className='chooseImg' 
+                  src={art.paintings_url[0]} 
+                  alt={art.title}
+                  onClick={(e) => enLargeImg(e.target)}
+
+                  />
+                {/* </label> */}
                 <p>{art.title}, ({art.medium})</p>
               </div>
             </div>
