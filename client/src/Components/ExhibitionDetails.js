@@ -1,29 +1,31 @@
 import React, {useState, useContext, useEffect, Fragment} from 'react'
 import {useLocation} from 'react-router-dom'
 import {ArtistContext} from '../Context/Artist'
+import ReadOnlyExhibition from './ReadOnlyExhibition'
+import EditExhibition from './EditExhibition'
+
+
 
 export default function ExhibitionDetails() {
 
-  //TO DO
-    //EDIT FUNCTIONALITY
-    //CHOOSE ARTIST FUNCTIONALITY --> PATCH
 
     const location = useLocation()
     const selectedExhibition = location.state.e
 
     const {artistList} = useContext(ArtistContext)
-  
-    
     const [artistId, setArtistId] = useState('')
-  
-
     const [selectedArtist, setSelectedArtist] = useState([])
+    const [selectedPaintings, setSelectedPaintings] = useState([])
+    const [isEditing, setIsEditing] = useState(false)
 
     useEffect(() => {
       const artist = artistList.filter(a => parseInt(artistId) === a.id )
       setSelectedArtist(artist)
     }, [artistId])
 
+    const handleEditToggleClick = () => {
+      setIsEditing(!isEditing)
+    }
    
     function enLargeImg (img) {
       if (img) {
@@ -36,24 +38,49 @@ export default function ExhibitionDetails() {
         img.style.transform = "scale(3)"
         img.style.transition = "transform 0.25s ease"
       }
-      }
-
-
-      
+      } 
     }
+    const handleSelectedPaintings = (artId, title) => {
+      const isSelected = selectedPaintings.some(
+        (painting) => painting.id === artId
+      );
+  
+      setSelectedPaintings((prevSelectedPaintings) =>
+        isSelected
+          ? prevSelectedPaintings.filter((painting) => painting.id !== artId)
+          : [...prevSelectedPaintings, { id: artId, title, artist: selectedArtist.name }]
+      );
+    };
+
  
   return (
     <>
-    <div className='exhibitionH2and3 '>
-      <h2>
-        {selectedExhibition.title}
-      <button>EDIT</button>
-      </h2>
-      <h3>
-        {selectedExhibition.start_date} - {selectedExhibition.end_date}
-        <button>EDIT</button>
-      </h3>
+    <form>
+    {
+      isEditing ? 
+      <EditExhibition 
+        selectedExhibition={selectedExhibition} 
+        handleEditToggleClick={handleEditToggleClick}
+        /> : 
+      <ReadOnlyExhibition 
+        handleEditToggleClick={handleEditToggleClick} 
+        selectedExhibition={selectedExhibition} 
+        />
+    }
+
+    <div className='selectedPaintingsForm'>
+        <h4>Selected Painting Titles:</h4>
+        {selectedPaintings.map((painting) => (
+          <div key={painting.id}>
+            {painting.title} 
+          </div>
+        ))}
+        <button type='submit'>SUBMIT</button>
     </div>
+    <br /> 
+    <br /> 
+    <br /> 
+    <br /> 
     <div className='ArtistSelect'>
       <select name='artists' 
         value={artistId} 
@@ -73,25 +100,37 @@ export default function ExhibitionDetails() {
       {
         selectedArtist.map(artist => (
           artist.artworks.map(art => (
-            <div className='container'>
-              <div className='imageContainer'>   
-                {/* <input className='checkbox' type='checkbox' id='artCheckbox' /> */}
-                {/* <label for='artCheckbox'> */}
-                  <img key={art.id} id={art.id}
+            <div key={art.id} className='container'>
+              <div  className='imageContainer'> 
+                <img  
                   className='chooseImg' 
                   src={art.paintings_url[0]} 
                   alt={art.title}
                   onClick={(e) => enLargeImg(e.target)}
-
+                />  
+                 <label>
+                  <p className='pCheckbox'>{art.title}
+                  <input 
+                    className='checkbox' 
+                    type='checkbox' 
+                    value={art.id}
+                    checked={selectedPaintings.some(
+                      (painting) => painting.id === art.id
+                    )}
+                    onChange={() => handleSelectedPaintings(art.id, art.title)}
                   />
-                {/* </label> */}
-                <p>{art.title}, ({art.medium})</p>
+                  </p>
+                  <p>{art.medium}</p>
+                  
+                  </label>
               </div>
             </div>
           ))
         ))
       }
     </div>
+
+    </form>
     </>
   )
 }

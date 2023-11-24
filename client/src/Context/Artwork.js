@@ -7,6 +7,7 @@ export function ArtworkProvider({children}) {
 
 const [artworksData, setArtworksData] = useState([])
 
+//console.log("in context", artworksData)
 
 useEffect(() => {
     fetch('/artworks')
