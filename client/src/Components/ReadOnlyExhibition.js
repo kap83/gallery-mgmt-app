@@ -10,6 +10,9 @@ export default function ReadOnlyExhibition({selectedExhibition, handleEditToggle
     <h3>
       {selectedExhibition.start_date} - {selectedExhibition.end_date}
     </h3>
+    <h3>
+     Gallery: {selectedExhibition.gallery}
+    </h3>
     <button onClick={handleEditToggleClick}>EDIT</button>
   </div>
   )
