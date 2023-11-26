@@ -19,24 +19,24 @@ export default function ExhibitionDetails() {
     const [selectedArtist, setSelectedArtist] = useState([])
     const [isEditing, setIsEditing] = useState(false)
     const [selectedPaintings, setSelectedPaintings] = useState([])
-    // eslint-disable-next-line
     const [formValues, setFormValues] = useState({
       id: '',
       title: '',
       gallery: '',
       start_date: '',
       end_date: '', 
-      artworks: [
-        { id: '' },
-      ]
+      artworks: []
     });
 
+   
+    // console.log("form vals", formValues)
+    // console.log("sel", selectedPaintings)
 
-    console.log("form vals", formValues)
     //FOR DROP DOWN MENU
 
     useEffect(() => {
         setFormValues(selectedExhibition)
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
@@ -70,7 +70,7 @@ export default function ExhibitionDetails() {
 
   //HANDLES CHOSEN IMAGES
 
-    const handleSelectedPaintings = (artId, title) => {
+    const handleSelectedPaintings = (artId, title, exhibitionId) => {
       const isSelected = selectedPaintings.some(
         (painting) => painting.id === artId
       )
@@ -85,7 +85,7 @@ export default function ExhibitionDetails() {
         // If a painting is selected, add it to the artworks array
         const newArtworks = isSelected
           ? prevFormValues.artworks.filter((artwork) => artwork.id !== artId)
-          : [...prevFormValues.artworks, { id: artId }]
+          : [...prevFormValues.artworks, { id: artId, exhibition_id: exhibitionId }]
     
         return {
           ...prevFormValues,
@@ -105,13 +105,13 @@ export default function ExhibitionDetails() {
     const handleSubmit = (e) => {
       e.preventDefault()
 
-      fetch('/exhibitions', {
-        method: 'POST',
+      fetch(`/exhibitions/${selectedExhibition.id}`, {
+        method: 'PATCH',
         headers: {'Content-type': 'application/json'},
         body: JSON.stringify(formValues)
       })
       .then(res => res.json())
-      .then(data => console.log(data))
+      .then(data => console.log("in fetch", data))
 
     }
 
@@ -167,7 +167,7 @@ export default function ExhibitionDetails() {
     <br /> 
     <div>
 
-      {/* enlarge paintings & selected Paintings are displayed under the dates */}
+      {/* display & enlarge paintings, & selected Paintings are displayed under the dates */}
 
       {
         selectedArtist.map(artist => (
@@ -189,7 +189,7 @@ export default function ExhibitionDetails() {
                     checked={selectedPaintings.some(
                       (painting) => painting.id === art.id
                     )}
-                    onChange={() => handleSelectedPaintings(art.id, art.title)}
+                    onChange={() => handleSelectedPaintings(art.id, art.title, art.exhibition_id)}
                   />
                   </p>
                   <p>{art.medium}</p>
@@ -200,6 +200,16 @@ export default function ExhibitionDetails() {
         ))
       }
     </div>
+ 
+      { isEditing || selectedPaintings.length !== 0 ?
+          <div>
+          <button type='submit'>SUBMIT</button>
+          <button onClick={handleEditToggleClick}>CANCEL</button>
+         </div> 
+            : null 
+      
+      }
+   
 
     </form>
     </>

@@ -41,8 +41,7 @@ export default function EditExhibition({selectedExhibition, handleFormChanges, h
         onChange={(e) => handleFormChanges(e)}
         />
       </h3>
-      <button type='submit'>SUBMIT</button>
-      <button onClick={handleEditToggleClick}>CANCEL</button>
+     
   </div>
   )
 }
