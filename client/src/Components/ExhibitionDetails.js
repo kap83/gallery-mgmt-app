@@ -29,15 +29,16 @@ export default function ExhibitionDetails() {
     });
 
    
-    // console.log("form vals", formValues)
+    //console.log("form vals", formValues)
     // console.log("sel", selectedPaintings)
 
-    //FOR DROP DOWN MENU
 
     useEffect(() => {
         setFormValues(selectedExhibition)
         // eslint-disable-next-line
     }, [])
+
+   //FOR DROP DOWN MENU
 
     useEffect(() => {
         const artist = artistList.filter(a => parseInt(artistId) === a.id )
@@ -135,8 +136,8 @@ export default function ExhibitionDetails() {
         />
     }
 
-    {/* dropdown menu for artists */}
-
+    
+    {/* Display selected art titles */}
     <div className='selectedPaintingsForm'>
         <h4>Selected Painting Titles:</h4>
         {selectedPaintings.map((painting) => (
@@ -149,6 +150,9 @@ export default function ExhibitionDetails() {
     <br /> 
     <br /> 
     <br /> 
+
+    {/* dropdown menu for artists */}
+
     <div className='ArtistSelect'>
       <h4>SELECT BY: </h4>
       <select name='artists' 
@@ -200,6 +204,8 @@ export default function ExhibitionDetails() {
         ))
       }
     </div>
+
+    {/* to make submit button appear */}
  
       { isEditing || selectedPaintings.length !== 0 ?
           <div>

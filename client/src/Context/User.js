@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 export const UserContext = React.createContext();
 
 export function UserProvider({ children }) {
+
+
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   // eslint-disable-next-line
   const [notLoggedInError, setNotLoggedInError] = useState('')
 
-  // console.log("in context", currentUser)
+  //console.log("in context", currentUser)
   // console.log("in context", loggedIn)
 
   useEffect(()=> {
@@ -40,6 +43,17 @@ export function UserProvider({ children }) {
     })
   }
 
+  const handleNewExhibition = (newExhibition) => {
+      //console.log("newExhibition", newExhibition)
+    const updateExhibitions = [...currentUser.exhibitions, newExhibition]
+  
+      setCurrentUser({
+        ...currentUser,
+        exhibitions: updateExhibitions
+      })
+
+  }
+
 
 
 
@@ -48,7 +62,8 @@ export function UserProvider({ children }) {
     loggedIn,
     setCurrentUser,
     currentUser,
-    handleLogout
+    handleLogout,
+    handleNewExhibition,
 
   }
 

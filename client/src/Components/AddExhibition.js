@@ -1,24 +1,60 @@
-import React, { useContext} from 'react'
+import React, { useContext, useState} from 'react'
 import {UserContext} from '../Context/User'
+import {ArtistContext} from '../Context/Artist'
 import '../index.css'
 
 export default function AddExhibition() {
 
+  
+  const {currentUser, handleNewExhibition} = useContext (UserContext)
   // eslint-disable-next-line
-  const {currentUser} = useContext (UserContext)
+  const {artistList, handleArtistsAddedArtwork} = useContext(ArtistContext)
 
+  const [artistId, setArtistId] = useState('')
+
+  //console.log("artistId", artistId)
 
   // console.log(currentUser)
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const formData = new FormData(e.currentTarget)
-    const formInput = Object.fromEntries(formData)
-   
-    console.log(formInput)
-    //if there's a problem with fetch on the backend, see if the source is name='paintings[]' in the art input
+    const formData = new FormData()
 
+    formData.append('title', e.target.elements.exhibitionTitle.value)
+    formData.append('gallery', e.target.elements.gallery.value)
+    formData.append('start_date', e.target.elements.starts.value)
+    formData.append('end_date', e.target.elements.ends.value)
+    formData.append('artwork[title]', e.target.elements.paintingTitle.value)
+    formData.append('artwork[medium]', e.target.elements.medium.value)
+    formData.append('artwork[artist_id]', artistId)
+    formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
+
+    
+
+    //console.log("formData", Object.fromEntries(formData))
+
+    fetch(`/exhibitions/`, {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => {
+      if(res.ok) {
+        res.json()
+        .then(data => {
+          //console.log("fetch worked", data)
+          handleNewExhibition(data)
+          handleArtistsAddedArtwork(data)
+        })
+      }
+      else {
+        res.json()
+        .then(data => {
+          console.log("error", data)
+        })
+      }
+    })
+    
 
   }
 
@@ -28,14 +64,15 @@ export default function AddExhibition() {
       <table>
         <tbody>
           <tr>
-            <td>TITLE:</td>
+            <td>EXHIBITION TITLE:</td>
             <td>
               <input
               type='text'
-              name='title' 
+              name='exhibitionTitle' 
               />
             </td>
           </tr>
+
           <tr>
             <td>GALLERY:</td>
             <td>
@@ -45,6 +82,7 @@ export default function AddExhibition() {
               />
             </td>
           </tr>
+
           <tr>
             <td>STARTS:</td>
             <td>
@@ -54,6 +92,7 @@ export default function AddExhibition() {
               />
             </td>
           </tr>
+
           <tr>
             <td>ENDS:</td>
             <td>
@@ -63,13 +102,51 @@ export default function AddExhibition() {
               />
             </td>
           </tr>
+
           <tr>
-          <td>PAINTINGS:</td>
+            <td>SELECT ARTIST:</td>
+            <td>
+              <select name='artists'
+              value={artistId}
+              onChange={(e)=>setArtistId(e.target.value)}
+              id='artists'>
+                <option value='default'>Select An Artist</option>
+                 {artistList.map(artist => (
+                 <option name='artist_id' key={artist.id} value={artist.id}>
+                  {artist.name}
+                </option>
+              ))}
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td>PAINTING TITLE:</td>
+            <td>
+              <input
+              type='text'
+              name='paintingTitle' 
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td>Medium:</td>
+            <td>
+              <input
+              type='text'
+              name='medium' 
+              />
+            </td>
+          </tr>
+
+          <tr>
+          
           <td>
+          <label htmlFor='uploadFields'/>
             <input
               type='file'
-              name='paintings[]' 
-              multiple="multiple"
+              name='paintings' 
               />
           </td>
           </tr>
