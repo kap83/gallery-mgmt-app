@@ -7,7 +7,7 @@ export default function DisplayArtists() {
 
   const {artistList} = useContext(ArtistContext)
 
-  console.log(artistList)
+  //console.log(artistList)
 
 
 

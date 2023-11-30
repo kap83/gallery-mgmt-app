@@ -1,21 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
+import { ExhibitionContext } from '../Context/Exhibition'
 import '../index.css'
+
 
 
 export default function Exhibitions() {
    
-  const [exhibitions, setExhibitions] = useState([])
+const {exhibitions} = useContext(ExhibitionContext)
 
-
-
-  useEffect(() => {
-    fetch('/exhibitions')
-    .then(res => res.json())
-    .then(data => {
-      setExhibitions(data)
-    })
-},[])
 
 //create filter and sort options
 

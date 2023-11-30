@@ -5,7 +5,7 @@ export const ArtistContext = React.createContext();
 export function ArtistProvider({children}) {
 
 const [artistList, setArtistList] = useState([])
-console.log("in context", artistList)
+//console.log("in context", artistList)
 
 
 useEffect(() => {

@@ -39,10 +39,14 @@ class ExhibitionsController < ApplicationController
     
  
      def destroy
-        #only the curator who created the exhibition can delete it
+        #only the curator who created the exhibition can delapp/controllers/exhibitions_controller.rbete it
        exhibition = find_exhibition
-       exhibition.destroy
-       head :no_content
+       if exhibition.user == @current_user
+        exhibition.destroy 
+        head :no_content
+       else
+        head :unauthorized 
+       end
      end
  
      private 
@@ -53,7 +57,8 @@ class ExhibitionsController < ApplicationController
       :gallery, 
       :start_date, 
       :curator,  
-      :end_date
+      :end_date,
+      :user_id 
       )
     end
 

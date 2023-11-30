@@ -6,11 +6,13 @@ import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './Context/User';
 import { ArtistProvider } from './Context/Artist';
 import { ArtworkProvider } from './Context/Artwork';
+import { ExhibitionProvider } from './Context/Exhibition';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
       <UserProvider>
+            <ExhibitionProvider>
             <ArtistProvider>
                   <ArtworkProvider>
                         <BrowserRouter>
@@ -18,17 +20,9 @@ root.render(
                         </BrowserRouter>
                   </ArtworkProvider>
             </ArtistProvider>
+            </ExhibitionProvider>
       </UserProvider>
            
-
-
-
-      
-     
-
-     
-    
- 
    
   
 );

@@ -3,7 +3,7 @@ import {ArtistContext} from '../Context/Artist'
 
 export default function AddArtist() {
 
-  const {handleAddedArtist} = useContext(ArtistContext)
+const {handleAddedArtist} = useContext(ArtistContext)
 
 const [checked, setChecked] = useState(false)
 
@@ -37,7 +37,7 @@ const handleSubmit = (e) => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log("in fetch", data)
+     // console.log("in fetch", data)
       handleAddedArtist(data)
       document.getElementById("myForm").reset()
     })

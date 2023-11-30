@@ -18,7 +18,7 @@ export default function ArtistDetails() {
     setArtworks(findArtwork)
   }, [parseId, artworksData])
 
-  console.log(artworks)
+  //console.log(artworks)
     
   return (
     <>
