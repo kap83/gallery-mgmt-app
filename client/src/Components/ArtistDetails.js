@@ -11,7 +11,7 @@ export default function ArtistDetails() {
   const parseId = parseInt(id)
   
   const [selectedArtist, setSelectedArtist] = useState([])
-  console.log("in artist", selectedArtist)
+  //console.log("in artist", selectedArtist)
 
 
   useEffect(() => {

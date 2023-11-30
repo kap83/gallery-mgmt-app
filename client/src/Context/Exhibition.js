@@ -20,6 +20,13 @@ export function ExhibitionProvider({children}) {
 },[])
 
 
+  const handleNewExhibition = (newExhibition) => {
+    console.log("in handle context", newExhibition)
+    const handleUpdatedExhibition = [...exhibitions, newExhibition]
+    setExhibitions(handleUpdatedExhibition)
+
+  }
+
   const handleDeletedExhibition = (deletedExhibition) => {
     //create new array with all exhibitions that don't have the deletedExhibition's id 
       const updatedExhibitions = exhibitions.filter(exhibition => exhibition.id !== deletedExhibition.id)
@@ -29,7 +36,8 @@ export function ExhibitionProvider({children}) {
 
   const exhibitionValues = {
     exhibitions,
-    handleDeletedExhibition
+    handleDeletedExhibition,
+    handleNewExhibition
 
 
   }

@@ -39,14 +39,14 @@ const handleSubmit = (e) => {
     .then(data => {
      // console.log("in fetch", data)
       handleAddedArtist(data)
-      document.getElementById("myForm").reset()
+      document.getElementById("addArtistForm").reset()
     })
 
 }
 
   return (
     <>
-      <form id='myForm' onSubmit={handleSubmit}>
+      <form id='addArtistForm' onSubmit={handleSubmit}>
       <table>
         <tbody>
           <tr>

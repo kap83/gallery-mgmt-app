@@ -8,9 +8,7 @@ class ExhibitionsController < ApplicationController
      end
  
      def create
- 
        exhibition = @current_user.exhibitions.create!(exhibition_params)
-       exhibition_with_artwork = exhibition.artworks.create!(artwork_params)
        render json: exhibition
      end
 

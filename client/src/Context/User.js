@@ -43,7 +43,7 @@ export function UserProvider({ children }) {
     })
   }
 
-  const handleNewExhibition = (newExhibition) => {
+  const handleCurrentUserNewExhibition = (newExhibition) => {
       //console.log("newExhibition", newExhibition)
     const updateExhibitions = [...currentUser.exhibitions, newExhibition]
   
@@ -72,7 +72,7 @@ export function UserProvider({ children }) {
     setCurrentUser,
     currentUser,
     handleLogout,
-    handleNewExhibition,
+    handleCurrentUserNewExhibition,
     handleCurrentUserDeletedExhibitions
   }
 
