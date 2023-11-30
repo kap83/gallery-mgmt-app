@@ -176,8 +176,9 @@ export default function ExhibitionDetails() {
       {
         selectedArtist.map(artist => (
           artist.artworks.map(art => (
+           
             <div key={art.id} className='container'>
-              <div  className='imageContainer'> 
+              <div className='imageContainer'> 
                 <img  
                   className='chooseImg' 
                   src={art.paintings_url[0]} 

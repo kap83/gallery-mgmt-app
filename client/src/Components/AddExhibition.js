@@ -5,6 +5,8 @@ import '../index.css'
 
 export default function AddExhibition() {
 
+
+  //TO DO: ADD USENAVIGATE TO NAVIGATE TO THE EXHIBITION PAGE AFTER SUBMISSION IS SUCCESSFUL
   
   const {currentUser, handleNewExhibition} = useContext (UserContext)
   // eslint-disable-next-line
