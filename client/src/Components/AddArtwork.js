@@ -4,7 +4,7 @@ import {ArtistContext} from '../Context/Artist'
 import { ArtworkContext } from '../Context/Artwork'
 
 export default function AddArtwork() {
-
+    // eslint-disable-next-line
     const {handleArtistsAddedArtwork} = useContext(ArtistContext)
     const { handledAddedArtwork} = useContext(ArtworkContext)
 
@@ -27,7 +27,7 @@ export default function AddArtwork() {
           .then(res => res.json())
           .then(data => {
             //console.log("in fetch", data)
-            handleArtistsAddedArtwork(data)
+            //handleArtistsAddedArtwork(data)
             handledAddedArtwork(data)
             document.getElementById("artworkForm").reset()
           })
