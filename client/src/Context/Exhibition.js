@@ -9,7 +9,7 @@ export function ExhibitionProvider({children}) {
   
   const [exhibitions, setExhibitions] = useState([])
 
-  console.log("in context ex", exhibitions)
+  //console.log("in context ex", exhibitions)
 
   useEffect(() => {
     fetch('/exhibitions')

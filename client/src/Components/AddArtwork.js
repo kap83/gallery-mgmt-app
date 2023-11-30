@@ -1,12 +1,12 @@
 import React, {useContext } from 'react'
 import {useParams} from 'react-router-dom'
 import {ArtistContext} from '../Context/Artist'
-import { ArtworkContext } from '../Context/Artwork'
+
 
 export default function AddArtwork() {
     // eslint-disable-next-line
-    const {handleArtistsAddedArtwork} = useContext(ArtistContext)
-    const { handledAddedArtwork} = useContext(ArtworkContext)
+    const {handleArtistAddedArtwork} = useContext(ArtistContext)
+
 
     const {id} = useParams()
     const parseId = parseInt(id)
@@ -27,8 +27,7 @@ export default function AddArtwork() {
           .then(res => res.json())
           .then(data => {
             //console.log("in fetch", data)
-            //handleArtistsAddedArtwork(data)
-            handledAddedArtwork(data)
+            handleArtistAddedArtwork(data)
             document.getElementById("artworkForm").reset()
           })
     }
