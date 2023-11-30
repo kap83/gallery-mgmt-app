@@ -9,8 +9,8 @@ local:
 #Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
    service: S3
-   access_key_id: AKIARJR2OG2MLWCW2VTP
-   secret_access_key: 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
+   access_key_id: AKIARJR2OG2MCHBIZYOP
+   secret_access_key: 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
    region: us-east-2
    bucket: galleryimagesbucket
 
