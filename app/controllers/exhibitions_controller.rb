@@ -12,32 +12,27 @@ class ExhibitionsController < ApplicationController
        render json: exhibition
      end
 
-    #  def update
-    #   exhibition = find_exhibition
 
-    #   if params[:artworks].present?
-        
-    #     artworks = Artwork.all.map do |art|
-          
-    #       a = Artwork.find(params[:id])
-    #         #this is the part that isn't working
-    #         if a.exhibition_id.nil?
-    #           { exhibition_id: exhibition.id }  
-              
-    #         end #for art.find
-    #         byebug 
-    #     end #for artwork.all.map
-    #    exhibition_with_artwork = exhibition.artworks.each do |artwork|
-    #       artwork.update(exhibition_params[:artwork_attributes])  
-    #     end #for exhibition.artworks
-    #   else 
-    #     render json: exhibition
-    #   end #for if params[:artworks].present?
-    # end #for update
-    
+
+   def update
+    @exhibition = Exhibition.find(params[:id])
+
+    if @exhibition.update(exhibition_params)
+      # Check if artworks parameter is present
+      if params[:artworks].present?
+        # Call the ArtworksController to handle updating exhibition_id for artworks
+        ArtworksController.new.update_exhibition_id(params[:artworks], @exhibition.id)
+      end
+
+      render json: @exhibition, status: :ok
+    else
+      render json: @exhibition.errors, status: :unprocessable_entity
+    end
+  end
+   
  
      def destroy
-        #only the curator who created the exhibition can delapp/controllers/exhibitions_controller.rbete it
+        #only the curator who created the exhibition can destroy
        exhibition = find_exhibition
        if exhibition.user == @current_user
         exhibition.destroy 

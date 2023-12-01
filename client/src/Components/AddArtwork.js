@@ -36,40 +36,35 @@ export default function AddArtwork() {
   return (
     <>
     <form id='artworkForm' onSubmit={handleSubmit}>
-        <ul>
-        <li> 
-            TITLE: 
+      <div>
+      <label style={{marginLeft: '30px', fontWeight: 'bold'}} >TITLE:</label> 
         <input
+            style={{marginLeft: '3px', marginRight: '5px', width: '200px'}}
               type='text'
               name='title'
               />
-        </li>
-        <li> 
-            MEDIUM: 
+     
+            <label style={{fontWeight: 'bold'}}>MEDIUM: </label> 
         <input
+            style={{marginLeft: '3px', marginRight: '5px', width: '200px'}}
               type='text'
               name='medium'
               />
-        </li>
-        <li> 
+       
         <label htmlFor='uploadFields'/>
         <input
+            className='loginBtnStyle'
               type='file'
               name='paintings'
               />
-        </li>
-        </ul>
-      
-     <button 
-        type='submit'>
-        SUBMIT
-        </button>
+        <button 
+          style={{fontWeight: 'bold'}}
+          type='submit'>
+          SUBMIT
+          </button>
+      </div>
     </form>
-        
-     
-
-
-
+  
     </>
   )
 }
