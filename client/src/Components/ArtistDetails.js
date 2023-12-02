@@ -12,7 +12,7 @@ export default function ArtistDetails() {
   const parseId = parseInt(id)
   
   const [selectedArtist, setSelectedArtist] = useState([])
-  //console.log("in artist", selectedArtist)
+  console.log("in artist", selectedArtist)
 
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function ArtistDetails() {
               className="my-masonry-grid"
               columnClassName="my-masonry-grid_column">
             {artist.artworks.map(art => (
-              <div  key={art.id}>
+              <div key={art.id}>
                 <h3 style={{marginLeft: 'inherit'}}>{art.title}</h3>
                 <p style={{marginTop: '-20px'}}>({art.medium})</p>
                 <img 

@@ -130,12 +130,14 @@ ul {
 .my-masonry-grid_column {
   padding-left: 70px; /* gutter size */
   background-clip: padding-box;
+  /* border: 2px solid green */
 }
 
 /* Style your items */
 .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
   background: #edf0f1;
   max-width: 40%;
+  /* border: 3px solid red; */
   margin-bottom: 30px;
 }
 

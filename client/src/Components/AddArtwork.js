@@ -1,11 +1,15 @@
 import React, {useContext } from 'react'
 import {useParams} from 'react-router-dom'
 import {ArtistContext} from '../Context/Artist'
+import {ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export default function AddArtwork() {
     // eslint-disable-next-line
     const {handleArtistAddedArtwork} = useContext(ArtistContext)
+
+    
 
 
     const {id} = useParams()
@@ -24,12 +28,31 @@ export default function AddArtwork() {
             method: 'POST',
             body: formData
           })
-          .then(res => res.json())
-          .then(data => {
-            //console.log("in fetch", data)
-            handleArtistAddedArtwork(data)
-            document.getElementById("artworkForm").reset()
+          .then(res => {
+            if(res.ok) {
+              res.json()
+              .then(data => {
+                //console.log("in fetch", data)
+                handleArtistAddedArtwork(data)
+                document.getElementById("artworkForm").reset()
+              })
+            } else {
+              res.json()
+              .then(data => {
+                console.error(data)
+                const errorMsgs = data.errors.map(error => {
+                  return `${error}`
+                })
+                toast.error(errorMsgs)
+              })
+            }
           })
+          
+
+
+
+
+         
     }
 
 
@@ -62,6 +85,7 @@ export default function AddArtwork() {
           type='submit'>
           SUBMIT
           </button>
+          <ToastContainer />
       </div>
     </form>
   
