@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ArtistContext } from '../Context/Artist';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ArtworkErrors from './ArtworkErrors';
 
 export default function AddArtwork() {
   const { handleArtistAddedArtwork } = useContext(ArtistContext);
@@ -27,11 +28,12 @@ export default function AddArtwork() {
             return response.json().then((data) => {
               resolve(data);
               handleArtistAddedArtwork(data) 
-              document.getElementById("artworkForm").requestFullscreen()
+              document.getElementById("artworkForm").reset()
             });
           } else {
             return response.json().then((data) => {
-              reject(data.errors);
+              //const errorMsgs = data.errors
+              reject(data);
             });
           }
         })
@@ -43,7 +45,15 @@ export default function AddArtwork() {
     toast.promise(myPromise, {
       pending: { render: "I'm loading" },
       success: "Artwork added successfully",
-      error: (errorMsgs) => `Error: ${errorMsgs.join(', ')}`,
+
+      //create a component and send the message through 
+      error: {
+        render({ data }) {
+          console.error("in error", data);
+          return <ArtworkErrors errors={data && data.errors} />;
+        }
+      }
+      
     });
   };
 
