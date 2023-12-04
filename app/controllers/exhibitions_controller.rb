@@ -12,22 +12,13 @@ class ExhibitionsController < ApplicationController
        render json: exhibition
      end
 
-
+   
 
    def update
-    @exhibition = Exhibition.find(params[:id])
-
-    if @exhibition.update(exhibition_params)
-      # Check if artworks parameter is present
-      if params[:artworks].present?
-        # Call the ArtworksController to handle updating exhibition_id for artworks
-        ArtworksController.new.update_exhibition_id(params[:artworks], @exhibition.id)
-      end
-
-      render json: @exhibition, status: :ok
-    else
-      render json: @exhibition.errors, status: :unprocessable_entity
-    end
+    exhibition = find_exhibition
+    exhibition.update(exhibition_params)
+    update_artworks(exhibition)
+    render json: exhibition, status: :ok
   end
    
  
@@ -61,6 +52,11 @@ class ExhibitionsController < ApplicationController
 
      def find_exhibition
       Exhibition.find(params[:id])
+     end
+
+     #create method that sends the exhibition_id and artwork params to the artwork service
+     def update_artworks(exhibition)
+      ArtworkService.update_exhibition_id(params[:artworks], exhibition.id)
      end
 
     end

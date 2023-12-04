@@ -1,23 +1,25 @@
-import React, { useContext } from 'react';
-import { useParams } from 'react-router-dom';
-import { ArtistContext } from '../Context/Artist';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ArtworkErrors from './ArtworkErrors';
+import React, { useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import { ArtistContext } from '../Context/Artist'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ArtworkErrors from './ArtworkErrors'
 
 export default function AddArtwork() {
-  const { handleArtistAddedArtwork } = useContext(ArtistContext);
-  const { id } = useParams();
-  const parseId = parseInt(id);
+  const { handleArtistAddedArtwork } = useContext(ArtistContext)
+  const { id } = useParams()
+  const parseId = parseInt(id)
 
+  //async keyword is used in context of arrow function, creating an async function named 'handleSubmit' & declaring that the function will operate asynchronously (ie returning a promise)
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     const formData = new FormData();
-    formData.append('title', e.target.elements.title.value);
-    formData.append('medium', e.target.elements.medium.value);
-    formData.append('paintings', e.target.elements.paintings.files[0]);
-    formData.append('artist_id', parseId);
+    formData.append('title', e.target.elements.title.value)
+    formData.append('medium', e.target.elements.medium.value)
+    formData.append('paintings', e.target.elements.paintings.files[0])
+    formData.append('artist_id', parseId)
   
+    //create a new instance of the Promise obj. 
     const myPromise = new Promise((resolve, reject) => {
       fetch(`/artworks`, {
         method: 'POST',
@@ -26,22 +28,23 @@ export default function AddArtwork() {
         .then((response) => {
           if (response.ok) {
             return response.json().then((data) => {
-              resolve(data);
+              resolve(data)
               handleArtistAddedArtwork(data) 
               document.getElementById("artworkForm").reset()
             });
           } else {
             return response.json().then((data) => {
               //const errorMsgs = data.errors
-              reject(data);
+              reject(data)
             });
           }
         })
         .catch((error) => {
-          reject(error);
+          reject(error)
         });
     });
   
+    //takes two parameters myPromise (which is the promise obj to monitor & {} (how i want the result of the promise handled )
     toast.promise(myPromise, {
       pending: { render: "I'm loading" },
       success: "Artwork added successfully",
@@ -50,12 +53,12 @@ export default function AddArtwork() {
       error: {
         render({ data }) {
           console.error("in error", data);
-          return <ArtworkErrors errors={data && data.errors} />;
+          return <ArtworkErrors errors={data && data.errors} />
         }
       }
       
-    });
-  };
+    })
+  }
 
   return (
     <>

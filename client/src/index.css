@@ -88,12 +88,12 @@ ul {
   margin-left: 1%
 }
 
-/* .container {
+.container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 10px;
   margin-left: 20%;
-} */
+}
 
 .chooseImg {
   width: 200px;
