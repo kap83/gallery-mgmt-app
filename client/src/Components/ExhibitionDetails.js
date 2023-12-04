@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom'
 import {ArtistContext} from '../Context/Artist'
 import ReadOnlyExhibition from './ReadOnlyExhibition'
 import EditExhibition from './EditExhibition'
+import DisplaySelectedArtistImg from './DisplaySelectedArtistImg'
 
 
 export default function ExhibitionDetails() {
@@ -30,7 +31,7 @@ export default function ExhibitionDetails() {
 
    
     //console.log("form vals", formValues)
-    // console.log("sel", selectedPaintings)
+    //console.log("sel", selectedPaintings)
 
 
     useEffect(() => {
@@ -52,22 +53,9 @@ export default function ExhibitionDetails() {
       setIsEditing(!isEditing)
     }
 
-   
-    //WHEN CLICKED, IMAGE ENLARGES OR SHRINKS
 
-    function enLargeImg (img) {
-      if (img) {
-        const isEnlarged = img.style.transform === "scale(3)"
+    
 
-      if (isEnlarged) {
-        img.style.transform = ""
-        img.style.transition = "transform 0.25s ease"
-      } else {
-        img.style.transform = "scale(3)"
-        img.style.transition = "transform 0.25s ease"
-      }
-      } 
-    }
 
   //HANDLES CHOSEN IMAGES
 
@@ -137,7 +125,7 @@ export default function ExhibitionDetails() {
     }
 
     
-    {/* Display selected art titles */}
+    {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
     <div className='selectedPaintingsForm'>
         <h4>Selected Painting Titles:</h4>
         {selectedPaintings.map((painting) => (
@@ -169,42 +157,14 @@ export default function ExhibitionDetails() {
     </div>
     <br /> 
     <br /> 
-    <div>
 
-      {/* display & enlarge paintings, & selected Paintings are displayed under the dates */}
+    <DisplaySelectedArtistImg 
+      selectedPaintings={selectedPaintings}
+      selectedArtist={selectedArtist} 
+      handleSelectedPaintings={handleSelectedPaintings}
+    />
 
-      {
-        selectedArtist.map(artist => (
-          artist.artworks.map(art => (
-           
-            <div key={art.id} className='container'>
-              <div className='imageContainer'> 
-                <img  
-                  className='chooseImg' 
-                  src={art.paintings_url[0]} 
-                  alt={art.title}
-                  onClick={(e) => enLargeImg(e.target)}
-                />  
-                 <label>
-                  <p className='pCheckbox'>{art.title}
-                  <input 
-                    className='checkbox' 
-                    type='checkbox' 
-                    value={art.id}
-                    checked={selectedPaintings.some(
-                      (painting) => painting.id === art.id
-                    )}
-                    onChange={() => handleSelectedPaintings(art.id, art.title, art.exhibition_id)}
-                  />
-                  </p>
-                  <p>{art.medium}</p>
-                  </label>
-              </div>
-            </div>
-          ))
-        ))
-      }
-    </div>
+
 
     {/* to make submit button appear */}
  
@@ -217,7 +177,6 @@ export default function ExhibitionDetails() {
       
       }
    
-
     </form>
     </>
   )

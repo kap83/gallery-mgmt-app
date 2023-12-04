@@ -23,7 +23,7 @@ export default function ReadOnlyExhibition({selectedExhibition, handleEditToggle
 
 
   return (
-  <div className='exhibitionH2and3'>
+  <div className='exhibitionTitleData'>
     <h2>
       {selectedExhibition.title}
     </h2>

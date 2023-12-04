@@ -81,65 +81,67 @@ ul {
   list-style-type: none;
 }
 
-.exhibitionH2and3 {
+.exhibitionTitleData {
   text-align: center;
 }
 .ArtistSelect {
   margin-left: 1%
 }
 
-.container {
+/* .container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-row-gap: 10px;
   margin-left: 20%;
-}
+} */
 
-.chooseImg {
+/* .chooseImg {
   width: 200px;
   height: 200px;
   margin-bottom: 0;
   
-}
+} */
 
 /* .imageContainer {
   width: 200px; 
   height: 200px;
 } */
 
-.pCheckbox {
+/* .pCheckbox {
   margin-bottom: -10px;
-}
+  float: left
+} */
 
-.checkbox {
+/* .checkbox {
   width: 1.3em;
   float: right;
-  /* margin-left: 35px; */
+
   border-radius: 50%;
   cursor: pointer;
-}
+}  */
 
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
   margin-left: -30px; /* gutter size offset */
-  width: auto;
+  width: calc(100% + 30px)
+  /* width: auto; */
   
 }
 .my-masonry-grid_column {
   padding-left: 70px; /* gutter size */
   background-clip: padding-box;
-  /* border: 2px solid green */
+ 
 }
 
 /* Style your items */
 .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
   background: #edf0f1;
   max-width: 40%;
-  /* border: 3px solid red; */
   margin-bottom: 30px;
 }
+
 
 
 code {

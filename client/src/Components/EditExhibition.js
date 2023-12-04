@@ -5,7 +5,7 @@ export default function EditExhibition({selectedExhibition, handleFormChanges, h
     //TODO(CSS)
         //INCREASE LENGTH FOR TITLE INPUT
   return (
-    <div className='exhibitionH2and3'>
+    <div className='exhibitionTitleData'>
     <h2>
         <input 
             type='text'
