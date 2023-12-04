@@ -13,30 +13,28 @@ class ExhibitionsController < ApplicationController
      end
 
    
-
    def update
     exhibition = find_exhibition
     exhibition.update(exhibition_params)
     update_artworks(exhibition)
     render json: exhibition, status: :ok
   end
-   
+
  
-     def destroy
-        #only the curator who created the exhibition can destroy
-       exhibition = find_exhibition
-       if exhibition.user == @current_user
-        exhibition.destroy 
-        head :no_content
-       else
-        head :unauthorized 
-       end
-     end
+  def destroy
+    exhibition = find_exhibition
+    if exhibition.user == @current_user
+      exhibition.destroy
+      head :no_content
+    else
+      head :unauthorized
+    end
+  end
  
      private 
 
      def exhibition_params
-      permitted_params = params.permit(:id, 
+      params.permit(:id, 
       :title, 
       :gallery, 
       :start_date, 
@@ -47,7 +45,7 @@ class ExhibitionsController < ApplicationController
     end
 
     def artwork_params
-      params.require(:artwork).permit(:title, :medium, :artist_id, :paintings)
+      params.require(:artwork).permit(:id)
     end
 
      def find_exhibition

@@ -20,22 +20,22 @@ export default function ExhibitionDetails() {
     const [selectedArtist, setSelectedArtist] = useState([])
     const [isEditing, setIsEditing] = useState(false)
     const [selectedPaintings, setSelectedPaintings] = useState([])
+    //removed artworks: [] b/c i only will only want to send the artworks ids to the backend, see handleSelectedPaintings
     const [formValues, setFormValues] = useState({
       id: '',
       title: '',
       gallery: '',
       start_date: '',
-      end_date: '', 
-      artworks: []
+      end_date: ''
     });
 
-   
     //console.log("form vals", formValues)
     //console.log("sel", selectedPaintings)
 
 
     useEffect(() => {
         setFormValues(selectedExhibition)
+        setSelectedPaintings(selectedExhibition.artworks)
         // eslint-disable-next-line
     }, [])
 
@@ -53,13 +53,9 @@ export default function ExhibitionDetails() {
       setIsEditing(!isEditing)
     }
 
-
-    
-
-
   //HANDLES CHOSEN IMAGES
 
-    const handleSelectedPaintings = (artId, title, exhibitionId) => {
+    const handleSelectedPaintings = (artId, title) => {
       const isSelected = selectedPaintings.some(
         (painting) => painting.id === artId
       )
@@ -67,14 +63,14 @@ export default function ExhibitionDetails() {
       setSelectedPaintings((prevSelectedPaintings) =>
         isSelected
           ? prevSelectedPaintings.filter((painting) => painting.id !== artId)
-          : [...prevSelectedPaintings, { id: artId, title, artist: selectedArtist.name }]
+          : [...prevSelectedPaintings, { id: artId, title}]
       )
 
       setFormValues((prevFormValues) => {
         // If a painting is selected, add it to the artworks array
         const newArtworks = isSelected
           ? prevFormValues.artworks.filter((artwork) => artwork.id !== artId)
-          : [...prevFormValues.artworks, { id: artId, exhibition_id: exhibitionId }]
+          : [...prevFormValues.artworks, { id: artId}]
     
         return {
           ...prevFormValues,
@@ -134,10 +130,19 @@ export default function ExhibitionDetails() {
           </div>
         ))}
     </div>
-    <br /> 
-    <br /> 
-    <br /> 
-    <br /> 
+
+       {/* to make submit button appear */}
+
+ 
+       { isEditing || selectedPaintings.length !== 0 ?
+          <div>
+          <button type='submit'>SUBMIT</button>
+          <button onClick={handleEditToggleClick}>CANCEL</button>
+         </div> 
+            : null 
+      
+      }
+        <br /> 
 
     {/* dropdown menu for artists */}
 
@@ -164,18 +169,6 @@ export default function ExhibitionDetails() {
       handleSelectedPaintings={handleSelectedPaintings}
     />
 
-
-
-    {/* to make submit button appear */}
- 
-      { isEditing || selectedPaintings.length !== 0 ?
-          <div>
-          <button type='submit'>SUBMIT</button>
-          <button onClick={handleEditToggleClick}>CANCEL</button>
-         </div> 
-            : null 
-      
-      }
    
     </form>
     </>
