@@ -1,9 +1,12 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 
-export default function DisplaySelectedArtistImg({selectedArtist, selectedPaintings, handleSelectedPaintings}) {
+export default function DisplaySelectedArtistImg({handleEditToggleClick, selectedArtist, selectedPaintings, handleSelectedPaintings}) {
 
+  //SELECTED ARTIST WORKS
 
+  //console.log("in display selectedPainting", selectedPaintings)
+  //console.log("in display selectedArtist", selectedArtist)
 
     const breakpointColumnsObj = {
         //default number of columns
@@ -33,8 +36,12 @@ export default function DisplaySelectedArtistImg({selectedArtist, selectedPainti
                 type='checkbox'
                 value={art.id}
                 style={{float: 'left'}}
-                checked={selectedPaintings.some((painting) => painting.id === art.id)}
-                onChange={() => handleSelectedPaintings(art.id, art.title, art.exhibition_id)}
+                //?. don't throw an error is undefined
+                checked={selectedPaintings?.some((painting) => painting.id === art.id)}
+                onChange={() => {
+                  handleSelectedPaintings(art.id, art.title, art.exhibition_id)
+                  handleEditToggleClick()
+                }}
                 />
                 
                 </h3>

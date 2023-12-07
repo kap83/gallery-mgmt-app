@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { ArtistContext } from '../Context/Artist'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import ArtworkErrors from './ArtworkErrors'
+import ErrorHandling from './ErrorHandling'
 
 export default function AddArtwork() {
   const { handleArtistAddedArtwork } = useContext(ArtistContext)
@@ -53,7 +53,7 @@ export default function AddArtwork() {
       error: {
         render({ data }) {
           console.error("in error", data);
-          return <ArtworkErrors errors={data && data.errors} />
+          return <ErrorHandling errors={data && data.errors} />
         }
       }
       

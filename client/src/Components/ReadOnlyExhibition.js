@@ -20,6 +20,7 @@ export default function ReadOnlyExhibition({selectedExhibition, handleEditToggle
     })
   }
 
+  //currentUserID === selectedExhibition.user_id
 
 
   return (
@@ -33,8 +34,8 @@ export default function ReadOnlyExhibition({selectedExhibition, handleEditToggle
     <h3>
      Gallery: {selectedExhibition.gallery}
     </h3>
-    <button type='button' onClick={handleEditToggleClick}>EDIT</button>
-    <button type='button' onClick={handleDeleteClick}>DELETE</button>
+    <button type='button' onClick={handleEditToggleClick}>EDIT HEADER</button>
+    <button type='button' onClick={handleDeleteClick}>DELETE EXHIBITION</button>
   </div>
   )
 }

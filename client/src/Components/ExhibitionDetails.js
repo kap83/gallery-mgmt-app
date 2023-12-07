@@ -1,9 +1,13 @@
-import React, {useState, useContext, useEffect, Fragment} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {useLocation} from 'react-router-dom'
 import {ArtistContext} from '../Context/Artist'
+import { ExhibitionContext } from '../Context/Exhibition'
 import ReadOnlyExhibition from './ReadOnlyExhibition'
 import EditExhibition from './EditExhibition'
 import DisplaySelectedArtistImg from './DisplaySelectedArtistImg'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ErrorHandling from './ErrorHandling'
 
 
 export default function ExhibitionDetails() {
@@ -15,35 +19,36 @@ export default function ExhibitionDetails() {
     const location = useLocation()
     const selectedExhibition = location.state.e
 
-    const {artistList} = useContext(ArtistContext)
+    const {artistList, findArtist, selectedArtist} = useContext(ArtistContext)
+    const {handleUpdatedExhibition} = useContext(ExhibitionContext)
+
     const [artistId, setArtistId] = useState('')
-    const [selectedArtist, setSelectedArtist] = useState([])
     const [isEditing, setIsEditing] = useState(false)
     const [selectedPaintings, setSelectedPaintings] = useState([])
-    //removed artworks: [] b/c i only will only want to send the artworks ids to the backend, see handleSelectedPaintings
     const [formValues, setFormValues] = useState({
       id: '',
       title: '',
       gallery: '',
       start_date: '',
-      end_date: ''
+      end_date: '',
+      artworks: []
     });
 
     //console.log("form vals", formValues)
-    //console.log("sel", selectedPaintings)
+    //console.log("sel", exhibitionsCurrentArtworks)
 
 
     useEffect(() => {
         setFormValues(selectedExhibition)
         setSelectedPaintings(selectedExhibition.artworks)
         // eslint-disable-next-line
-    }, [])
+    }, [selectedExhibition])
 
    //FOR DROP DOWN MENU
 
     useEffect(() => {
-        const artist = artistList.filter(a => parseInt(artistId) === a.id )
-        setSelectedArtist(artist)
+      let parsedId = parseInt(artistId)
+      findArtist(parsedId)
       // eslint-disable-next-line
     }, [artistId])
 
@@ -56,6 +61,7 @@ export default function ExhibitionDetails() {
   //HANDLES CHOSEN IMAGES
 
     const handleSelectedPaintings = (artId, title) => {
+      console.log("in handleSelectedPainting fn", artId, title)
       const isSelected = selectedPaintings.some(
         (painting) => painting.id === artId
       )
@@ -66,6 +72,7 @@ export default function ExhibitionDetails() {
           : [...prevSelectedPaintings, { id: artId, title}]
       )
 
+      //adds artwork ids to formValues
       setFormValues((prevFormValues) => {
         // If a painting is selected, add it to the artworks array
         const newArtworks = isSelected
@@ -77,8 +84,10 @@ export default function ExhibitionDetails() {
           artworks: newArtworks,
         }
       })
+
     }
 
+    //handles changes for exhibition title, dates and galleries
     const handleFormChanges = (e) => {
       e.preventDefault() 
       setFormValues(formValues => ({...formValues, [e.target.name]: e.target.value}))
@@ -90,17 +99,65 @@ export default function ExhibitionDetails() {
     const handleSubmit = (e) => {
       e.preventDefault()
 
-      fetch(`/exhibitions/${selectedExhibition.id}`, {
-        method: 'PATCH',
-        headers: {'Content-type': 'application/json'},
-        body: JSON.stringify(formValues)
-      })
-      .then(res => res.json())
-      .then(data => console.log("in fetch", data))
+      const myPromise = new Promise((resolve, reject) => {
+        fetch(`/exhibitions/${selectedExhibition.id}`, {
+           method: 'PATCH',
+          headers: {'Content-type': 'application/json'},
+          body: JSON.stringify(formValues)
+           })
+          .then((res) => {
+            if (res.ok) {
+              return res.json().then((data) => {
+                resolve(data)
+                handleUpdatedExhibition(data)
+                setSelectedPaintings(data.artworks)
+                setIsEditing(false)
+                setFormValues({})
+              });
+            } else {
+              return res.json().then((data) => {
+                reject(data)
+              });
+            }
+          })
+          .catch((error) => {
+            reject(error)
+          });
+      });
 
+      toast.promise(myPromise, {
+        pending: { render: "I'm loading" },
+        success: "Artwork added successfully",
+  
+      
+        error: {
+          render({ data }) {
+            console.error("in error", data);
+            return <ErrorHandling errors={data && data.errors} />
+          }
+        }
+        
+      })
+
+
+
+      // fetch(`/exhibitions/${selectedExhibition.id}`, {
+      //   method: 'PATCH',
+      //   headers: {'Content-type': 'application/json'},
+      //   body: JSON.stringify(formValues)
+      // })
+      // .then(res => res.json())
+      // .then(data => {
+      //   console.log("in fetch", data)
+      //   handleUpdatedExhibition(data)
+      //   setExhibitionsCurrentArtworks(data.artworks)
+      //   setIsEditing(false)
+      //   setSelectedPaintings([])
+      //   setFormValues({})
+      // })
     }
 
- 
+    
   return (
     <>
     <form onSubmit={handleSubmit}>
@@ -120,6 +177,8 @@ export default function ExhibitionDetails() {
         />
     }
 
+
+
     
     {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
     <div className='selectedPaintingsForm'>
@@ -131,18 +190,8 @@ export default function ExhibitionDetails() {
         ))}
     </div>
 
-       {/* to make submit button appear */}
 
  
-       { isEditing || selectedPaintings.length !== 0 ?
-          <div>
-          <button type='submit'>SUBMIT</button>
-          <button onClick={handleEditToggleClick}>CANCEL</button>
-         </div> 
-            : null 
-      
-      }
-        <br /> 
 
     {/* dropdown menu for artists */}
 
@@ -164,6 +213,7 @@ export default function ExhibitionDetails() {
     <br /> 
 
     <DisplaySelectedArtistImg 
+      handleEditToggleClick={handleEditToggleClick}
       selectedPaintings={selectedPaintings}
       selectedArtist={selectedArtist} 
       handleSelectedPaintings={handleSelectedPaintings}
@@ -171,6 +221,7 @@ export default function ExhibitionDetails() {
 
    
     </form>
+    <ToastContainer />
     </>
   )
 }

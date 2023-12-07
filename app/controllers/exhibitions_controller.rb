@@ -15,7 +15,7 @@ class ExhibitionsController < ApplicationController
    
    def update
     exhibition = find_exhibition
-    exhibition.update(exhibition_params)
+    exhibition.update!(exhibition_params)
     update_artworks(exhibition)
     render json: exhibition, status: :ok
   end

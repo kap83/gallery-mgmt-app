@@ -5,8 +5,8 @@ export const ArtistContext = React.createContext();
 export function ArtistProvider({children}) {
 
 const [artistList, setArtistList] = useState([])
-//console.log("in context", artistList)
-
+const [selectedArtist, setSelectedArtist] = useState([])
+//console.log("in context", selectedArtist)
 
 useEffect(() => {
     fetch('/artists')
@@ -20,6 +20,11 @@ useEffect(() => {
 const handleAddedArtist = (newArtist) => {
     const updatedArtistData = [...artistList, newArtist ]
     setArtistList(updatedArtistData)
+}
+
+const findArtist = (artistId) => {
+  const artist = artistList.filter(a => parseInt(artistId) === a.id)
+  setSelectedArtist(artist)
 }
 
 //this works
@@ -47,6 +52,8 @@ const artistValues = {
     artistList,
     handleAddedArtist,
     handleArtistAddedArtwork,
+    findArtist, 
+    selectedArtist
 }
 
 
