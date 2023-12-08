@@ -37,9 +37,9 @@ class ExhibitionsController < ApplicationController
       params.permit(:id, 
       :title, 
       :gallery, 
-      :start_date, 
-      :curator,  
+      :start_date,
       :end_date,
+      :curator,  
       :user_id 
       )
     end

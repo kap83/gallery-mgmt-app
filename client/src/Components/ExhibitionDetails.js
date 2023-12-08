@@ -34,7 +34,7 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-    //console.log("form vals", formValues)
+    console.log("form vals", formValues)
     //console.log("sel", exhibitionsCurrentArtworks)
 
 

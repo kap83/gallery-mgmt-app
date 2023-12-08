@@ -18,6 +18,7 @@ export default function EditExhibition({selectedExhibition, handleFormChanges, h
         <label> START:</label>
         <input
         type='date'
+        defaultValue={selectedExhibition.start_date}
         name='start_date'
         onChange={(e) => handleFormChanges(e)}
         />
@@ -25,6 +26,7 @@ export default function EditExhibition({selectedExhibition, handleFormChanges, h
         <label>END:</label>
         <input 
         type='date'
+        defaultValue={selectedExhibition.date}
         name='end_date'
         onChange={(e) => handleFormChanges(e)}
         />

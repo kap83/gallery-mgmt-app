@@ -32,9 +32,8 @@ const {exhibitions} = useContext(ExhibitionContext)
             🖼️
           </Link>
         </td>
-        <td>{e.title}</td>
-        <td>{`${e.start_date} - ${e.end_date}`}</td>
-        <td>CREATED BY: {e.curator}</td>
+        <td className='bold-text'>{e.title}</td>
+        <td style={{fontSize: 'small'}}>CREATED BY: {e.curator}</td>
         <td>
           <img className='avatarStyle' src={e.avatar_url} alt='avatar' />
         </td>

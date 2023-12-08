@@ -5,10 +5,11 @@ class ExhibitionSerializer < ActiveModel::Serializer
   attributes :id, :title, :gallery, :start_date, :user_id, :end_date, :curator, 
   :avatar_url
 
+
   def curator
     object.user.name.upcase
   end
-  
+
 
   def avatar_url
     if object.user.avatar.attached?
