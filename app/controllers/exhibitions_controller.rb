@@ -13,12 +13,12 @@ class ExhibitionsController < ApplicationController
      end
 
    
-   def update
-    exhibition = find_exhibition
-    exhibition.update!(exhibition_params)
-    update_artworks(exhibition)
-    render json: exhibition, status: :ok
-  end
+      def update
+        exhibition = find_exhibition
+        exhibition.update!(exhibition_params)
+        update_artworks(exhibition)
+        render json: exhibition, status: :ok
+      end
 
  
   def destroy

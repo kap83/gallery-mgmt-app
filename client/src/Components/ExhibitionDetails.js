@@ -127,34 +127,16 @@ export default function ExhibitionDetails() {
 
       toast.promise(myPromise, {
         pending: { render: "I'm loading" },
-        success: "Artwork added successfully",
+        success: "Edit was successful! 🎉",
   
-      
         error: {
           render({ data }) {
             console.error("in error", data);
             return <ErrorHandling errors={data && data.errors} />
           }
         }
-        
       })
 
-
-
-      // fetch(`/exhibitions/${selectedExhibition.id}`, {
-      //   method: 'PATCH',
-      //   headers: {'Content-type': 'application/json'},
-      //   body: JSON.stringify(formValues)
-      // })
-      // .then(res => res.json())
-      // .then(data => {
-      //   console.log("in fetch", data)
-      //   handleUpdatedExhibition(data)
-      //   setExhibitionsCurrentArtworks(data.artworks)
-      //   setIsEditing(false)
-      //   setSelectedPaintings([])
-      //   setFormValues({})
-      // })
     }
 
     
@@ -176,9 +158,6 @@ export default function ExhibitionDetails() {
         selectedExhibition={selectedExhibition} 
         />
     }
-
-
-
     
     {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
     <div className='selectedPaintingsForm'>
@@ -190,8 +169,6 @@ export default function ExhibitionDetails() {
         ))}
     </div>
 
-
- 
 
     {/* dropdown menu for artists */}
 
@@ -219,9 +196,19 @@ export default function ExhibitionDetails() {
       handleSelectedPaintings={handleSelectedPaintings}
     />
 
-   
     </form>
-    <ToastContainer />
-    </>
+    <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+    />
+  </>
   )
 }
