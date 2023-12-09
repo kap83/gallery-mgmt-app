@@ -9,12 +9,10 @@ const [selectedArtist, setSelectedArtist] = useState([])
 console.log("in context", artistList)
 
 useEffect(() => {
-    fetch('/artists')
+  fetch('/artists')
     .then(res => res.json())
-    .then(data => {
-        setArtistList(data)
-    })
-},[])
+    .then(data => setArtistList(data))
+}, []);
 
 //works
 const handleAddedArtist = (newArtist) => {

@@ -7,18 +7,21 @@ export default function DisplayArtists() {
 
   const {artistList} = useContext(ArtistContext)
 
-
+  
   return (
     <>
-     {artistList.map(artist => (
-      <Link
+     {artistList.map(artist => {
+      artist.date_of_birth = new Date(artist.date_of_birth).toLocaleDateString('en-US')
+      return (
+           <Link
       to={`/artist/${artist.id}`}
         >
         <ul >
-          <li key={artist.id}>{artist.name} {artist.date_of_birth}</li>
+          <li key={artist.id}>{artist.name} (DOB: {artist.date_of_birth})</li>
         </ul>
       </Link>
-     ))}
+      )
+     })}
 
     </>
   )
