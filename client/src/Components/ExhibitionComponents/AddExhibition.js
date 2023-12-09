@@ -1,8 +1,8 @@
 import React, { useContext, useState} from 'react'
-import {UserContext} from '../Context/User'
-import { ExhibitionContext } from '../Context/Exhibition'
+import {UserContext} from '../../Context/User'
+import { ExhibitionContext } from '../../Context/Exhibition'
 import { useNavigate } from 'react-router-dom'
-import '../index.css'
+
 
 export default function AddExhibition() {
 
@@ -10,7 +10,6 @@ export default function AddExhibition() {
 
   const {currentUser, handleCurrentUserNewExhibition} = useContext (UserContext)
   const {handleNewExhibition} = useContext(ExhibitionContext)
-  // eslint-disable-next-line
   const navigate = useNavigate()
 
 
@@ -39,9 +38,9 @@ export default function AddExhibition() {
             handleCurrentUserNewExhibition(data)
             handleNewExhibition(data)
             document.getElementById("addExhibitionForm").reset()
-            // setTimeout(()=> {
-            //   navigate(`/exhibition/${data.id}`)
-            // }, 5000)
+            setTimeout(()=> {
+              navigate(`/exhibition/${data.id}`)
+            }, 10000)
         })
       }
       else {

@@ -1,20 +1,16 @@
 import React, {useState, useContext, useEffect} from 'react'
 import {useLocation} from 'react-router-dom'
-import {ArtistContext} from '../Context/Artist'
-import { ExhibitionContext } from '../Context/Exhibition'
-import ReadOnlyExhibition from './ReadOnlyExhibition'
-import EditExhibition from './EditExhibition'
-import DisplaySelectedArtistImg from './DisplaySelectedArtistImg'
+import {ArtistContext} from '../../Context/Artist'
+import { ExhibitionContext } from '../../Context/Exhibition'
+import ReadOnlyExhibitionInputFields from './ReadOnlyExhibitionInputFields'
+import EditExhibitionInputFields from './EditExhibitionInputFields'
+import DisplaySelectedPaintings from '../DisplaySelectedPaintings'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import ErrorHandling from './ErrorHandling'
+import ErrorHandling from '../ErrorHandling'
 
 
 export default function ExhibitionDetails() {
-
-  //TODO
-    //GIVE EDIT/READONLY EXHIBITION MORE DESCRIPTIVE NAMES
-      //EG READONLY/EDITHEADER&DATE
 
     const location = useLocation()
     const selectedExhibition = location.state.e
@@ -34,7 +30,7 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-    console.log("form vals", formValues)
+    //console.log("form vals", formValues)
     //console.log("sel", exhibitionsCurrentArtworks)
 
 
@@ -148,12 +144,12 @@ export default function ExhibitionDetails() {
 
     {
       isEditing ? 
-      <EditExhibition 
+      <EditExhibitionInputFields 
         selectedExhibition={selectedExhibition} 
         handleEditToggleClick={handleEditToggleClick}
         handleFormChanges={handleFormChanges}
         /> : 
-      <ReadOnlyExhibition 
+      <ReadOnlyExhibitionInputFields
         handleEditToggleClick={handleEditToggleClick} 
         selectedExhibition={selectedExhibition} 
         />
@@ -162,7 +158,7 @@ export default function ExhibitionDetails() {
     {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
     <div className='selectedPaintingsForm'>
         <h4>Selected Painting Titles:</h4>
-        {selectedPaintings.map((painting) => (
+        {selectedPaintings?.map((painting) => (
           <div key={painting.id}>
             {painting.title} 
           </div>
@@ -189,7 +185,7 @@ export default function ExhibitionDetails() {
     <br /> 
     <br /> 
 
-    <DisplaySelectedArtistImg 
+    <DisplaySelectedPaintings
       handleEditToggleClick={handleEditToggleClick}
       selectedPaintings={selectedPaintings}
       selectedArtist={selectedArtist} 

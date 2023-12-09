@@ -1,9 +1,6 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import { ExhibitionContext } from '../Context/Exhibition'
-import '../index.css'
-
-
+import { ExhibitionContext } from '../../Context/Exhibition'
 
 export default function Exhibitions() {
    

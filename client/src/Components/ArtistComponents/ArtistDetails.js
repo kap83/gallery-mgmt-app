@@ -1,8 +1,8 @@
 import React, {useEffect, useContext} from 'react'
 import {useParams} from 'react-router-dom'
-import {ArtistContext} from '../Context/Artist'
-import AddArtwork from './AddArtwork'
-import DisplaySelectedArtistImg from './DisplaySelectedArtistImg'
+import {ArtistContext} from '../../Context/Artist'
+import AddArtwork from '../AddArtwork'
+import DisplaySelectedPaintings from '../DisplaySelectedPaintings'
 
 
 export default function ArtistDetails() {
@@ -24,7 +24,7 @@ export default function ArtistDetails() {
   return (
     <>
     <AddArtwork />
-    <DisplaySelectedArtistImg selectedArtist={selectedArtist} />
+    <DisplaySelectedPaintings selectedArtist={selectedArtist} />
     </>
   )
 }

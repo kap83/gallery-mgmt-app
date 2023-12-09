@@ -1,9 +1,8 @@
 import React, {useContext} from 'react'
 import {UserContext} from '../Context/User'
 import { NavLink } from 'react-router-dom'
-import '../index.css'
 import logo from '../images/logo.jpg'
-//import Header from './Header';
+
 
 
 export default function NavBar() {

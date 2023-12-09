@@ -4,14 +4,12 @@ export const UserContext = React.createContext();
 
 export function UserProvider({ children }) {
 
-
-
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   // eslint-disable-next-line
   const [notLoggedInError, setNotLoggedInError] = useState('')
 
-  //console.log("in context user")
+  console.log("in context user", currentUser)
   // console.log("in context", loggedIn)
 
   useEffect(()=> {
@@ -19,7 +17,6 @@ export function UserProvider({ children }) {
       if (res.ok) {
         res.json()
         .then(data => {
-          //console.log("in useEffect", data)
           setCurrentUser(data)
           setLoggedIn(true)
         })
@@ -32,9 +29,8 @@ export function UserProvider({ children }) {
     })
   }, [])
 
-  const currentUserID = currentUser.id
-  
-
+  //stops error during logout
+  const currentUserID = currentUser ? currentUser.id : null
 
 
   function handleLogout() {

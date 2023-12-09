@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react'
-import {ArtistContext} from '../Context/Artist'
+import {ArtistContext} from '../../Context/Artist'
 
 export default function AddArtist() {
 

@@ -3,12 +3,12 @@ import {Routes, Route} from 'react-router-dom'
 import {UserContext} from '../Context/User'
 import Login from './Login';
 import NavBar from './NavBar';
-import Exhibitions from './Exhibitions';
-import AddExhibition from './AddExhibition'
+import Exhibitions from './ExhibitionComponents/Exhibitions';
+import AddExhibition from './ExhibitionComponents/AddExhibition'
 import gallery from '../images/gallery.jpg'
-import Artists from './Artists';
-import ArtistDetails from './ArtistDetails';
-import ExhibitionDetails from './ExhibitionDetails'
+import Artists from '../Components/ArtistComponents/Artists';
+import ArtistDetails from '../Components/ArtistComponents//ArtistDetails';
+import ExhibitionDetails from './ExhibitionComponents/ExhibitionDetails'
 
 
 

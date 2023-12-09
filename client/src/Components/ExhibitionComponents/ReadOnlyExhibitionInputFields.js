@@ -1,9 +1,9 @@
 import React, {useContext} from 'react'
-import { ExhibitionContext } from '../Context/Exhibition'
-import { UserContext } from '../Context/User'
+import { ExhibitionContext } from '../../Context/Exhibition'
+import { UserContext } from '../../Context/User'
 import { useNavigate } from 'react-router-dom'
 
-export default function ReadOnlyExhibition({selectedExhibition, handleEditToggleClick}) {
+export default function ReadOnlyExhibitionInputFields({selectedExhibition, handleEditToggleClick}) {
 
   const {handleDeletedExhibition} = useContext(ExhibitionContext)
   const {handleCurrentUserDeletedExhibitions} = useContext(UserContext)

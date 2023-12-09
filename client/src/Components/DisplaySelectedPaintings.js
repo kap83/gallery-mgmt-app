@@ -1,7 +1,7 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 
-export default function DisplaySelectedArtistImg({handleEditToggleClick, selectedArtist, selectedPaintings, handleSelectedPaintings}) {
+export default function DisplaySelectedPaintings({handleEditToggleClick, selectedArtist, selectedPaintings, handleSelectedPaintings}) {
 
   //SELECTED ARTIST WORKS
 
