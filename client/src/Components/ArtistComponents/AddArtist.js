@@ -1,5 +1,8 @@
 import React, {useState, useContext} from 'react'
 import {ArtistContext} from '../../Context/Artist'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ErrorHandling from '../ErrorHandling'
 
 export default function AddArtist() {
 
@@ -30,16 +33,51 @@ const handleSubmit = (e) => {
     }
 
 
-    fetch(`/artists`, {
-      method: 'POST',
-  
-      body: formData
-    })
-    .then(res => res.json())
-    .then(data => {
-     // console.log("in fetch", data)
-      handleAddedArtist(data)
-      document.getElementById("addArtistForm").reset()
+    // fetch(`/artists`, {
+    //   method: 'POST',
+    //   body: formData
+    // })
+    // .then(res => res.json())
+    // .then(data => {
+    //  // console.log("in fetch", data)
+    //   handleAddedArtist(data)
+    //   document.getElementById("addArtistForm").reset()
+    // })
+
+
+    const myPromise = new Promise((resolve, reject) => {
+      fetch(`/artists`, {
+         method: 'POST',
+        body: formData
+         })
+        .then((res) => {
+          if (res.ok) {
+            return res.json().then((data) => {
+              resolve(data)
+              handleAddedArtist(data)
+              document.getElementById("addArtistForm").reset()
+            });
+          } else {
+            return res.json().then((data) => {
+              reject(data)
+            });
+          }
+        })
+        .catch((error) => {
+          reject(error)
+        });
+    });
+
+    toast.promise(myPromise, {
+      pending: { render: "I'm loading" },
+      success: "Edit was successful! 🎉",
+
+      error: {
+        render({ data }) {
+          console.error("in error", data);
+          return <ErrorHandling errors={data && data.errors} />
+        }
+      }
     })
 
 }
@@ -129,6 +167,18 @@ const handleSubmit = (e) => {
         </tbody>
       </table>
       </form>
+      <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+      />
     </>
   )
 }

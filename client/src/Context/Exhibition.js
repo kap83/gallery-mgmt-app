@@ -10,7 +10,7 @@ export function ExhibitionProvider({children}) {
   
   const [exhibitions, setExhibitions] = useState([])
 
-  console.log("in context ex", exhibitions)
+ // console.log("in context ex", exhibitions)
 
   useEffect(() => {
     fetch('/exhibitions')
@@ -22,7 +22,7 @@ export function ExhibitionProvider({children}) {
 
 
   const handleNewExhibition = (newExhibition) => {
-    console.log("in handle context", newExhibition)
+    //console.log("in handle context", newExhibition)
     const handleUpdatedExhibition = [...exhibitions, newExhibition]
     setExhibitions(handleUpdatedExhibition)
 
@@ -36,7 +36,7 @@ export function ExhibitionProvider({children}) {
 
 
   const handleUpdatedExhibition = (updatedExhibition) => {
-      console.log("in update", updatedExhibition)
+      //console.log("in update", updatedExhibition)
       const updatedExhibitionsArr = exhibitions.filter(exhibition => exhibition.id !== updatedExhibition.id)
       updatedExhibitionsArr.push(updatedExhibition)
       setExhibitions(updatedExhibitionsArr)

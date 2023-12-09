@@ -6,7 +6,7 @@ export function ArtistProvider({children}) {
 
 const [artistList, setArtistList] = useState([])
 const [selectedArtist, setSelectedArtist] = useState([])
-//console.log("in context", selectedArtist)
+console.log("in context", artistList)
 
 useEffect(() => {
     fetch('/artists')

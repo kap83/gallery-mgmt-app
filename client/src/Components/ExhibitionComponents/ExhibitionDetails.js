@@ -30,7 +30,7 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-    //console.log("form vals", formValues)
+    //console.log("in ex deets", typeof artistList)
     //console.log("sel", exhibitionsCurrentArtworks)
 
 
@@ -57,7 +57,7 @@ export default function ExhibitionDetails() {
   //HANDLES CHOSEN IMAGES
 
     const handleSelectedPaintings = (artId, title) => {
-      console.log("in handleSelectedPainting fn", artId, title)
+     // console.log("in handleSelectedPainting fn", artId, title)
       const isSelected = selectedPaintings.some(
         (painting) => painting.id === artId
       )
@@ -175,7 +175,7 @@ export default function ExhibitionDetails() {
         onChange={(e)=>setArtistId(e.target.value)} 
         id='artists'>
           <option value='default'>Select An Artist</option>
-          {artistList.map(artist => (
+          {artistList?.map(artist => (
           <option name='artist_id' key={artist.id} value={artist.id}> 
             {artist.name}
           </option>

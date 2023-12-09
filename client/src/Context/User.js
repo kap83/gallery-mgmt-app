@@ -9,7 +9,7 @@ export function UserProvider({ children }) {
   // eslint-disable-next-line
   const [notLoggedInError, setNotLoggedInError] = useState('')
 
-  console.log("in context user", currentUser)
+  //onsole.log("in context user", currentUser)
   // console.log("in context", loggedIn)
 
   useEffect(()=> {
