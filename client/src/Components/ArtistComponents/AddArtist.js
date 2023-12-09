@@ -32,19 +32,6 @@ const handleSubmit = (e) => {
       formData.append('date_of_birth', e.target.elements.dob.value)
     }
 
-
-    // fetch(`/artists`, {
-    //   method: 'POST',
-    //   body: formData
-    // })
-    // .then(res => res.json())
-    // .then(data => {
-    //  // console.log("in fetch", data)
-    //   handleAddedArtist(data)
-    //   document.getElementById("addArtistForm").reset()
-    // })
-
-
     const myPromise = new Promise((resolve, reject) => {
       fetch(`/artists`, {
          method: 'POST',

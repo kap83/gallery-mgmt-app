@@ -16,7 +16,7 @@ useEffect(() => {
     })
 },[])
 
-
+//works
 const handleAddedArtist = (newArtist) => {
     const updatedArtistData = [...artistList, newArtist ]
     setArtistList(updatedArtistData)
