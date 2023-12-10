@@ -30,7 +30,7 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-    //console.log("in ex deets", typeof artistList)
+    
     //console.log("sel", exhibitionsCurrentArtworks)
 
 
@@ -133,7 +133,7 @@ export default function ExhibitionDetails() {
           }
         }
       })
-
+      
     }
 
     

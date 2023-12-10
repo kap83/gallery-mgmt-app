@@ -22,6 +22,9 @@ export default function ReadOnlyExhibitionInputFields({selectedExhibition, handl
 
   //currentUserID === selectedExhibition.user_id
 
+  const formattedStateDate = new Date(selectedExhibition.start_date).toLocaleDateString('en-US') 
+  const formattedStateEnd = new Date(selectedExhibition.end_date).toLocaleDateString('en-US') 
+
 
   return (
   <div className='exhibitionTitleData'>
@@ -29,7 +32,7 @@ export default function ReadOnlyExhibitionInputFields({selectedExhibition, handl
       {selectedExhibition.title}
     </h2>
     <h3>
-      {selectedExhibition.start_date} - {selectedExhibition.end_date}
+      {formattedStateDate} - {formattedStateEnd}
     </h3>
     <h3>
      Gallery: {selectedExhibition.gallery}

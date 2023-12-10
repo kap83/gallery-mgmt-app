@@ -1,16 +1,13 @@
-// eslint-disable-next-line
-import React, {useState, useEffect, useContext } from 'react'
-//import { UserContext } from '../Context/User'
+import React, {useState, useEffect } from 'react'
 
 export const ExhibitionContext = React.createContext();
 
 export function ExhibitionProvider({children}) {
 
-  //const {handleCurrentUserDeletedExhibitions} = useContext(UserContext)
   
   const [exhibitions, setExhibitions] = useState([])
 
- // console.log("in context ex", exhibitions)
+ //console.log("in context ex", exhibitions)
 
   useEffect(() => {
     fetch('/exhibitions')
@@ -20,9 +17,9 @@ export function ExhibitionProvider({children}) {
     })
 },[])
 
-
+  //works
   const handleNewExhibition = (newExhibition) => {
-    //console.log("in handle context", newExhibition)
+    //console.log("in ex context handle", newExhibition)
     const handleUpdatedExhibition = [...exhibitions, newExhibition]
     setExhibitions(handleUpdatedExhibition)
 

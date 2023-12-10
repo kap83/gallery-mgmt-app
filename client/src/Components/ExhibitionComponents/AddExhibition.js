@@ -13,10 +13,10 @@ export default function AddExhibition() {
 
   const {currentUser, handleCurrentUserNewExhibition} = useContext (UserContext)
   const {handleNewExhibition} = useContext(ExhibitionContext)
+
   const navigate = useNavigate()
 
 
-  // console.log(currentUser)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -37,12 +37,14 @@ export default function AddExhibition() {
           if (res.ok) {
             return res.json().then((data) => {
               resolve(data)
+              console.log(data)
               handleCurrentUserNewExhibition(data)
               handleNewExhibition(data)
               document.getElementById("addExhibitionForm").reset()
-            //   setTimeout(()=> {
-            //   navigate(`/exhibition/${data.id}`)
-            // }, 10000)
+              setTimeout(()=> {
+                //e bc of location.state.e
+              navigate(`/exhibition/${data.id}`, {state: {e : data}})
+            }, 2000)
             });
           } else {
             return res.json().then((data) => {
@@ -66,8 +68,6 @@ export default function AddExhibition() {
         }
       }
     })
-
-
 
   }
 

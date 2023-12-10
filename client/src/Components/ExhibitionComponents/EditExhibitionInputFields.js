@@ -18,7 +18,6 @@ export default function EditExhibitionInputFields({selectedExhibition, handleFor
         <label> START:</label>
         <input
         type='date'
-        defaultValue={selectedExhibition.start_date}
         name='start_date'
         onChange={(e) => handleFormChanges(e)}
         />
@@ -26,13 +25,15 @@ export default function EditExhibitionInputFields({selectedExhibition, handleFor
         <label>END:</label>
         <input 
         type='date'
-        defaultValue={selectedExhibition.date}
         name='end_date'
         onChange={(e) => handleFormChanges(e)}
         />
       </h3>
-      <h4>Current Dates: 
-        {selectedExhibition.start_date} - {selectedExhibition.end_date} 
+      <h4>
+        <span style={{paddingRight: '3px', color: '#8B0000'}}>
+          CURRENT DATES:
+          </span>
+          {selectedExhibition.start_date} - {selectedExhibition.end_date} 
       </h4>
       <h3>
         <label> Gallery: </label>
