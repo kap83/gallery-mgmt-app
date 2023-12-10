@@ -14,7 +14,7 @@ export default function NavBar() {
      <div className='navBar'>
      <img className='navLogo' src={logo} alt='logo' />
        <NavLink
-           to='/'
+           to='/exhibitions'
        >
            Exhibitions
        </NavLink>
