@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-    
     def show 
         user = @current_user
         if user
@@ -14,7 +13,5 @@ class UsersController < ApplicationController
         users = User.all.with_attached_avatar
         render json: users
     end
-
-
 
 end

@@ -46,8 +46,8 @@ export default function AddArtwork() {
   
     //takes two parameters myPromise (which is the promise obj to monitor & {} (how i want the result of the promise handled )
     toast.promise(myPromise, {
-      pending: { render: "I'm loading" },
-      success: "Artwork added successfully",
+      pending: { render: "Processing!" },
+      success: "Success! ",
 
       //create a component and send the message through 
       error: {

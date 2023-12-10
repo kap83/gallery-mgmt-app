@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const UserContext = React.createContext();
 
@@ -6,10 +8,8 @@ export function UserProvider({ children }) {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  // eslint-disable-next-line
-  const [notLoggedInError, setNotLoggedInError] = useState('')
 
-  console.log("in context user", currentUser)
+  //console.log("in context user", currentUser)
   // console.log("in context", loggedIn)
 
   useEffect(()=> {
@@ -23,7 +23,16 @@ export function UserProvider({ children }) {
       } else {
         res.json()
         .then(data => {
-          setNotLoggedInError(data.error)
+          toast(data.error, {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
         })
       }
     })

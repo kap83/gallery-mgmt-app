@@ -56,8 +56,8 @@ const handleSubmit = (e) => {
     });
 
     toast.promise(myPromise, {
-      pending: { render: "I'm loading" },
-      success: "Edit was successful! 🎉",
+      pending: { render: "Processing!" },
+      success: "Success! 🎉",
 
       error: {
         render({ data }) {

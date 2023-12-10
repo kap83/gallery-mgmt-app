@@ -1,6 +1,9 @@
 import React, {useState, useContext} from 'react'
 import {UserContext} from '../Context/User'
 import logo from '../images/logo.jpg'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ErrorHandling from '../Components/ErrorHandling'
 
 import '../index.css'
 
@@ -16,31 +19,47 @@ function handleSubmit(e) {
         password: password
       }
 
-    fetch('/login', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginValues)
-    })
-    .then(res => {
-        if(res.ok) {
-          res.json()
-          .then(data => {
-            setCurrentUser(data)
-            setLoggedIn(true)
-            setUsername('')
-            setPassword('')
+      const myPromise = new Promise((resolve, reject) => {
+        fetch('/login', {
+          method: 'POST',
+          headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(loginValues)
+      })
+          .then((res) => {
+            if (res.ok) {
+              return res.json().then((data) => {
+                resolve(data)
+                setCurrentUser(data)
+                setLoggedIn(true)
+                setUsername('')
+                setPassword('')
+              });
+            } else {
+              return res.json().then((data) => {
+                reject(data)
+              });
+            }
           })
-        }
-        else {
-          res.json()
-          .then(data =>{
-              const errorMsg = data.error
-              alert(errorMsg)
-          })
+          .catch((error) => {
+            reject(error)
+          });
+      });
+  
+      toast.promise(myPromise, {
+        pending: { render: "One moment! Authorizing!" },
+        success: "Welcome!",
+  
+        error: {
+          render({ data }) {
+            console.error("in error", Object.entries(data));
+            let test = Object.values(data)
+            return <ErrorHandling errors={data && test} />
+          }
         }
       })
+
 }
 
 
@@ -66,7 +85,18 @@ function handleSubmit(e) {
         </label>
         <button className='loginBtnStyle' type='submit'>LOGIN</button>
       </form>
-      
+      <ToastContainer
+      position="top-center"
+      autoClose={1000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
     </div>
   )
 }

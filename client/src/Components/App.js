@@ -9,6 +9,8 @@ import gallery from '../images/gallery.jpg'
 import Artists from '../Components/ArtistComponents/Artists';
 import ArtistDetails from '../Components/ArtistComponents//ArtistDetails';
 import ExhibitionDetails from './ExhibitionComponents/ExhibitionDetails'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 
