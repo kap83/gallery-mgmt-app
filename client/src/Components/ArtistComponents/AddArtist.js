@@ -71,7 +71,7 @@ const handleSubmit = (e) => {
 
   return (
     <>
-      <form id='addArtistForm' onSubmit={handleSubmit}>
+      <form id='addArtistForm' className='myToast'  onSubmit={handleSubmit}>
       <table>
         <tbody>
           <tr>
@@ -164,7 +164,7 @@ const handleSubmit = (e) => {
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme="colored"
+      theme="light"
       />
     </>
   )

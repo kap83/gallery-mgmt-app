@@ -117,6 +117,7 @@ export default function ExhibitionDetails() {
             }
           })
           .catch((error) => {
+            console.error(error)
             reject(error)
           });
       });
@@ -203,7 +204,7 @@ export default function ExhibitionDetails() {
       pauseOnFocusLoss
       draggable
       pauseOnHover
-      theme="colored"
+      theme="light"
     />
   </>
   )

@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom'
 import {UserContext} from '../Context/User'
 import Login from './Login';
 import NavBar from './NavBar';
-import Exhibitions from './ExhibitionComponents/Exhibitions';
+import DisplayAllExhibitions from './ExhibitionComponents/DisplayAllExhibitions';
 import AddExhibition from './ExhibitionComponents/AddExhibition'
 import gallery from '../images/gallery.jpg'
 import Artists from '../Components/ArtistComponents/Artists';
@@ -20,7 +20,7 @@ if(loggedIn) {
     <>
     <NavBar/>
     <Routes>
-    <Route path='/' element={<Exhibitions />} />
+    <Route path='/' element={<DisplayAllExhibitions />} />
     <Route path='/addexhibitions' element={<AddExhibition />} />
     <Route path='/exhibition/:id' element={<ExhibitionDetails />} />
     <Route path='/artists' element={<Artists />} />

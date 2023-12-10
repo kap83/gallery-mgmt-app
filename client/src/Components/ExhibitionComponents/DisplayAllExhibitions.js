@@ -2,7 +2,7 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { ExhibitionContext } from '../../Context/Exhibition'
 
-export default function Exhibitions() {
+export default function DisplayAllExhibitions() {
    
 const {exhibitions} = useContext(ExhibitionContext)
 

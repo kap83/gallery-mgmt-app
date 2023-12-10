@@ -1,7 +1,10 @@
-import React, { useContext} from 'react'
+import React, { Fragment, useContext} from 'react'
 import {UserContext} from '../../Context/User'
 import { ExhibitionContext } from '../../Context/Exhibition'
 import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import ErrorHandling from '../ErrorHandling'
 
 
 export default function AddExhibition() {
@@ -25,35 +28,51 @@ export default function AddExhibition() {
     formData.append('start_date', e.target.elements.starts.value)
     formData.append('end_date', e.target.elements.ends.value)
 
+    const myPromise = new Promise((resolve, reject) => {
+      fetch(`/exhibitions/`, {
+         method: 'POST',
+        body: formData
+         })
+        .then((res) => {
+          if (res.ok) {
+            return res.json().then((data) => {
+              resolve(data)
+              handleCurrentUserNewExhibition(data)
+              handleNewExhibition(data)
+              document.getElementById("addExhibitionForm").reset()
+            //   setTimeout(()=> {
+            //   navigate(`/exhibition/${data.id}`)
+            // }, 10000)
+            });
+          } else {
+            return res.json().then((data) => {
+              reject(data)
+            });
+          }
+        })
+        .catch((error) => {
+          reject(error)
+        });
+    });
 
-    fetch(`/exhibitions/`, {
-      method: 'POST',
-      body: formData
-    })
-    .then(res => {
-      if(res.ok) {
-        res.json()
-        .then(data => {
-            //console.log("fetch worked", data.id)
-            handleCurrentUserNewExhibition(data)
-            handleNewExhibition(data)
-            document.getElementById("addExhibitionForm").reset()
-            setTimeout(()=> {
-              navigate(`/exhibition/${data.id}`)
-            }, 10000)
-        })
-      }
-      else {
-        res.json()
-        .then(data => {
-          console.log("error", data)
-        })
+    toast.promise(myPromise, {
+      pending: { render: "I'm loading" },
+      success: "Edit was successful! 🎉",
+
+      error: {
+        render({ data }) {
+          console.error("in error", data);
+          return <ErrorHandling errors={data && data.errors} />
+        }
       }
     })
+
+
+
   }
 
   return (
-    <>
+    <Fragment >
     <form id='addExhibitionForm' onSubmit={handleSubmit}>
       <table>
         <tbody>
@@ -114,7 +133,19 @@ export default function AddExhibition() {
         </tbody>
       </table>
     </form>
+    <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="light"
+      />
 
-    </>
+    </Fragment>
   )
 }
