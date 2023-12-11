@@ -1,30 +1,44 @@
-import React, {useContext} from 'react'
-import {UserContext} from '../Context/User'
+import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../images/logo.jpg'
+import Logout from './Logout'
 
 
 
 export default function NavBar() {
-    const {handleLogout} = useContext(UserContext)
+   
     
   return (
     <>
     
      <div className='navBar'>
      <img className='navLogo' src={logo} alt='logo' />
-       <NavLink
-           to='/exhibitions'
-       >
-           Exhibitions
-       </NavLink>
-       <NavLink
-           to='/artists'
-       >
-           Artists
-       </NavLink>
-   
-       <button onClick={handleLogout}>LOGOUT</button>
+     <NavLink
+          to='/'
+          style={{
+            textDecoration: 'none',
+            color: 'black',
+            transition: 'font-size 0.2s ease', 
+          }}
+          activestyle={{ color: 'blue' }}
+          className='navLink'
+        >
+          Exhibitions
+        </NavLink>
+
+        <NavLink
+          to='/artists'
+          style={{
+            textDecoration: 'none',
+            color: 'black',
+            transition: 'font-size 0.2s ease', 
+          }}
+          activestyle={{ color: 'blue' }}
+          className='navLink' 
+        >
+          Artists
+        </NavLink>
+          <Logout />
        </div>
 
     </>

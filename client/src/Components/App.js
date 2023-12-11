@@ -11,8 +11,6 @@ import ArtistDetails from '../Components/ArtistComponents//ArtistDetails';
 import ExhibitionDetails from './ExhibitionComponents/ExhibitionDetails'
 
 
-
-
 function App() {
   const {loggedIn} = useContext(UserContext)
 
@@ -22,7 +20,7 @@ if(loggedIn) {
     <>
     <NavBar/>
     <Routes>
-    <Route path='/exhibitions' element={<DisplayAllExhibitions />} />
+    <Route path='/' element={<DisplayAllExhibitions />} />
     <Route path='/addexhibitions' element={<AddExhibition />} />
     <Route path='/exhibition/:id' element={<ExhibitionDetails />} />
     <Route path='/artists' element={<Artists />} />
@@ -33,12 +31,8 @@ if(loggedIn) {
   else {
     return (
     <>
-    <Routes>
-      <Route path='/' element={ <Login />} />
-      <Route path="*" element={<Navigate to ="/"/>} />
-    </Routes>
-     
-      <img className='galleryImg' src={gallery} alt='gallery'/>
+    <Login />
+    <img className='galleryImg' src={gallery} alt='gallery'/>
     </>
     )
   }
