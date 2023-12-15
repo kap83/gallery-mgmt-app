@@ -16,7 +16,7 @@ export default function ReadOnlyExhibitionInputFields({selectedExhibition, handl
     .then(() => {
       handleDeletedExhibition(selectedExhibition)
       handleCurrentUserDeletedExhibitions(selectedExhibition)
-      navigate('/exhibitions')
+      navigate('/')
     })
   }
 

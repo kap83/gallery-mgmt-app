@@ -4,44 +4,45 @@ export const ExhibitionContext = React.createContext();
 
 export function ExhibitionProvider({children}) {
 
-  
-  const [exhibitions, setExhibitions] = useState([])
+const [exhibitionsArray, setExhibitionsArray] = useState([])
 
- //console.log("in context ex", exhibitions)
+ console.log("in context ex", exhibitionsArray)
 
   useEffect(() => {
     fetch('/exhibitions')
     .then(res => res.json())
     .then(data => {
-      setExhibitions(data)
+      setExhibitionsArray(data)
     })
 },[])
 
   //works
   const handleNewExhibition = (newExhibition) => {
     //console.log("in ex context handle", newExhibition)
-    const handleUpdatedExhibition = [...exhibitions, newExhibition]
-    setExhibitions(handleUpdatedExhibition)
+    const handleUpdatedExhibition = [...exhibitionsArray, newExhibition]
+    setExhibitionsArray(handleUpdatedExhibition)
 
   }
+
+  const handleUpdatedExhibition = (updatedExhibition) => {
+    console.log("in update", updatedExhibition)
+    setExhibitionsArray((exhibitionsArray) => {
+      const updatedExhibitionsArr = exhibitionsArray.filter(exhibition => exhibition.id !== updatedExhibition.id)
+      updatedExhibitionsArr.push(updatedExhibition)
+      return updatedExhibitionsArr
+    })
+}
+
 
   const handleDeletedExhibition = (deletedExhibition) => {
     //create new array with all exhibitions that don't have the deletedExhibition's id 
-      const updatedExhibitions = exhibitions.filter(exhibition => exhibition.id !== deletedExhibition.id)
-      setExhibitions(updatedExhibitions)
+      const updatedExhibitions = exhibitionsArray.filter(exhibition => exhibition.id !== deletedExhibition.id)
+      setExhibitionsArray(updatedExhibitions)
   }
 
-
-  const handleUpdatedExhibition = (updatedExhibition) => {
-      //console.log("in update", updatedExhibition)
-      const updatedExhibitionsArr = exhibitions.filter(exhibition => exhibition.id !== updatedExhibition.id)
-      updatedExhibitionsArr.push(updatedExhibition)
-      setExhibitions(updatedExhibitionsArr)
-
-  }
 
   const exhibitionValues = {
-    exhibitions,
+    exhibitionsArray,
     handleDeletedExhibition,
     handleNewExhibition,
     handleUpdatedExhibition

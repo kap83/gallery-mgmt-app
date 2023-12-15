@@ -1,7 +1,7 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
 
-export default function DisplaySelectedPaintings({handleEditToggleClick, selectedArtist, selectedPaintings, handleSelectedPaintings}) {
+export default function DisplaySelectedPaintings({ selectedArtist, selectedPaintings, handleSelectedPaintings}) {
 
   //SELECTED ARTIST WORKS
 
@@ -40,7 +40,6 @@ export default function DisplaySelectedPaintings({handleEditToggleClick, selecte
                 checked={selectedPaintings?.some((painting) => painting.id === art.id)}
                 onChange={() => {
                   handleSelectedPaintings(art.id, art.title, art.exhibition_id)
-                  handleEditToggleClick()
                 }}
                 />
                 

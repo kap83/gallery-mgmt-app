@@ -4,7 +4,7 @@ import { ExhibitionContext } from '../../Context/Exhibition'
 
 export default function DisplayAllExhibitions() {
    
-const {exhibitions} = useContext(ExhibitionContext)
+const {exhibitionsArray} = useContext(ExhibitionContext)
 
 
 //create filter and sort options
@@ -17,7 +17,7 @@ const {exhibitions} = useContext(ExhibitionContext)
         <p>ADD EXHIBITION</p>
       </Link>
 
-  {exhibitions.map(e => (
+  {exhibitionsArray.map(e => (
   <table key={e.id} style={{ border: '2px solid' }}>
     <tbody>
       <tr>

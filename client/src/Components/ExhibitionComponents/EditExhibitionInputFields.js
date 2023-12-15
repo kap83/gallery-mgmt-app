@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function EditExhibitionInputFields({selectedExhibition, handleFormChanges, handleEditToggleClick}) {
+export default function EditExhibitionInputFields({selectedExhibition, handleClearingSelectedPaintings, handleFormChanges, handleEditToggleClick}) {
 
     //TODO(CSS)
         //INCREASE LENGTH FOR TITLE INPUT

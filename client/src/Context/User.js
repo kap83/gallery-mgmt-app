@@ -54,7 +54,7 @@ export function UserProvider({ children }) {
   }
 //works
   const handleCurrentUserNewExhibition = (newExhibition) => {
-      console.log("newExhibition in user con", newExhibition)
+      //console.log("newExhibition in user con", newExhibition)
     const updateExhibitions = [...currentUser.exhibitions, newExhibition]
   
       setCurrentUser({
@@ -62,6 +62,7 @@ export function UserProvider({ children }) {
         exhibitions: updateExhibitions
       })
   }
+
 
   const handleCurrentUserDeletedExhibitions = (deletedExhibition) => {
     //console.log("in handle", deletedExhibition)

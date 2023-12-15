@@ -49,10 +49,9 @@ body {
 
 .navBar {
   width: calc(100%-30px);
-  font-size: 20px;
+  font-size: 25px;
   background-color:  #edf0f1;
   border-bottom: 2px solid black;
-  
   color: white;
   display: flex;
   gap: 2rem;

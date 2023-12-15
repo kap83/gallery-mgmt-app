@@ -1,5 +1,5 @@
-import React, {useState, useContext, useEffect} from 'react'
-import {useLocation} from 'react-router-dom'
+import React, {useState, useContext, useEffect, Fragment} from 'react'
+import {useParams} from 'react-router-dom'
 import {ArtistContext} from '../../Context/Artist'
 import { ExhibitionContext } from '../../Context/Exhibition'
 import ReadOnlyExhibitionInputFields from './ReadOnlyExhibitionInputFields'
@@ -9,15 +9,15 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ErrorHandling from '../ErrorHandling'
 
-
 export default function ExhibitionDetails() {
 
-    const location = useLocation()
-    const selectedExhibition = location.state.e
+   const { id } = useParams()
+   const parsedExhibitionId = parseInt(id)
 
     const {artistList, findArtist, selectedArtist} = useContext(ArtistContext)
-    const {handleUpdatedExhibition} = useContext(ExhibitionContext)
+    const {exhibitionsArray, handleUpdatedExhibition} = useContext(ExhibitionContext)
 
+    const [selectedExhibition, setSelectedExhibition] = useState({})
     const [artistId, setArtistId] = useState('')
     const [isEditing, setIsEditing] = useState(false)
     const [selectedPaintings, setSelectedPaintings] = useState([])
@@ -30,15 +30,17 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-    
-    //console.log("sel", exhibitionsCurrentArtworks)
-
+  
+    //console.log("sel", selectedExhibition)
 
     useEffect(() => {
-        setFormValues(selectedExhibition)
-        setSelectedPaintings(selectedExhibition.artworks)
+        const findExhibition = exhibitionsArray?.filter(exhibition => exhibition.id === parsedExhibitionId)
+        console.log("in find", findExhibition)
+        setSelectedExhibition(findExhibition[0])
+        setFormValues(findExhibition[0])
+        setSelectedPaintings(findExhibition[0]?.artworks)
         // eslint-disable-next-line
-    }, [selectedExhibition])
+    }, [parsedExhibitionId, exhibitionsArray])
 
    //FOR DROP DOWN MENU
 
@@ -95,6 +97,7 @@ export default function ExhibitionDetails() {
     const handleSubmit = (e) => {
       e.preventDefault()
 
+
       const myPromise = new Promise((resolve, reject) => {
         fetch(`/exhibitions/${selectedExhibition.id}`, {
            method: 'PATCH',
@@ -106,7 +109,6 @@ export default function ExhibitionDetails() {
               return res.json().then((data) => {
                 resolve(data)
                 handleUpdatedExhibition(data)
-                setSelectedPaintings(data.artworks)
                 setIsEditing(false)
                 setFormValues({})
               });
@@ -144,7 +146,7 @@ export default function ExhibitionDetails() {
     {/* edit header and dates */}
 
     {
-      isEditing ? 
+      selectedExhibition && isEditing ? 
       <EditExhibitionInputFields 
         selectedExhibition={selectedExhibition} 
         handleEditToggleClick={handleEditToggleClick}
@@ -164,6 +166,7 @@ export default function ExhibitionDetails() {
             {painting.title} 
           </div>
         ))}
+        <button type='submit'>SUBMIT ARTWORK</button>
     </div>
 
 
@@ -187,7 +190,6 @@ export default function ExhibitionDetails() {
     <br /> 
 
     <DisplaySelectedPaintings
-      handleEditToggleClick={handleEditToggleClick}
       selectedPaintings={selectedPaintings}
       selectedArtist={selectedArtist} 
       handleSelectedPaintings={handleSelectedPaintings}
@@ -195,7 +197,7 @@ export default function ExhibitionDetails() {
 
     </form>
     <ToastContainer
-      position="top-center"
+      position="bottom-center"
       autoClose={2000}
       hideProgressBar={false}
       newestOnTop={false}

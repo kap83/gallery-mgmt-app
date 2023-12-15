@@ -40,7 +40,8 @@ class ExhibitionsController < ApplicationController
       :start_date,
       :end_date,
       :curator,  
-      :user_id 
+      :user_id, 
+      #artworks: []
       )
     end
 
