@@ -20,11 +20,11 @@ class ExhibitionsController < ApplicationController
         render json: exhibition, status: :ok
       end
 
- 
-  def destroy
-    exhibition = find_exhibition
-    head :unauthorized
-  end
+      def destroy
+        exhibition = find_exhibition
+        exhibition.destroy
+        head :unauthorized
+      end
  
      private 
 
@@ -33,10 +33,8 @@ class ExhibitionsController < ApplicationController
       :title, 
       :gallery, 
       :start_date,
-      :end_date,
-      :curator,  
+      :end_date, 
       :user_id, 
-      #artworks: []
       )
     end
 

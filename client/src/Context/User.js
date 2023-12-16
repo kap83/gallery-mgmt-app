@@ -54,7 +54,6 @@ export function UserProvider({ children }) {
   }
 //works
   const handleCurrentUserNewExhibition = (newExhibition) => {
-      //console.log("newExhibition in user con", newExhibition)
     const updateExhibitions = [...currentUser.exhibitions, newExhibition]
   
       setCurrentUser({
@@ -65,7 +64,6 @@ export function UserProvider({ children }) {
 
 
   const handleCurrentUserDeletedExhibitions = (deletedExhibition) => {
-    //console.log("in handle", deletedExhibition)
     
     const updatedExhibitionsArr = currentUser.exhibitions.filter(e => e.id !== deletedExhibition.id)
     setCurrentUser({

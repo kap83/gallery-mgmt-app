@@ -70,7 +70,6 @@ export default function ExhibitionDetails() {
   //HANDLES CHOSEN IMAGES
 
     const handleSelectedPaintings = (artId, title, painting ) => {
-      console.log("in handle", painting)
      // console.log("in handleSelectedPainting fn", artId, title)
       const isSelected = selectedPaintings.some(
         (painting) => painting.id === artId
@@ -178,14 +177,14 @@ export default function ExhibitionDetails() {
   <div className='selectedPaintingsGallery'>
     {selectedPaintings?.map((painting) => (
       
-        <>
+        <div key={painting.id}>
           <img
           key={painting.id}
           src={Array.isArray(painting.paintings_url) ? painting.paintings_url[0] : painting.paintings_url}
           alt={painting.title}
           className="selectedPaintingsGalleryItem"
         />
-        </>
+        </div>
       ))}
   </div>
   <button style={{ borderRadius: '3px', marginLeft: '3px', marginTop: '1%' }} type='submit'>

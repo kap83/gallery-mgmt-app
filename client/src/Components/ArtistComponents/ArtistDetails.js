@@ -7,17 +7,17 @@ import DisplaySelectedPaintings from '../DisplaySelectedPaintings'
 
 export default function ArtistDetails() {
 
-  const {findArtist, selectedArtist} = useContext(ArtistContext)
+  const {findArtist, artistList, selectedArtist} = useContext(ArtistContext)
 
   const {id} = useParams()
   const parseId = parseInt(id)
-  //console.log("in artist", selectedArtist)
 
 
   useEffect(() => {
       findArtist(parseId)
     // eslint-disable-next-line
-  }, [parseId])
+  }, [parseId, artistList])
+  //triggers an update to selectedArtist state
 
 
 

@@ -14,15 +14,15 @@ useEffect(() => {
     .then(data => setArtistList(data))
 }, []);
 
+const findArtist = (artistId) => {
+  const artist = artistList.filter(a => parseInt(artistId) === a.id)
+  setSelectedArtist(artist)
+}
+
 //works
 const handleAddedArtist = (newArtist) => {
     const updatedArtistData = [...artistList, newArtist ]
     setArtistList(updatedArtistData)
-}
-
-const findArtist = (artistId) => {
-  const artist = artistList.filter(a => parseInt(artistId) === a.id)
-  setSelectedArtist(artist)
 }
 
 //this works
@@ -51,7 +51,7 @@ const artistValues = {
     handleAddedArtist,
     handleArtistAddedArtwork,
     findArtist, 
-    selectedArtist
+    selectedArtist,
 }
 
 

@@ -14,8 +14,6 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
         700: 1,
       };
 
-      console.log("in dis", selectedArtist)
-
   return (
     <>
  {
