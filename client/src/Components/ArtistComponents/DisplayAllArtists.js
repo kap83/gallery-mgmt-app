@@ -6,11 +6,13 @@ import {Link} from 'react-router-dom'
 export default function DisplayAllArtists() {
 
   const {artistList} = useContext(ArtistContext)
-  
+
+
+  const sortedArtist = artistList.sort((a, b) => a.name.localeCompare(b.name))
   
   return (
     <div style={{marginTop: '50px'}}>
-     {artistList.map(artist => {
+     {sortedArtist.map(artist => {
       artist.date_of_birth = new Date(artist.date_of_birth).toLocaleDateString('en-US')
       return (
 

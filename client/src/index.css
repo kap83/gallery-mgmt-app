@@ -129,6 +129,16 @@ ul {
   margin-bottom: 5%
 }
 
+div.artistSelect h4 {
+  display: flex;
+  flex-direction: column;
+}
+
+div.artistSelect span.alpha {
+  font-size: 15px;
+  margin-top: 5px
+}
+
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */

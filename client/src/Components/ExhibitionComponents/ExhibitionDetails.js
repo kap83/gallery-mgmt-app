@@ -41,8 +41,8 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-  
-    console.log("ExDeets", selectedPaintings)
+    const sortedArtist = artistList.sort((a, b) => a.name.localeCompare(b.name))
+    //console.log("ExDeets", sortedArtist)
 
 
     useEffect(() => {
@@ -196,13 +196,14 @@ export default function ExhibitionDetails() {
       {/* dropdown menu for artists */}
       
     <div className='artistSelect'>
-      <h4>SELECT BY: </h4>
+      <h4>SELECT BY: 
+        <span className='alpha'>(Alphabetically by name)</span></h4>
       <select name='artists'
       value={artistId}
       onChange={(e)=>setArtistId(e.target.value)}
       id='artists'>
         <option value='default'>Select An Artist</option>
-        {artistList?.map(artist => (
+        {sortedArtist?.map(artist => (
         <option name='artist_id' key={artist.id} value={artist.id}>
           {artist.name}
        </option>
