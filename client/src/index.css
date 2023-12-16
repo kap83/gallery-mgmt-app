@@ -168,8 +168,20 @@ div.artistSelect span.alpha {
   color: #edf0f1;
 }
 
-.exhibitionFont {
-  font-size: 30px;
+/* CSS FOR ADD EXHIBITION COMPONENT */
+
+.exhibitionH1 {
+  text-align: center;
+  margin-bottom: -3.7%;
+  font-size: 50px;
+  font-weight: 100;
+}
+
+.addExhibitionStyle {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
 }
 
 .exhibitionInputStyle {
@@ -181,20 +193,30 @@ div.artistSelect span.alpha {
   margin: 8px 0
 }
 
-.addExhibitionStyle {
-  margin-top: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
+.exhibitionFont {
+font-size: 30px;
+padding-top: 12px;
+ padding-right: 10px;
+}
+
+.addExhibitionStyle .btn {
+  display: block;
+  width: 256%;
+  padding: 13px 28px;
+  font-size: 20px;
+  text-align: center
 }
 
 .exhibitionAvatar {
   position: absolute;
   transform: translateY(-50%);
   left: 32%;
-  bottom: 54%;
-  border: 2px solid #6699CC;
+  bottom: 49%;
+}
 
+div.exhibitionAvatar > img {
+  width: 120%;
+  border: 2px solid #6699CC
 }
 
 code {

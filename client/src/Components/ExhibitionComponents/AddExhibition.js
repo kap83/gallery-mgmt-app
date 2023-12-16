@@ -72,14 +72,14 @@ export default function AddExhibition() {
   return (
     <Fragment >
       <div className='exhibitionAvatar'>
-        <img style={{height: '50%', overflow: 'hidden'}} src={currentUser.avatar_url} alt={currentUser.username} />
+        <img src={currentUser.avatar_url} alt={currentUser.username} />
       </div>
-
+      <h1 className='exhibitionH1'>Create A New Exhibition</h1>
     <form id='addExhibitionForm' onSubmit={handleSubmit}>
       <table className='addExhibitionStyle'>
         <tbody>
           <tr>
-            <td className='exhibitionFont'>EXHIBITION TITLE:</td>
+            <td className='exhibitionFont'>Title:</td>
             <td>
               <input
               className='exhibitionInputStyle'
@@ -90,7 +90,7 @@ export default function AddExhibition() {
           </tr>
 
           <tr>
-            <td className='exhibitionFont'>GALLERY:</td>
+            <td className='exhibitionFont'>Gallery:</td>
             <td>
               <input
               className='exhibitionInputStyle'
@@ -101,7 +101,7 @@ export default function AddExhibition() {
           </tr>
 
           <tr>
-            <td className='exhibitionFont'>STARTS:</td>
+            <td className='exhibitionFont'>Starts:</td>
             <td>
               <input
               className='exhibitionInputStyle'
@@ -112,7 +112,7 @@ export default function AddExhibition() {
           </tr>
 
           <tr>
-            <td className='exhibitionFont'>ENDS:</td>
+            <td className='exhibitionFont'>Ends:</td>
             <td>
               <input
               className='exhibitionInputStyle'
@@ -121,15 +121,9 @@ export default function AddExhibition() {
               />
             </td>
           </tr>
-
-          {/* <tr>
-            <td>
-              <img src={currentUser.avatar_url} alt={currentUser.username} />
-            </td>
-          </tr> */}
-
           
           <tr>
+            <td></td>
             <td>
               <button
                 className='btn' 
