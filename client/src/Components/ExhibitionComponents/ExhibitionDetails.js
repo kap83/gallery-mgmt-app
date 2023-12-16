@@ -1,23 +1,34 @@
-import React, {useState, useContext, useEffect, Fragment} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import {ArtistContext} from '../../Context/Artist'
 import { ExhibitionContext } from '../../Context/Exhibition'
+import { UserContext } from '../../Context/User'
 import ReadOnlyExhibitionInputFields from './ReadOnlyExhibitionInputFields'
 import EditExhibitionInputFields from './EditExhibitionInputFields'
 import DisplaySelectedPaintings from '../DisplaySelectedPaintings'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ErrorHandling from '../ErrorHandling'
+import UnauthExhibitionDetails from './UnauthExhibitionDetails'
 
 export default function ExhibitionDetails() {
 
    const { id } = useParams()
    const parsedExhibitionId = parseInt(id)
-
+    
+   const {currentUser} = useContext(UserContext)
     const {artistList, findArtist, selectedArtist} = useContext(ArtistContext)
     const {exhibitionsArray, handleUpdatedExhibition} = useContext(ExhibitionContext)
+    
 
-    const [selectedExhibition, setSelectedExhibition] = useState({})
+    const [selectedExhibition, setSelectedExhibition] = useState({
+      id: '',
+      title: '',
+      gallery: '',
+      start_date: '',
+      end_date: '',
+      artworks: []
+    })
     const [artistId, setArtistId] = useState('')
     const [isEditing, setIsEditing] = useState(false)
     const [selectedPaintings, setSelectedPaintings] = useState([])
@@ -31,11 +42,11 @@ export default function ExhibitionDetails() {
     });
 
   
-    //console.log("sel", selectedExhibition)
+    console.log("ExDeets", selectedPaintings)
+
 
     useEffect(() => {
-        const findExhibition = exhibitionsArray?.filter(exhibition => exhibition.id === parsedExhibitionId)
-        console.log("in find", findExhibition)
+        const findExhibition = exhibitionsArray && exhibitionsArray.filter(exhibition => exhibition.id === parsedExhibitionId)
         setSelectedExhibition(findExhibition[0])
         setFormValues(findExhibition[0])
         setSelectedPaintings(findExhibition[0]?.artworks)
@@ -58,7 +69,8 @@ export default function ExhibitionDetails() {
 
   //HANDLES CHOSEN IMAGES
 
-    const handleSelectedPaintings = (artId, title) => {
+    const handleSelectedPaintings = (artId, title, painting ) => {
+      console.log("in handle", painting)
      // console.log("in handleSelectedPainting fn", artId, title)
       const isSelected = selectedPaintings.some(
         (painting) => painting.id === artId
@@ -67,7 +79,7 @@ export default function ExhibitionDetails() {
       setSelectedPaintings((prevSelectedPaintings) =>
         isSelected
           ? prevSelectedPaintings.filter((painting) => painting.id !== artId)
-          : [...prevSelectedPaintings, { id: artId, title}]
+          : [...prevSelectedPaintings, { id: artId, paintings_url: [ painting], title}]
       )
 
       //adds artwork ids to formValues
@@ -137,67 +149,76 @@ export default function ExhibitionDetails() {
       })
       
     }
-
     
-  return (
+    console.log("selected", selectedPaintings)
+ 
+    return (
+      <>
+  {selectedExhibition && currentUser?.id === selectedExhibition?.user_id ? (
     <>
     <form onSubmit={handleSubmit}>
 
-    {/* edit header and dates */}
-
-    {
-      selectedExhibition && isEditing ? 
-      <EditExhibitionInputFields 
-        selectedExhibition={selectedExhibition} 
-        handleEditToggleClick={handleEditToggleClick}
-        handleFormChanges={handleFormChanges}
-        /> : 
-      <ReadOnlyExhibitionInputFields
-        handleEditToggleClick={handleEditToggleClick} 
-        selectedExhibition={selectedExhibition} 
+      {isEditing ? (
+        <EditExhibitionInputFields
+          selectedExhibition={selectedExhibition}
+          handleEditToggleClick={handleEditToggleClick}
+          handleFormChanges={handleFormChanges}
         />
-    }
-    
-    {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
-    <div className='selectedPaintingsForm'>
-        <h4>Selected Painting Titles:</h4>
-        {selectedPaintings?.map((painting) => (
-          <div key={painting.id}>
-            {painting.title} 
-          </div>
-        ))}
-        <button type='submit'>SUBMIT ARTWORK</button>
-    </div>
+      ) : (
+        <ReadOnlyExhibitionInputFields
+          handleEditToggleClick={handleEditToggleClick}
+          selectedExhibition={selectedExhibition}
+        />
+      )}
+
+      {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
+
+  <div className='selectedPaintingsGalleryMargin'>
+  <h4>Selected Painting Titles:</h4>
+  <div className='selectedPaintingsGallery'>
+    {selectedPaintings?.map((painting) => (
+      
+        <>
+          <img
+          key={painting.id}
+          src={Array.isArray(painting.paintings_url) ? painting.paintings_url[0] : painting.paintings_url}
+          alt={painting.title}
+          className="selectedPaintingsGalleryItem"
+        />
+        </>
+      ))}
+  </div>
+  <button style={{ marginLeft: '3px', marginTop: '1%' }} type='submit'>
+    SUBMIT ARTWORK
+  </button>
+</div>
 
 
-    {/* dropdown menu for artists */}
-
-    <div className='ArtistSelect'>
+      {/* dropdown menu for artists */}
+      
+    <div className='artistSelect'>
       <h4>SELECT BY: </h4>
-      <select name='artists' 
-        value={artistId} 
-        onChange={(e)=>setArtistId(e.target.value)} 
-        id='artists'>
-          <option value='default'>Select An Artist</option>
-          {artistList?.map(artist => (
-          <option name='artist_id' key={artist.id} value={artist.id}> 
-            {artist.name}
-          </option>
-          ))}
+      <select name='artists'
+      value={artistId}
+      onChange={(e)=>setArtistId(e.target.value)}
+      id='artists'>
+        <option value='default'>Select An Artist</option>
+        {artistList?.map(artist => (
+        <option name='artist_id' key={artist.id} value={artist.id}>
+          {artist.name}
+       </option>
+       ))}
       </select>
     </div>
-    <br /> 
-    <br /> 
 
     <DisplaySelectedPaintings
       selectedPaintings={selectedPaintings}
       selectedArtist={selectedArtist} 
       handleSelectedPaintings={handleSelectedPaintings}
     />
-
     </form>
     <ToastContainer
-      position="bottom-center"
+      position="top-center"
       autoClose={2000}
       hideProgressBar={false}
       newestOnTop={false}
@@ -208,6 +229,12 @@ export default function ExhibitionDetails() {
       pauseOnHover
       theme="light"
     />
-  </>
+     </>     
+
+  ) : (
+    <UnauthExhibitionDetails selectedExhibition={selectedExhibition} />
+  )}
+</>
+
   )
 }

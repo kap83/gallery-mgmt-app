@@ -74,9 +74,6 @@ export function UserProvider({ children }) {
     })
   }
 
-
-
-
   const userValues = {
     setLoggedIn,
     loggedIn,

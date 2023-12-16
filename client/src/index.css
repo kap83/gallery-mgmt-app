@@ -9,6 +9,23 @@ body {
   background-color: #edf0f1;
 }
 
+.selectedPaintingsGalleryMargin {
+  margin-left: 15px 
+}
+
+.selectedPaintingsGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 10px;
+}
+
+.selectedPaintingsGalleryItem {
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .bold-text {
   font-weight: bold
 }
@@ -108,8 +125,9 @@ ul {
 .exhibitionTitleData {
   text-align: center;
 }
-.ArtistSelect {
-  margin-left: 1%
+.artistSelect {
+  margin-left: 1%;
+  margin-bottom: 5%
 }
 
 .my-masonry-grid {

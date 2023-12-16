@@ -23,12 +23,7 @@ class ExhibitionsController < ApplicationController
  
   def destroy
     exhibition = find_exhibition
-    if exhibition.user == @current_user
-      exhibition.destroy
-      head :no_content
-    else
-      head :unauthorized
-    end
+    head :unauthorized
   end
  
      private 

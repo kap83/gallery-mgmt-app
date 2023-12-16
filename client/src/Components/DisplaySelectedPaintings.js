@@ -5,9 +5,6 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
 
   //SELECTED ARTIST WORKS
 
-  //console.log("in display selectedPainting", selectedPaintings)
-  //console.log("in display selectedArtist", selectedArtist)
-
     const breakpointColumnsObj = {
         //default number of columns
         default: 3,
@@ -17,46 +14,49 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
         700: 1,
       };
 
+      console.log("in dis", selectedArtist)
 
   return (
     <>
-     {
-      selectedArtist.map(artist => (
-        <div key={artist.id}>
-            <h1 style={{textAlign: 'center'}}>{artist.name}</h1>
-            <Masonry
-              breakpointCols={breakpointColumnsObj}
-              className="my-masonry-grid"
-              columnClassName="my-masonry-grid_column">
-            {artist.artworks.map(art => (
-              <div key={art.id}>
-                <h3>
-                    {art.title}
-                <input 
-                type='checkbox'
-                value={art.id}
-                style={{float: 'left'}}
-                //?. don't throw an error is undefined
-                checked={selectedPaintings?.some((painting) => painting.id === art.id)}
-                onChange={() => {
-                  handleSelectedPaintings(art.id, art.title, art.exhibition_id)
-                }}
+ {
+  selectedArtist?.map((artist) => (
+    <div key={artist.id}>
+      <h1 style={{ textAlign: 'center' }}>{artist.name}</h1>
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {artist.artworks.map((art) => (
+          <div key={art.id}>
+            <h3>
+              {art.title}
+              {handleSelectedPaintings && ( // Check if handleSelectedPaintings is defined
+                <input
+                  type="checkbox"
+                  value={art.id}
+                  style={{ float: 'left' }}
+                  checked={selectedPaintings?.some((painting) => painting.id === art.id)}
+                  onChange={() => {
+                    const painting = art.paintings_url[0];
+                    handleSelectedPaintings(art.id, art.title, painting, art.exhibition_id)
+                  }}
                 />
-                
-                </h3>
-                <p style={{ marginLeft: '15px', marginTop: '-20px'}}>({art.medium})</p>
-                <img 
-                src={art.paintings_url[0]} 
-                alt={art.title}
-                style={{ maxWidth: '200%', height:'auto' }}
-                />
-               </div>
-            )
-            )}
-          </Masonry>
-        </div>
-      ))
-    }
+              )}
+            </h3>
+            <p style={{ marginLeft: '15px', marginTop: '-20px' }}>({art.medium})</p>
+            <img
+              src={art.paintings_url[0]}
+              alt={art.title}
+              style={{ maxWidth: '200%', height: 'auto' }}
+            />
+          </div>
+        ))}
+      </Masonry>
+    </div>
+  ))
+}
+
     </>
   )
 }

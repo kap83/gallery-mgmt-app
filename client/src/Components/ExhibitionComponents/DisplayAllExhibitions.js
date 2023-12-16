@@ -17,14 +17,13 @@ const {exhibitionsArray} = useContext(ExhibitionContext)
         <p>ADD EXHIBITION</p>
       </Link>
 
-  {exhibitionsArray.map(e => (
+  {exhibitionsArray?.map(e => (
   <table key={e.id} style={{ border: '2px solid' }}>
     <tbody>
       <tr>
         <td>
           <Link
-            to={{pathname: `/exhibition/${e.id}`}}
-            state = {{ e: e }}
+            to={`/exhibition/${e.id}`}
           >
             🖼️
           </Link>
