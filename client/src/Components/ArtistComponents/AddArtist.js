@@ -145,7 +145,8 @@ const handleSubmit = (e) => {
                 : null }
           <tr>
             <td>
-              <button 
+              <button
+                className='btn'
                 type='submit'>
                 SUBMIT
               </button>

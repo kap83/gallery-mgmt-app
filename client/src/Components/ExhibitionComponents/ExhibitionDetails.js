@@ -188,7 +188,7 @@ export default function ExhibitionDetails() {
         </>
       ))}
   </div>
-  <button style={{ marginLeft: '3px', marginTop: '1%' }} type='submit'>
+  <button style={{ borderRadius: '3px', marginLeft: '3px', marginTop: '1%' }} type='submit'>
     SUBMIT ARTWORK
   </button>
 </div>

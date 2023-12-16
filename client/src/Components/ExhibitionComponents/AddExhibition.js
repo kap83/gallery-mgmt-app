@@ -16,8 +16,6 @@ export default function AddExhibition() {
 
   const navigate = useNavigate()
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -73,13 +71,18 @@ export default function AddExhibition() {
 
   return (
     <Fragment >
+      <div className='exhibitionAvatar'>
+        <img style={{height: '50%', overflow: 'hidden'}} src={currentUser.avatar_url} alt={currentUser.username} />
+      </div>
+
     <form id='addExhibitionForm' onSubmit={handleSubmit}>
-      <table>
+      <table className='addExhibitionStyle'>
         <tbody>
           <tr>
-            <td>EXHIBITION TITLE:</td>
+            <td className='exhibitionFont'>EXHIBITION TITLE:</td>
             <td>
               <input
+              className='exhibitionInputStyle'
               type='text'
               name='exhibitionTitle' 
               />
@@ -87,9 +90,10 @@ export default function AddExhibition() {
           </tr>
 
           <tr>
-            <td>GALLERY:</td>
+            <td className='exhibitionFont'>GALLERY:</td>
             <td>
               <input
+              className='exhibitionInputStyle'
               type='text'
               name='gallery' 
               />
@@ -97,9 +101,10 @@ export default function AddExhibition() {
           </tr>
 
           <tr>
-            <td>STARTS:</td>
+            <td className='exhibitionFont'>STARTS:</td>
             <td>
               <input
+              className='exhibitionInputStyle'
               type='date'
               name='starts'
               />
@@ -107,26 +112,29 @@ export default function AddExhibition() {
           </tr>
 
           <tr>
-            <td>ENDS:</td>
+            <td className='exhibitionFont'>ENDS:</td>
             <td>
               <input
+              className='exhibitionInputStyle'
               type='date'
               name='ends' 
               />
             </td>
           </tr>
 
-          <tr>
+          {/* <tr>
             <td>
               <img src={currentUser.avatar_url} alt={currentUser.username} />
             </td>
-          </tr>
-          <tr>
+          </tr> */}
 
+          
+          <tr>
             <td>
-              <button 
+              <button
+                className='btn' 
                 type='submit'>
-                SUBMIT
+                Submit
               </button>
             </td>
           </tr>
