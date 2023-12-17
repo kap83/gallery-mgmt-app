@@ -168,6 +168,74 @@ div.artistSelect span.alpha {
   color: #edf0f1;
 }
 
+.addArtistStyle {
+  margin-top: 5px;
+  margin-Left: 10px;
+}
+
+.addArtistTextStyle {
+  padding-top: 25px;
+  padding-right: 15px;
+  font-size: 25px;
+}
+
+.addArtistInputStyle {
+  padding: 10px;
+  border: none;
+  font-size: 15px;
+  border-bottom: 2px solid#6699CC;
+  width: 100%;
+  margin: 8px 0
+}
+
+.checkBox {
+  position: relative;
+  width: 60px;
+  height: 20px;
+  margin-top: 25px;
+  appearance: none;
+  background: #c6c6c6;
+  outline: none;
+  border-radius: 20px;
+  box-shadow: inset 5px rgba(0,0,0, .2);
+}
+
+.checkBox:checked {
+  background: #03a9f4;
+}
+
+.checkBox:before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 2px 5px rgba(0,0,0, .2);
+  transition: .5s;
+}
+
+.checkBox:checked:before {
+  left: 40px
+}
+
+input[type="file" i] {
+    margin-left: 10%;
+    margin-top: 7%;
+}
+
+div.addArtistStyle .btn {
+  display: block;
+  width: 113%;
+  padding: 13px 28px;
+  font-size: 20px;
+  text-align: center
+}
+
+
 /* CSS FOR ADD EXHIBITION COMPONENT */
 
 .exhibitionH1 {
@@ -192,6 +260,7 @@ div.artistSelect span.alpha {
   width: 250%;
   margin: 8px 0
 }
+
 
 .exhibitionFont {
 font-size: 30px;
