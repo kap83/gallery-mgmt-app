@@ -13,7 +13,6 @@ ul {
   list-style-type: none;
 }
 
-
 .addArtistInputStyle, .loginInputStyle,  .exhibitionInputStyle {
   border: none;
   border-bottom: 2px solid#6699CC;
@@ -118,7 +117,6 @@ ul {
   max-width: 1.5%;
   border: 1px solid black;
 }
-
 
 .exhibitionTitleData {
   text-align: center;
@@ -251,7 +249,7 @@ div.artistSelect span.alpha {
 input[type="file" i] {
     width: 70%;
     box-sizing: border-box;
-    margin-left: 10%;
+    margin-left: 12%;
     margin-top: 7%;
    
 }

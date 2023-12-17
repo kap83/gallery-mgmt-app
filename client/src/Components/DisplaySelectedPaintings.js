@@ -3,7 +3,6 @@ import Masonry from 'react-masonry-css'
 
 export default function DisplaySelectedPaintings({ selectedArtist, selectedPaintings, handleSelectedPaintings}) {
 
-  //SELECTED ARTIST WORKS
 
     const breakpointColumnsObj = {
         //default number of columns
@@ -46,7 +45,7 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
             <img
               src={art.paintings_url[0]}
               alt={art.title}
-              style={{ maxWidth: '200%', height: 'auto' }}
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
           </div>
         ))}
@@ -54,7 +53,6 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
     </div>
   ))
 }
-
     </>
   )
 }
