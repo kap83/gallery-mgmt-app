@@ -78,7 +78,7 @@ function handleSubmit(e) {
         <label className='loginLabelStyle'>
             PASSWORD:
             <input className='loginInputStyle'
-              type='text'
+              type='password'
               value={password}
               onChange={(e)=> setPassword(e.target.value)}
             />

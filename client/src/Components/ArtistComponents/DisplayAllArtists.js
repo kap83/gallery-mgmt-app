@@ -11,14 +11,15 @@ export default function DisplayAllArtists() {
   const sortedArtist = artistList.sort((a, b) => a.name.localeCompare(b.name))
   
   return (
-    <div style={{marginTop: '50px'}}>
+    <div className='displayAllArtistsStyle'>
+      <h2>Current Collection</h2>
      {sortedArtist.map(artist => {
       artist.date_of_birth = new Date(artist.date_of_birth).toLocaleDateString('en-US')
       return (
 
-      <Link key={artist.id} to={`/artist/${artist.id}`}>
+      <Link className='linkStyle' key={artist.id} to={`/artist/${artist.id}`}>
         <ul>
-          <li style={{fontSize: '20px'}}>{artist.name} DOB: {artist.date_of_birth}</li>
+          <li>{artist.name} DOB: {artist.date_of_birth}</li>
         </ul>
       </Link>
       )

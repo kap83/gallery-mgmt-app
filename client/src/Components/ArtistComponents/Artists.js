@@ -4,9 +4,9 @@ import DisplayAllArtists from './DisplayAllArtists'
 
 export default function Artists() {
   return (
-    <>
+    <div className='wrapper' >
        <AddArtist />
        <DisplayAllArtists />
-    </>
+    </div>
   )
 }

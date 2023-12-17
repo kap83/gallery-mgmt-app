@@ -22,9 +22,9 @@ export default function ArtistDetails() {
 
 
   return (
-    <>
+    <div>
     <AddArtwork />
     <DisplaySelectedPaintings selectedArtist={selectedArtist} />
-    </>
+    </div>
   )
 }

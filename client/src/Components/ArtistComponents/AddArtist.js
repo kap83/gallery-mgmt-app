@@ -71,6 +71,7 @@ const handleSubmit = (e) => {
 
   return (
     <div className='addArtistStyle'>
+      <h2>Add New Artist</h2>
       <form id='addArtistForm' className='myToast' onSubmit={handleSubmit}>
       <table>
         <tbody>

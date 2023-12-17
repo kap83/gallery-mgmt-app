@@ -9,20 +9,30 @@ body {
   background-color: #edf0f1;
 }
 
-.selectedPaintingsGalleryMargin {
-  margin-left: 15px 
+ul {
+  list-style-type: none;
 }
 
-.selectedPaintingsGallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  grid-gap: 10px;
+
+.addArtistInputStyle, .loginInputStyle,  .exhibitionInputStyle {
+  border: none;
+  border-bottom: 2px solid#6699CC;
 }
 
-.selectedPaintingsGalleryItem {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.btn, .logOutBtnStyle, .loginBtnStyle {
+  border-radius: 3px;
+  border: none;
+  background-color: #6699CC;
+  color: #edf0f1;
+}
+
+.linkStyle {
+  text-decoration: none;
+  color: #000
+}
+
+.linkStyle:hover {
+  text-decoration: underline  #6699CC;
 }
 
 .bold-text {
@@ -48,7 +58,7 @@ body {
 
 .loginLabelStyle {
   font-weight: bold;
-  margin: 30px 3px 15px;
+  margin: 30px 8px 15px;
 }
 .loginInputStyle {
   margin-left: 5px;
@@ -56,12 +66,11 @@ body {
 
 .loginBtnStyle {
   font-size: 12px;
-  font-weight: bold;
-  background-color: rgb(211, 211, 211);
-  padding: 3px;
-  border-radius: 4px;
-  margin: 31px 3px 15px;
+  padding: 7px;
+  margin: 28px 3px 15px;
 }
+
+/* CSS FOR EVERYTHING IN THE NAVBAR */
 
 .navBar {
   width: calc(100%-30px);
@@ -87,19 +96,12 @@ body {
   max-width: 2.7%;
 }
 
-.logOutBtn {
-  border-radius: 3px;
+.logOutBtnStyle {
   position: absolute;
-  right: 0;
+  right: 1px;
   top: 50%;
-  transform: translateY(-50%);
   padding: 5px;
-  background: linear-gradient(to right, #FF512F, #F09819);
-  color: #fff
-}
-
-.a{
-  color: black
+  transform: translateY(-50%);
 }
 
 .avatarStyle {
@@ -117,9 +119,6 @@ body {
   border: 1px solid black;
 }
 
-ul {
-  list-style-type: none;
-}
 
 .exhibitionTitleData {
   text-align: center;
@@ -138,6 +137,26 @@ div.artistSelect span.alpha {
   font-size: 15px;
   margin-top: 5px
 }
+
+/* CSS FOR SELECTED PAINTINGS COMPONENT */
+
+.selectedPaintingsGalleryMargin {
+  margin-left: 15px 
+}
+
+.selectedPaintingsGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-gap: 10px;
+}
+
+.selectedPaintingsGalleryItem {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CSS MASONRY COMPONENT */
 
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
@@ -161,16 +180,25 @@ div.artistSelect span.alpha {
   margin-bottom: 30px;
 }
 
-.btn {
-  border-radius: 3px;
-  border: none;
-  background-color: #6699CC;
-  color: #edf0f1;
+.wrapper {
+  display: flex; /* Use flexbox to make the children flex items */
+  align-items: flex-start; /* Align items to the start of the flex container */
+  margin-top: 5%;
 }
+
+
+/* CSS FOR ADD ARTIST COMPONENT */
 
 .addArtistStyle {
   margin-top: 5px;
-  margin-Left: 10px;
+  margin-Left: 25%;
+  margin-right: 15%
+}
+
+.addArtistStyle h2 {
+  text-align: center;
+  font-size: 50px;
+  font-weight: 90
 }
 
 .addArtistTextStyle {
@@ -181,9 +209,7 @@ div.artistSelect span.alpha {
 
 .addArtistInputStyle {
   padding: 10px;
-  border: none;
   font-size: 15px;
-  border-bottom: 2px solid#6699CC;
   width: 100%;
   margin: 8px 0
 }
@@ -223,8 +249,11 @@ div.artistSelect span.alpha {
 }
 
 input[type="file" i] {
+    width: 70%;
+    box-sizing: border-box;
     margin-left: 10%;
     margin-top: 7%;
+   
 }
 
 div.addArtistStyle .btn {
@@ -235,6 +264,20 @@ div.addArtistStyle .btn {
   text-align: center
 }
 
+/* CSS FOR ADD DISPLAY ALL ARTISTS COMPONENT */
+
+.displayAllArtistsStyle {
+  flex-grow: 1;
+}
+
+.displayAllArtistsStyle h2 {
+  font-size: 50px;
+  font-weight: 90
+}
+
+.displayAllArtistsStyle a {
+  font-size: 20px;
+}
 
 /* CSS FOR ADD EXHIBITION COMPONENT */
 
@@ -254,9 +297,7 @@ div.addArtistStyle .btn {
 
 .exhibitionInputStyle {
   padding: 10px;
-  border: none;
   font-size: 20px;
-  border-bottom: 2px solid#6699CC;
   width: 250%;
   margin: 8px 0
 }

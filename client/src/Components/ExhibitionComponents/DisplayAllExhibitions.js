@@ -13,6 +13,7 @@ const {exhibitionsArray} = useContext(ExhibitionContext)
     <>
     {/* style: may not need to be a link, maybe on the same page */}
       <Link 
+      className='linkStyle'
       to={`/addexhibitions`}>
         <p>ADD EXHIBITION</p>
       </Link>
