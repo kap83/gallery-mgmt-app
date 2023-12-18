@@ -4,8 +4,6 @@ import { format, parseISO } from 'date-fns'
 
 export default function UnauthExhibitionDetails({selectedExhibition}) {
  
-const {title, start_date, end_date, gallery} = selectedExhibition
-
 const breakpointColumnsObj = {
   //default number of columns
   default: 3,
@@ -29,11 +27,11 @@ const breakpointColumnsObj = {
   return (
     <>
     <div className='exhibitionHeaderData'>
-      <h1>{title}</h1>
+      <h1>{selectedExhibition.title}</h1>
       <h2>
         {formattedStartDate} - {formattedEndDate}
       </h2>
-      <h2>Gallery: {gallery}</h2>
+      <h2>Gallery: {selectedExhibition.gallery}</h2>
     </div>
     <div style={{marginTop:'40px'}}>
       <Masonry
