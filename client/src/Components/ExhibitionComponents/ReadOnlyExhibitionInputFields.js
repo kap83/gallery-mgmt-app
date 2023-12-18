@@ -22,8 +22,6 @@ export default function ReadOnlyExhibitionInputFields({selectedExhibition, handl
     })
   }
 
-  //currentUserID === selectedExhibition.user_id
-
 
   const startDate = selectedExhibition.start_date
   const isoStartDate = parseISO(startDate)

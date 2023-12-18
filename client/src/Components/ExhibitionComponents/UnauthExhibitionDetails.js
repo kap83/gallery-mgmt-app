@@ -1,5 +1,6 @@
 import React from 'react'
 import Masonry from 'react-masonry-css'
+import { format, parseISO } from 'date-fns'
 
 export default function UnauthExhibitionDetails({selectedExhibition}) {
  
@@ -15,18 +16,24 @@ const breakpointColumnsObj = {
 }
 
 
-const formattedStartDate = new Date(start_date)?.toLocaleDateString('en-US') 
-const formattedEndDate = new Date(end_date)?.toLocaleDateString('en-US') 
+  const startDate = selectedExhibition.start_date
+  const isoStartDate = parseISO(startDate)
+  const formattedStartDate = format(isoStartDate, 'MM/dd/yyyy')
+
+  const endDate = selectedExhibition.end_date
+  const isoEndDate = parseISO(endDate)
+  const formattedEndDate = format(isoEndDate, 'MM/dd/yyyy')
+  
 
 
   return (
     <>
-    <div className='exhibitionTitleData'>
-      <h2>{title}</h2>
-      <h3>
+    <div className='exhibitionHeaderData'>
+      <h1>{title}</h1>
+      <h2>
         {formattedStartDate} - {formattedEndDate}
-      </h3>
-      <h3>Gallery: {gallery}</h3>
+      </h2>
+      <h2>Gallery: {gallery}</h2>
     </div>
     <div style={{marginTop:'40px'}}>
       <Masonry
@@ -39,7 +46,7 @@ const formattedEndDate = new Date(end_date)?.toLocaleDateString('en-US')
             <img
               src={artwork.paintings_url[0]}
               alt={artwork.title}
-              style={{ maxWidth: '200%', height: 'auto' }}
+              style={{ maxWidth: '100%', height: 'auto' }}
             />
           </div>
         ))}

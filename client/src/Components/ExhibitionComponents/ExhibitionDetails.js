@@ -30,7 +30,7 @@ export default function ExhibitionDetails() {
       end_date: '',
       artworks: []
     })
-    const [artistId, setArtistId] = useState('')
+    const [artistId, setArtistId] = useState('default')
     const [isEditing, setIsEditing] = useState(false)
     const [selectedPaintings, setSelectedPaintings] = useState([])
     const [formValues, setFormValues] = useState({
@@ -56,11 +56,21 @@ export default function ExhibitionDetails() {
 
    //FOR DROP DOWN MENU
 
-    useEffect(() => {
-      let parsedId = parseInt(artistId)
-      findArtist(parsedId)
-      // eslint-disable-next-line
-    }, [artistId])
+   useEffect(() => {
+    let parsedId = parseInt(artistId)
+    findArtist(parsedId)
+
+    // Scroll down when an option is chosen
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth'
+    })
+    // eslint-disable-next-line
+  }, [artistId])
+
+    const handleSelectChange = (e) => {
+      setArtistId(e.target.value)
+    }
 
     //FOR EDITING HEADER/DATES
 
@@ -148,16 +158,12 @@ export default function ExhibitionDetails() {
       })
       
     }
-
-   
-    
-    //console.log("selected", selectedPaintings)
  
     return (
       <>
-  {selectedExhibition && currentUser?.id === selectedExhibition?.user_id ? (
-    <>
-    <form onSubmit={handleSubmit}>
+      {selectedExhibition && currentUser?.id === selectedExhibition?.user_id ? (
+        <>
+        <form onSubmit={handleSubmit}>
 
       {isEditing ? (
         <EditExhibitionInputFields
@@ -177,7 +183,7 @@ export default function ExhibitionDetails() {
   <div className='selectedPaintingsGalleryMargin'>
   <h3>Selected Painting Titles</h3>
     <button className='btn' id='selectedPaintingsGalleryBtnStyle' type='submit'>
-      SUBMIT ARTWORK
+      Submit Artwork
     </button>
   <div className='selectedPaintingsGallery'>
     {selectedPaintings?.map((painting) => (
@@ -192,7 +198,6 @@ export default function ExhibitionDetails() {
         </div>
       ))}
   </div>
- 
 </div>
 
 
@@ -200,10 +205,11 @@ export default function ExhibitionDetails() {
       
     <div className='artistSelect'>
       <h4>SELECT BY: 
-        <span className='alpha'>(Alphabetically by name)</span></h4>
+        <span>(Alphabetically by name)</span></h4>
       <select name='artists'
       value={artistId}
-      onChange={(e)=>setArtistId(e.target.value)}
+      onChange={handleSelectChange}
+      // className='dropdown'
       id='artists'>
         <option value='default'>Select An Artist</option>
         {sortedArtist?.map(artist => (
