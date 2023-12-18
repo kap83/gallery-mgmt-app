@@ -108,9 +108,41 @@ ul {
   transform: translateY(-50%);
 }
 
-.avatarStyle {
+/* CSS FOR DisplayAllExhibitions COMPONENT */
+
+.exhibitionItem {
+  display: flex; /* Use flexbox to make children flex items */
+  box-sizing: border-box;
+  line-height: 0;
+  margin: 1%;
+  width: 30%; /* Adjust based on your design */
+  overflow: hidden;
+  padding: 1rem;
+  box-shadow: 0px 0px 15px -5px;
+  border-radius: 10px;
+}
+
+.exhibitionItem h2 {
+  font-size: 50px;
+  text-align: center;
+  font-weight: lighter;
+  font-style: italic;
+  color: #6699CC;
+  line-height: 0;
+  flex: 1; /* Take up remaining space */
+}
+
+.exhibitionItem p {
+  line-height: 0;
+  text-align: center;
+  flex: 1; /* Take up remaining space */
+}
+
+.exhibitionItem img {
   border-radius: 50%;
-  width: 35%;
+  width: 7%;
+  margin-top: 1rem;
+  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .headerAvatar {

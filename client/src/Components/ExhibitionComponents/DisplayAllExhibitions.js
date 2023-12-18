@@ -11,14 +11,31 @@ const {exhibitionsArray} = useContext(ExhibitionContext)
 
   return (
     <>
-    {/* style: may not need to be a link, maybe on the same page */}
-      <Link 
+    <div>
+      <Link
       className='linkStyle'
       to={`/addexhibitions`}>
-        <p>ADD EXHIBITION</p>
+        <h1>Create An Exhibition</h1>
       </Link>
+    </div>
 
-  {exhibitionsArray?.map(e => (
+    <div className="exhibitionContainer">
+  {exhibitionsArray?.map((e) => (
+    <div className="exhibitionItem" key={e.id}>
+      <Link to={`/exhibition/${e.id}`}>
+        🖼️
+      </Link>
+      <h2>{e.title}</h2>
+      <p>Exhibition Manager: {e.curator}</p>
+      <img src={e.avatar_url} alt="avatar" />
+    </div>
+  ))}
+</div>
+      
+
+    
+
+  {/* {exhibitionsArray?.map(e => (
   <table key={e.id} style={{ border: '2px solid' }}>
     <tbody>
       <tr>
@@ -37,7 +54,7 @@ const {exhibitionsArray} = useContext(ExhibitionContext)
       </tr>
     </tbody>
   </table>
-))}
+))} */}
 
     </>
   )

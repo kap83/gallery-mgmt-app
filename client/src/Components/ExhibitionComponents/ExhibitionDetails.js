@@ -161,88 +161,86 @@ export default function ExhibitionDetails() {
  
     return (
       <>
-      {selectedExhibition && currentUser?.id === selectedExhibition?.user_id ? (
-        <>
-        <form onSubmit={handleSubmit}>
-
-      {isEditing ? (
-        <EditExhibitionInputFields
-          selectedExhibition={selectedExhibition}
-          handleEditToggleClick={handleEditToggleClick}
-          handleFormChanges={handleFormChanges}
-        />
-      ) : (
-        <ReadOnlyExhibitionInputFields
-          handleEditToggleClick={handleEditToggleClick}
-          selectedExhibition={selectedExhibition}
-        />
-      )}
-
-      {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
-
-  <div className='selectedPaintingsGalleryMargin'>
-  <h3>Selected Painting Titles</h3>
-    <button className='btn' id='selectedPaintingsGalleryBtnStyle' type='submit'>
-      Submit Artwork
-    </button>
-  <div className='selectedPaintingsGallery'>
-    {selectedPaintings?.map((painting) => (
-      
-        <div key={painting.id}>
-          <img
-          key={painting.id}
-          src={Array.isArray(painting.paintings_url) ? painting.paintings_url[0] : painting.paintings_url}
-          alt={painting.title}
-          className="selectedPaintingsGalleryItem"
-        />
-        </div>
-      ))}
-  </div>
-</div>
-
-
-      {/* dropdown menu for artists */}
-      
-    <div className='artistSelect'>
-      <h4>SELECT BY: 
-        <span>(Alphabetically by name)</span></h4>
-      <select name='artists'
-      value={artistId}
-      onChange={handleSelectChange}
-      // className='dropdown'
-      id='artists'>
-        <option value='default'>Select An Artist</option>
-        {sortedArtist?.map(artist => (
-        <option name='artist_id' key={artist.id} value={artist.id}>
-          {artist.name}
-       </option>
-       ))}
-      </select>
-    </div>
-
-    <DisplaySelectedPaintings
-      selectedPaintings={selectedPaintings}
-      selectedArtist={selectedArtist} 
-      handleSelectedPaintings={handleSelectedPaintings}
-    />
-    </form>
-    <ToastContainer
-      position="top-center"
-      autoClose={2000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="light"
-    />
-     </>     
-
-  ) : (
-    <UnauthExhibitionDetails selectedExhibition={selectedExhibition} />
-  )}
-</>
-  )
+        {selectedExhibition && currentUser?.id === selectedExhibition?.user_id ? (
+          <>
+            <form onSubmit={handleSubmit}>
+              {isEditing ? (
+                <EditExhibitionInputFields
+                  selectedExhibition={selectedExhibition}
+                  handleEditToggleClick={handleEditToggleClick}
+                  handleFormChanges={handleFormChanges}
+                />
+              ) : (
+                <ReadOnlyExhibitionInputFields
+                  handleEditToggleClick={handleEditToggleClick}
+                  selectedExhibition={selectedExhibition}
+                />
+              )}
+    
+              {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
+              <div className='selectedPaintingsGalleryMargin'>
+                <h3>Selected Painting Titles</h3>
+                <button className='btn' id='selectedPaintingsGalleryBtnStyle' type='submit'>
+                  Submit Artwork
+                </button>
+                <div className='selectedPaintingsGallery'>
+                  {selectedPaintings?.map((painting) => (
+                    <div key={painting.id}>
+                      <img
+                        key={painting.id}
+                        src={Array.isArray(painting.paintings_url) ? painting.paintings_url[0] : painting.paintings_url}
+                        alt={painting.title}
+                        className="selectedPaintingsGalleryItem"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+    
+              {/* dropdown menu for artists */}
+              <div className='artistSelect'>
+                <h4>
+                  SELECT BY: <span>(Alphabetically by name)</span>
+                </h4>
+                <select
+                  name='artists'
+                  value={artistId}
+                  onChange={handleSelectChange}
+                  id='artists'
+                >
+                  <option value='default'>Select An Artist</option>
+                  {sortedArtist?.map((artist) => (
+                    <option name='artist_id' key={artist.id} value={artist.id}>
+                      {artist.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+    
+              <DisplaySelectedPaintings
+                selectedPaintings={selectedPaintings}
+                selectedArtist={selectedArtist}
+                handleSelectedPaintings={handleSelectedPaintings}
+              />
+            </form>
+    
+            <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+          </>
+        ) : (
+          <UnauthExhibitionDetails selectedExhibition={selectedExhibition} />
+        )}
+      </>
+    );
+    
 }

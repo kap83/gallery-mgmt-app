@@ -13,6 +13,7 @@ const breakpointColumnsObj = {
   700: 1,
 }
 
+console.log(selectedExhibition)
 
   const startDate = selectedExhibition.start_date
   const isoStartDate = parseISO(startDate)
