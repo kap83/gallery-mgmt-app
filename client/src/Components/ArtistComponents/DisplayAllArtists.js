@@ -14,12 +14,10 @@ export default function DisplayAllArtists() {
     <div className='displayAllArtistsStyle'>
       <h2>Current Collection</h2>
      {sortedArtist.map(artist => {
-      artist.date_of_birth = new Date(artist.date_of_birth).toLocaleDateString('en-US')
       return (
-
       <Link className='linkStyle' key={artist.id} to={`/artist/${artist.id}`}>
         <ul>
-          <li>{artist.name} DOB: {artist.date_of_birth}</li>
+          <li>{artist.name}</li>
         </ul>
       </Link>
       )

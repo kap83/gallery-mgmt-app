@@ -11,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ErrorHandling from '../ErrorHandling'
 import UnauthExhibitionDetails from './UnauthExhibitionDetails'
 
+
 export default function ExhibitionDetails() {
 
    const { id } = useParams()
@@ -41,9 +42,9 @@ export default function ExhibitionDetails() {
       artworks: []
     });
 
-    const sortedArtist = artistList.sort((a, b) => a.name.localeCompare(b.name))
-    //console.log("ExDeets", sortedArtist)
+     console.log("ExDeets", selectedExhibition)
 
+    const sortedArtist = artistList.sort((a, b) => a.name.localeCompare(b.name))
 
     useEffect(() => {
         const findExhibition = exhibitionsArray && exhibitionsArray.filter(exhibition => exhibition.id === parsedExhibitionId)
@@ -108,7 +109,6 @@ export default function ExhibitionDetails() {
     const handleSubmit = (e) => {
       e.preventDefault()
 
-
       const myPromise = new Promise((resolve, reject) => {
         fetch(`/exhibitions/${selectedExhibition.id}`, {
            method: 'PATCH',
@@ -148,8 +148,10 @@ export default function ExhibitionDetails() {
       })
       
     }
+
+   
     
-    console.log("selected", selectedPaintings)
+    //console.log("selected", selectedPaintings)
  
     return (
       <>
@@ -173,7 +175,10 @@ export default function ExhibitionDetails() {
       {/* Display selectedPaintings's art/titles under Selected Paintings Title*/}
 
   <div className='selectedPaintingsGalleryMargin'>
-  <h4>Selected Painting Titles:</h4>
+  <h3>Selected Painting Titles</h3>
+    <button className='btn' id='selectedPaintingsGalleryBtnStyle' type='submit'>
+      SUBMIT ARTWORK
+    </button>
   <div className='selectedPaintingsGallery'>
     {selectedPaintings?.map((painting) => (
       
@@ -187,9 +192,7 @@ export default function ExhibitionDetails() {
         </div>
       ))}
   </div>
-  <button style={{ borderRadius: '3px', marginLeft: '3px', marginTop: '1%' }} type='submit'>
-    SUBMIT ARTWORK
-  </button>
+ 
 </div>
 
 
@@ -235,6 +238,5 @@ export default function ExhibitionDetails() {
     <UnauthExhibitionDetails selectedExhibition={selectedExhibition} />
   )}
 </>
-
   )
 }

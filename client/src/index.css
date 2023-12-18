@@ -13,12 +13,17 @@ ul {
   list-style-type: none;
 }
 
-.addArtistInputStyle, .loginInputStyle,  .exhibitionInputStyle {
+.addArtistInputStyle, 
+.loginInputStyle, 
+.exhibitionInputStyle, 
+.addArtworkInputStyle {
   border: none;
   border-bottom: 2px solid#6699CC;
 }
 
-.btn, .logOutBtnStyle, .loginBtnStyle {
+.btn, 
+.logOutBtnStyle, 
+.loginBtnStyle  {
   border-radius: 3px;
   border: none;
   background-color: #6699CC;
@@ -118,9 +123,58 @@ ul {
   border: 1px solid black;
 }
 
-.exhibitionTitleData {
+/* CSS FOR EXHIBITION EDIT & READONLY COMPONENT */
+
+.exhibitionHeaderData,
+.exhibitionHeaderEdit {
   text-align: center;
 }
+
+.exhibitionHeaderData h1 {
+  font-weight: lighter;
+  font-style: italic;
+  font-size: 50px;
+  margin-top: 10px;
+  margin:1px;
+  padding:0px;
+}
+
+.exhibitionHeaderData h2 {
+  margin: 0px;
+  padding: 0px;
+  font-weight: lighter
+}
+
+.exhibitionHeaderEdit label {
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 51px;
+}
+
+.exhibitionHeaderEdit #galleryInput {
+  width: 40px
+}
+
+#exhibitionHeaderBtnsStyle {
+  padding: 6px;
+  margin-right: 3px;
+  font-size: 15px;
+}
+
+.exhibitionEditHeaderInput {
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  width: 15%;
+  border-bottom: 2px solid#6699CC;
+}
+
+.exhibitionEditHeaderInput #endDate {
+  margin-left: 10px;
+}
+
+
 .artistSelect {
   margin-left: 1%;
   margin-bottom: 5%
@@ -140,6 +194,19 @@ div.artistSelect span.alpha {
 
 .selectedPaintingsGalleryMargin {
   margin-left: 15px 
+}
+
+.selectedPaintingsGalleryMargin h3 {
+  font-weight: lighter;
+  font-size: 23px;
+  margin: 0;
+}
+
+#selectedPaintingsGalleryBtnStyle {
+  padding: 6px;
+  font-size: 13px;
+  margin-bottom: 30px;
+
 }
 
 .selectedPaintingsGallery {
@@ -168,13 +235,12 @@ div.artistSelect span.alpha {
 .my-masonry-grid_column {
   padding-left: 70px; /* gutter size */
   background-clip: padding-box;
- 
 }
 
 /* Style your items */
 .my-masonry-grid_column > div { /* change div to reference your elements you put in <Masonry> */
   background: #edf0f1;
-  max-width: 40%;
+  max-width: 90%;
   margin-bottom: 30px;
 }
 
@@ -183,7 +249,6 @@ div.artistSelect span.alpha {
   align-items: flex-start; /* Align items to the start of the flex container */
   margin-top: 5%;
 }
-
 
 /* CSS FOR ADD ARTIST COMPONENT */
 
@@ -246,7 +311,7 @@ div.artistSelect span.alpha {
   left: 40px
 }
 
-input[type="file" i] {
+.addArtistFileStyle {
     width: 70%;
     box-sizing: border-box;
     margin-left: 12%;
@@ -260,6 +325,35 @@ div.addArtistStyle .btn {
   padding: 13px 28px;
   font-size: 20px;
   text-align: center
+}
+
+/* CSS FOR ADD ARTWORK COMPONENT */
+
+.addArtworkFontStyle {
+  margin-left: 30px;
+  font-weight: light;
+  font-size: 20px;
+}
+
+.addArtworkFontStyle + #artworkMedium {
+  margin-right: -5px;
+}
+
+.addArtworkInputStyle {
+  margin-top: 15px;
+  margin-Left: 3px; 
+  margin-right: 5px; 
+  width: 200px;
+}
+
+.addArtworkFileStyle {
+  width: 7.5%;
+}
+
+#addArtworkbtn {
+  padding: 4px;
+  width: 80px;
+  font-size: medium;
 }
 
 /* CSS FOR ADD DISPLAY ALL ARTISTS COMPONENT */
@@ -276,6 +370,60 @@ div.addArtistStyle .btn {
 .displayAllArtistsStyle a {
   font-size: 20px;
 }
+
+
+/* CSS FOR DISPLAY SELECTED PAINTINGS COMPONENT */
+
+.displayPaintingsStyle h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 55px;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.displayPaintingsStyle #dob {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.displayPaintingsStyle hr {
+  border-color: #6699CC;
+  width: 60%;
+  margin-bottom: 30px;
+}
+
+.displayPaintingsStyle input  {
+  float: left
+}
+
+.displayPaintingsStyle h2 {
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: unset;
+  font-size: 30px;
+  position: relative
+}
+
+.displayPaintingsStyle p {
+  margin-left: 15px;
+  margin-top: -10px;
+  text-align: center;
+}
+
+.displayPaintingsStyle img{
+  max-width: 100%;
+  height: auto;
+  
+}
+
+.displayPaintingsStyle #selectPaintingCheckbox {
+    position: absolute;
+    float: right;
+    height: 30px;
+}
+
 
 /* CSS FOR ADD EXHIBITION COMPONENT */
 
@@ -299,7 +447,6 @@ div.addArtistStyle .btn {
   width: 250%;
   margin: 8px 0
 }
-
 
 .exhibitionFont {
 font-size: 30px;

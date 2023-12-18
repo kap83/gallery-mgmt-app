@@ -22,9 +22,13 @@ export default function ArtistDetails() {
 
 
   return (
-    <div>
+  <>
+  <div style={{marginTop:'2px'}}>
     <AddArtwork />
+  </div>
+  <div style={{marginTop: '3%'}}>
     <DisplaySelectedPaintings selectedArtist={selectedArtist} />
-    </div>
+  </div>
+  </>
   )
 }

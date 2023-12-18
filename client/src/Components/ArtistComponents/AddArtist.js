@@ -137,6 +137,7 @@ const handleSubmit = (e) => {
                           <td>
                             <span>
                             <input 
+                            className='addArtistFileStyle'
                             type='file'
                             name='paintings'
                             />

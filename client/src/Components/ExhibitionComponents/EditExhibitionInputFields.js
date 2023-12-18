@@ -1,51 +1,50 @@
 import React from 'react'
 
-export default function EditExhibitionInputFields({selectedExhibition, handleClearingSelectedPaintings, handleFormChanges, handleEditToggleClick}) {
 
-    //TODO(CSS)
-        //INCREASE LENGTH FOR TITLE INPUT
+export default function EditExhibitionInputFields({selectedExhibition, handleFormChanges, handleEditToggleClick}) {
+
   return (
-    <div className='exhibitionTitleData'>
-    <h2>
+    <div className='exhibitionHeaderEdit'>
+    <h1>
         <input 
             type='text'
+            className='exhibitionEditHeaderInput'
             name='title'
             defaultValue={selectedExhibition.title}
             onChange={(e) => handleFormChanges(e)}
         />
-    </h2>
-    <h3>
-        <label> START:</label>
+    </h1>
+    <h2>
         <input
         type='date'
+        className='exhibitionEditHeaderInput'
         name='start_date'
+        defaultValue={selectedExhibition.start_date}
         onChange={(e) => handleFormChanges(e)}
         />
 
-        <label>END:</label>
+        <label>-</label>
         <input 
         type='date'
+        className='exhibitionEditHeaderInput'
+        id='endDate'
         name='end_date'
+        defaultValue={selectedExhibition.end_date}
         onChange={(e) => handleFormChanges(e)}
         />
-      </h3>
-      <h4>
-        <span style={{paddingRight: '3px', color: '#8B0000'}}>
-          CURRENT DATES:
-          </span>
-          {selectedExhibition.start_date} - {selectedExhibition.end_date} 
-      </h4>
-      <h3>
-        <label> Gallery: </label>
+      </h2>
+      <h2>
         <input 
+        className='exhibitionEditHeaderInput'
+        id='galleryInput'
         type='text'
         name='gallery'
         defaultValue={selectedExhibition.gallery} 
         onChange={(e) => handleFormChanges(e)}
         />
-      </h3>
-      <button className='btn' type='submit'>SUBMIT CHANGES</button>
-      <button className='btn' onClick={handleEditToggleClick}>CANCEL CHANGES</button>
+      </h2>
+      <button className='btn' id='exhibitionHeaderBtnsStyle' type='submit'>SUBMIT CHANGES</button>
+      <button className='btn' id='exhibitionHeaderBtnsStyle' onClick={handleEditToggleClick}>CANCEL CHANGES</button>
   </div>
   )
 }
