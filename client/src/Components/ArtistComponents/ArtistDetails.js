@@ -23,10 +23,10 @@ export default function ArtistDetails() {
 
   return (
   <>
-  <div style={{marginTop:'2px'}}>
+  <div >
     <AddArtwork />
   </div>
-  <div style={{marginTop: '3%'}}>
+  <div className='displaySelectedPaintingWrapper'>
     <DisplaySelectedPaintings selectedArtist={selectedArtist} />
   </div>
   </>

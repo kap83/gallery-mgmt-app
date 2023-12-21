@@ -3,12 +3,12 @@ import {Routes, Route} from 'react-router-dom'
 import {UserContext} from '../Context/User'
 import Login from './Login';
 import NavBar from './NavBar';
-import DisplayAllExhibitions from './ExhibitionComponents/DisplayAllExhibitions';
+import ExhibitionsPage from './ExhibitionComponents/ExhibitionsPage';
 import AddExhibition from './ExhibitionComponents/AddExhibition'
 import gallery from '../images/gallery.jpg'
-import Artists from '../Components/ArtistComponents/Artists';
+import ArtistPage from '../Components/ArtistComponents/ArtistPage';
 import ArtistDetails from '../Components/ArtistComponents//ArtistDetails';
-import ExhibitionDetails from './ExhibitionComponents/ExhibitionDetails'
+import Exhibition from './ExhibitionComponents/Exhibition'
 
 
 function App() {
@@ -20,10 +20,10 @@ if(loggedIn) {
     <>
     <NavBar/>
     <Routes>
-    <Route path='/' element={<DisplayAllExhibitions />} />
+    <Route path='/' element={<ExhibitionsPage />} />
     <Route path='/addexhibitions' element={<AddExhibition />} />
-    <Route path='/exhibition/:id' element={<ExhibitionDetails />} />
-    <Route path='/artists' element={<Artists />} />
+    <Route path='/exhibition/:id' element={<Exhibition />} />
+    <Route path='/artists' element={<ArtistPage />} />
     <Route path='artist/:id' element={<ArtistDetails />} />
     </Routes>
     </>

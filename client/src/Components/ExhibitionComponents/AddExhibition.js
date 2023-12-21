@@ -9,7 +9,6 @@ import ErrorHandling from '../ErrorHandling'
 
 export default function AddExhibition() {
 
-  //TO DO: ADD USENAVIGATE TO NAVIGATE TO THE EXHIBITION PAGE AFTER SUBMISSION IS SUCCESSFUL
 
   const {currentUser, handleCurrentUserNewExhibition} = useContext (UserContext)
   const {handleNewExhibition} = useContext(ExhibitionContext)
@@ -35,7 +34,7 @@ export default function AddExhibition() {
           if (res.ok) {
             return res.json().then((data) => {
               resolve(data)
-              console.log(data)
+             // console.log(data)
               handleCurrentUserNewExhibition(data)
               handleNewExhibition(data)
               document.getElementById("addExhibitionForm").reset()
@@ -70,7 +69,7 @@ export default function AddExhibition() {
   }
 
   return (
-    <Fragment >
+    <Fragment>
       <div className='exhibitionAvatar'>
         <img src={currentUser.avatar_url} alt={currentUser.username} />
       </div>

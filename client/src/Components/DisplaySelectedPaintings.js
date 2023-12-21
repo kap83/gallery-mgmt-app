@@ -1,9 +1,14 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Masonry from 'react-masonry-css'
 import { format, parseISO } from 'date-fns'
+import {ArtistContext} from '../Context/Artist'
+//import { ExhibitionContext } from '../../Context/Exhibition'
 
-export default function DisplaySelectedPaintings({ selectedArtist, selectedPaintings, handleSelectedPaintings}) {
+export default function DisplaySelectedPaintings({ selectedExhibition, handleDeletedArtwork, formValues, handleSelectedPaintings}) {
 
+  const {selectedArtist} = useContext(ArtistContext)
+
+  //const {exhibitionsArray} = useContext(ExhibitionContext)
 
     const breakpointColumnsObj = {
         //default number of columns
@@ -14,6 +19,7 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
         700: 1,
       };
 
+    //console.log(selectedArtist)
  
   return (
   <>
@@ -22,7 +28,6 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
     const dob = artist.date_of_birth
     const isoDOB = parseISO(dob)
     const formattedDOB = format(isoDOB, 'MM/dd/yyyy')
-
     return (
       <div className='displayPaintingsStyle' key={artist.id}>
         <hr />
@@ -36,14 +41,15 @@ export default function DisplaySelectedPaintings({ selectedArtist, selectedPaint
         >
           {artist.artworks.map((art) => (
             <div key={art.id}>
-              <h2 >
+              <h2>
                 {art.title}
+                {/* <button type='button' className='btn' onClick={() => handleDeletedArtwork(art.id)}>Delete</button> */}
                 {handleSelectedPaintings && ( // Checking if handleSelectedPaintings is defined
                   <input
                     id='selectPaintingCheckbox'
                     type="checkbox"
                     value={art.id}
-                    checked={selectedPaintings?.some((painting) => painting.id === art.id)}
+                    checked={ formValues.artworks?.some((painting) => painting.id === art.id)}
                     onChange={() => {
                       const painting = art.paintings_url[0];
                       handleSelectedPaintings(art.id, art.title, painting, art.exhibition_id)
