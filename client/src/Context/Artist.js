@@ -33,7 +33,7 @@ const handleArtistAddedArtwork = (addedArtwork) => {
         //if an artist.id matches artistId
       if (artist.id === artistId) {
         //go through that artist's artworks array, and filter out all the artworks with ids that don't match addedArtwork.artworks[0].id
-        const updatedArtwork = artist.artworks.filter((art) => art.id !== addedArtwork.id);
+        const updatedArtwork = artist.artworks.filter((art) => art.id !== addedArtwork.id)
         return {
           ...artist,
           artworks: [...updatedArtwork, addedArtwork],
@@ -45,6 +45,22 @@ const handleArtistAddedArtwork = (addedArtwork) => {
     setArtistList(updatedArtist);
   };
 
+const handleDeletedArtworkInArtistList = (deletedArtwork) => {
+  //console.log(deletedArtwork)
+  const updateArtistList = artistList.map(artist => {
+    if(artist.id === deletedArtwork.artist_id){
+      const updatedArtwork = artist.artworks.filter(art => art.id !== deletedArtwork.id)
+      return {
+        ...artist,
+        artworks: updatedArtwork
+      }
+    }
+    return artist
+  })
+
+  console.log("in artistContext", updateArtistList)
+}
+
 
 const artistValues = {
     artistList,
@@ -52,6 +68,7 @@ const artistValues = {
     handleArtistAddedArtwork,
     findArtist, 
     selectedArtist,
+    handleDeletedArtworkInArtistList
 }
 
 

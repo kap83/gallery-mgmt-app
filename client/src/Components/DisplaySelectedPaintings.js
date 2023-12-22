@@ -4,7 +4,8 @@ import { format, parseISO } from 'date-fns'
 import {ArtistContext} from '../Context/Artist'
 //import { ExhibitionContext } from '../../Context/Exhibition'
 
-export default function DisplaySelectedPaintings({ selectedExhibition, handleDeletedArtwork, formValues, handleSelectedPaintings}) {
+
+export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formValues, handleSelectedPaintings}) {
 
   const {selectedArtist} = useContext(ArtistContext)
 
@@ -19,7 +20,7 @@ export default function DisplaySelectedPaintings({ selectedExhibition, handleDel
         700: 1,
       };
 
-    //console.log(selectedArtist)
+ console.log('in dis', formValues)
  
   return (
   <>
@@ -43,7 +44,8 @@ export default function DisplaySelectedPaintings({ selectedExhibition, handleDel
             <div key={art.id}>
               <h2>
                 {art.title}
-                {/* <button type='button' className='btn' onClick={() => handleDeletedArtwork(art.id)}>Delete</button> */}
+
+                {formValues === undefined ? <button type='button' className='btn' onClick={() => handleDeleteBtnClick(art)}>Delete</button> : null}
                 {handleSelectedPaintings && ( // Checking if handleSelectedPaintings is defined
                   <input
                     id='selectPaintingCheckbox'
@@ -51,8 +53,8 @@ export default function DisplaySelectedPaintings({ selectedExhibition, handleDel
                     value={art.id}
                     checked={ formValues.artworks?.some((painting) => painting.id === art.id)}
                     onChange={() => {
-                      const painting = art.paintings_url[0];
-                      handleSelectedPaintings(art.id, art.title, painting, art.exhibition_id)
+                      //const painting = art.paintings_url[0];
+                      handleSelectedPaintings(art.id, art.exhibition_id)
                     }}
                   />
                 )}

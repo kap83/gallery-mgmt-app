@@ -40,12 +40,28 @@ const [exhibitionsArray, setExhibitionsArray] = useState([])
       setExhibitionsArray(updatedExhibitions)
   }
 
+  const handleDeletedArtworkInExhibitionArray = (deletedArtwork) => {
+    //console.log("in ex", deletedArtwork)
+    const updatedExhibitionsArray = exhibitionsArray.map(exhibition => {
+      if(exhibition.id === deletedArtwork.exhibition_id) {
+        const updateArtwork = exhibition.artworks.filter(art => art.id !== deletedArtwork.id)
+        return {
+          ...exhibition,
+          artworks: updateArtwork
+        }
+      }
+      return exhibition
+    })
+    setExhibitionsArray(updatedExhibitionsArray)
+  }
+
 
   const exhibitionValues = {
     exhibitionsArray,
     handleDeletedExhibition,
     handleNewExhibition,
-    handleUpdatedExhibition
+    handleUpdatedExhibition,
+    handleDeletedArtworkInExhibitionArray
   }
 
 

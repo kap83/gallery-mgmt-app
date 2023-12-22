@@ -8,7 +8,13 @@ class ArtworksController < ApplicationController
     def create
         artwork = @artist.artworks.create!(artwork_params)
         render json: artwork
-      end
+    end
+
+    def destroy
+      art = Artwork.find(params[:id])
+      art.destroy
+      head :no_content
+    end
     
     
       private

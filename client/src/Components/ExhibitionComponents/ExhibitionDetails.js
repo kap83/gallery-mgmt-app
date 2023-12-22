@@ -9,10 +9,9 @@ import PreviouslyChosenPaintings from './PreviouslyChosenPaintings'
 import ArtistDropdownMenu from './ArtistDropdownMenu'
 import { ToastContainer, toast } from 'react-toastify'
 import ErrorHandling from '../ErrorHandling'
-
 import 'react-toastify/dist/ReactToastify.css'
 
-export default function CurrentlyDisplayedExhibitions({ selectedExhibition }) {
+export default function ExhibitionDetails({ selectedExhibition }) {
 
   const {currentUser} = useContext(UserContext)
   const {handleUpdatedExhibition} = useContext(ExhibitionContext)
@@ -29,13 +28,11 @@ export default function CurrentlyDisplayedExhibitions({ selectedExhibition }) {
     artworks: []
   });
 
-  console.log("form", formValues)
+  //console.log("form", formValues)
 
   useEffect(() => {
     setFormValues(selectedExhibition)
   }, [selectedExhibition])
-
-  //console.log(selectedExhibition)
 
   const handleEditToggleClick = () => {
     setIsEditing(!isEditing)

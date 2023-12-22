@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useContext,} from 'react'
 import {useParams} from 'react-router-dom'
 import { ExhibitionContext } from '../../Context/Exhibition'
 import ExhibitionDetails from './ExhibitionDetails'
