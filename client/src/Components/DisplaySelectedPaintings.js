@@ -45,7 +45,15 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
               <h2>
                 {art.title}
 
-                {formValues === undefined ? <button type='button' className='btn' onClick={() => handleDeleteBtnClick(art)}>Delete</button> : null}
+                {formValues === undefined ? 
+                  <button type='button' 
+                  className='btn'
+                  id='paintingsDelBtn'
+                  onClick={() => handleDeleteBtnClick(art)}>
+                    Delete
+                    </button> 
+                    : null}
+
                 {handleSelectedPaintings && ( // Checking if handleSelectedPaintings is defined
                   <input
                     id='selectPaintingCheckbox'

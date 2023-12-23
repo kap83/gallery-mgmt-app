@@ -23,9 +23,6 @@ export default function ArtistDetails() {
   
   const {handleDeletedArtworkInExhibitionArray} = useContext(ExhibitionContext)
 
- 
-  //console.log(delIsClicked)
-
 
   useEffect(() => {
       findArtist(parsedId)
@@ -46,7 +43,7 @@ const handleDeleteBtnClick = (art) => {
   } 
   else {
     setDelIsClicked(true)
-    setMessage(`Warning! ${art.title} is part of ${art.exhibition_title} exhibition. It will be deleted from ${art.exhibition_title}, if you continue.`)
+    setMessage(`Warning! '${art.title}' is part of '${art.exhibition_title}' exhibition. It will be deleted from ${art.exhibition_title}, if you continue.`)
     artRef.current = art
   }
 }

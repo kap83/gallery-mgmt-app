@@ -24,7 +24,8 @@ ul {
 .btn, 
 .logOutBtnStyle, 
 .loginBtnStyle,
-#button {
+#button,
+#paintingsDelBtn {
   border-radius: 3px;
   border: none;
   background-color: #6699CC;
@@ -294,15 +295,6 @@ textarea:focus, input:focus{
 }
 
 
-/* .artistSelect > select:hover {
-  background-color: #edf0f1 !important;
-}
-
-.artistSelect option:hover {
-  background-color:#6699CC !important;
-} */
-
-
 /* CSS MASONRY COMPONENT */
 
 .my-masonry-grid {
@@ -328,11 +320,9 @@ textarea:focus, input:focus{
 
 .wrapper {
   display: flex; /* Use flexbox to make the children flex items */
-  
-  
 }
 
-/* CSS FOR ADD ARTIST COMPONENT */
+/* CSS FOR ADD ARTIST & ADD EXHIBITION COMPONENTS */
 
 .addNewDataStyle {
   margin-top: 5px;
@@ -369,7 +359,6 @@ textarea:focus, input:focus{
   width: 250%;
   font-size: 20px;
 }
-
 
 .checkBox {
   position: relative;
@@ -478,7 +467,6 @@ div.addNewDataStyle .btn {
   font-size: 20px;
 }
 
-
 /* CSS FOR DISPLAY SELECTED PAINTINGS COMPONENT */
 
 .displayPaintingsStyle h1 {
@@ -531,6 +519,50 @@ div.addNewDataStyle .btn {
     height: 30px;
 }
 
+#paintingsDelBtn {
+  position: absolute;
+  margin-left: 5px;
+  padding: 5px;
+
+}
+
+
+.backgroundDialogBox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5)
+}
+
+.dialogBox {
+  display: flex;
+  border-radius: 5px;
+  padding: 15px;
+  width: 15%;
+  align-items:center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.dialogBox h3 {
+  font-weight: 'light';
+  width: 100%;
+}
+
+.dialogConfirmBtn {
+  background: #6699CC;
+  margin-left: 130px; 
+  margin-right: 5px
+}
+
+.dialogCancelBtn {
+  background: #D3D3D3
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

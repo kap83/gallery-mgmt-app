@@ -102,7 +102,7 @@ export default function AddArtwork() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="colored"
+        theme="light"
       />
     </>
   );
