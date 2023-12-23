@@ -6,6 +6,7 @@ class ArtworksController < ApplicationController
     end
 
     def create
+      byebug
         artwork = @artist.artworks.create!(artwork_params)
         render json: artwork
     end

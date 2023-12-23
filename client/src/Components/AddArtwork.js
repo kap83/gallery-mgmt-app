@@ -15,7 +15,8 @@ export default function AddArtwork() {
     e.preventDefault()
     const formData = new FormData();
     formData.append('title', e.target.elements.title.value)
-    formData.append('medium', e.target.elements.medium.value)
+    const mediumValue = e.target.elements.medium.value.toLowerCase()
+    formData.append('medium', mediumValue)
     formData.append('paintings', e.target.elements.paintings.files[0])
     formData.append('artist_id', parseId)
   
@@ -74,7 +75,6 @@ export default function AddArtwork() {
           <label className='addArtworkFontStyle'>Medium: </label>
           <input
             className='addArtworkInputStyle'
-            
             type='text'
             name='medium'
           />
