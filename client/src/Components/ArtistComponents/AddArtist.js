@@ -66,37 +66,36 @@ const handleSubmit = (e) => {
         }
       }
     })
-
 }
 
   return (
-    <div className='addArtistStyle'>
+    <div className='addNewDataStyle'>
       <h2>Add New Artist</h2>
       <form id='addArtistForm' className='myToast' onSubmit={handleSubmit}>
       <table>
         <tbody>
           <tr>
-            <td className='addArtistTextStyle'>Name:</td>
+            <td className='addNewDataTextStyle'>Name:</td>
             <td>
               <input
-              className='addArtistInputStyle'
+              className='addNewDataInputStyle'
               type='text'
               name='artistName'
               />
             </td>
           </tr>
           <tr>
-            <td className='addArtistTextStyle'>Date of birth:</td>
+            <td className='addNewDataTextStyle'>Date of birth:</td>
             <td>
               <input
-              className='addArtistInputStyle'
+              className='addNewDataInputStyle'
               type='date'
               name='dob'
               />
             </td>
           </tr>
             <tr>
-                <td className='addArtistTextStyle'>Include art?</td>
+                <td className='addNewDataTextStyle'>Include art?</td>
                 <td>
                     <input 
                     className='checkBox'
@@ -111,25 +110,25 @@ const handleSubmit = (e) => {
             {checked ? 
                 <>
                     <tr>
-                      <td className='addArtistTextStyle'>
+                      <td className='addNewDataTextStyle'>
                         <label htmlFor='uploadFields'/>
                         Title:
                       </td>
                       <td>
                         <input
-                        className='addArtistInputStyle' 
+                        className='addNewDataInputStyle' 
                         type='text'
                         name='title'
                         />
                       </td>
                     </tr>
                     <tr>
-                    <td className='addArtistTextStyle'>
+                    <td className='addNewDataTextStyle'>
                         Medium: 
                         </td>
                       <td>
                         <input
-                        className='addArtistInputStyle' 
+                        className='addNewDataInputStyle' 
                         type='text'
                         name='medium'
                         />
@@ -147,8 +146,7 @@ const handleSubmit = (e) => {
                 </>
                 : null }
           <tr>
-            <td></td>
-            <td>
+            <td colSpan={2}>
               <button
                 className='btn'
                 type='submit'>

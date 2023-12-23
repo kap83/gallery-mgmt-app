@@ -86,7 +86,7 @@ export default function AddArtwork() {
           />
           <button
             className='btn'
-            id='addArtworkbtn'
+            id='addArtWorkBtn'
             type='submit'>
             Submit
           </button>

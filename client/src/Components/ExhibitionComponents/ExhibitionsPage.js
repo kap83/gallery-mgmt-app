@@ -11,12 +11,15 @@ const {exhibitionsArray} = useContext(ExhibitionContext)
 //create filter and sort options
 
 return (
-  <div>
-    <AddExhibition/>
-    <div className="exhibitionContainer" >
+  <>
+  <div className='exhibitionsContainer'>
+    <div className='addExhibitionContainer'>
+      <AddExhibition />
+    </div>
+    <div className="exhibitionContainer">
       {exhibitionsArray?.map((e) => (
         <div className="exhibitionItem" key={e.id}>
-          <Link style={{textDecoration: 'none'}} to={`/exhibition/${e.id}`}>
+          <Link to={`/exhibition/${e.id}`}>
             <h2>{e.title}</h2>
           </Link>
           <p>Exhibition Manager: {e.curator}</p>
@@ -25,6 +28,7 @@ return (
       ))}
     </div>
   </div>
+</>
 )
 
 }

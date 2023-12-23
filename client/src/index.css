@@ -13,7 +13,7 @@ ul {
   list-style-type: none;
 }
 
-.addArtistInputStyle, 
+.addNewDataInputStyle, 
 .loginInputStyle, 
 .exhibitionInputStyle, 
 .addArtworkInputStyle {
@@ -23,7 +23,8 @@ ul {
 
 .btn, 
 .logOutBtnStyle, 
-.loginBtnStyle  {
+.loginBtnStyle,
+#button {
   border-radius: 3px;
   border: none;
   background-color: #6699CC;
@@ -88,7 +89,7 @@ textarea:focus, input:focus{
 } 
 
 .navLink:hover {
-  font-size: 1.2em; /* Adjust the size as needed */
+  font-size: 1.2em; 
 }
 
 .navLogo {
@@ -97,54 +98,6 @@ textarea:focus, input:focus{
   left: 2px;
   transform: translateY(-50%);
   max-width: 2.7%;
-}
-
-.logOutBtnStyle {
-  position: absolute;
-  right: 1px;
-  top: 50%;
-  padding: 5px;
-  transform: translateY(-50%);
-}
-
-/* CSS FOR DisplayAllExhibitions COMPONENT */
-
-
-
-.exhibitionItem {
-  display: flex; /* Use flexbox to make children flex items */
-  box-sizing: border-box;
-  line-height: 0;
-  margin: 1%;
-  width: 30%; /* Adjust based on your design */
-  overflow: hidden;
-  padding: 1rem;
-  box-shadow: 0px 0px 15px -5px;
-  border-radius: 10px;
-}
-
-.exhibitionItem h2 {
-  font-size: 50px;
-  text-align: center;
-  font-weight: lighter;
-  font-style: italic;
-  color: #6699CC;
-  line-height: 0;
-  -webkit-text-stroke: 0.5px black;
-  flex: 1; /* Take up remaining space */
-}
-
-.exhibitionItem p {
-  line-height: 0;
-  text-align: center;
-  flex: 1; /* Take up remaining space */
-}
-
-.exhibitionItem img {
-  border-radius: 50%;
-  width: 7%;
-  margin-top: 1rem;
-  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .headerAvatar {
@@ -156,6 +109,78 @@ textarea:focus, input:focus{
   max-width: 1.5%;
   border: 1px solid black;
 }
+
+.logOutBtnStyle {
+  position: absolute;
+  right: 1px;
+  top: 50%;
+  padding: 5px;
+  transform: translateY(-50%);
+}
+
+/* FOR EXHIBITION PAGE AND ADD EXHIBITION */
+
+.exhibitionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5%;
+  max-width: 500%;
+}
+
+/* CSS FOR ADD EXHIBITION COMPONENT */
+
+.addExhibitionContainer {
+  margin-left: 8%;
+  margin-top: 3%;
+}
+
+
+
+/* CSS FOR EXHIBITION PAGE COMPONENT */
+
+.exhibitionContainer {
+  margin-top: 5%;
+  margin-right: 25%;
+}
+
+.exhibitionItem {
+  display: flex;
+  box-sizing: border-box;
+  line-height: 0;
+  margin: 2%;
+  width: 117%; 
+  padding: 1rem;
+  box-shadow: 0px 0px 15px -5px;
+  border-radius: 10px;
+}
+
+.exhibitionItem h2 {
+  font-size: 50px;
+  font-weight: lighter;
+  font-style: italic;
+  color: #6699CC;
+  -webkit-text-stroke: 0.5px black;
+  margin-left: 40px;
+}
+
+.exhibitionItem a {
+  text-decoration: none;
+}
+
+.exhibitionItem p {
+  line-height: 0;
+  text-align: right;
+  flex: 1; 
+}
+
+.exhibitionItem img {
+  border-radius: 50%;
+  width: 7%;
+  margin-top: 1rem;
+  flex-shrink: 0; 
+}
+
 
 /* CSS FOR EXHIBITION EDIT & READONLY COMPONENT */
 
@@ -303,36 +328,48 @@ textarea:focus, input:focus{
 
 .wrapper {
   display: flex; /* Use flexbox to make the children flex items */
-  align-items: flex-start; /* Align items to the start of the flex container */
+  
   
 }
 
 /* CSS FOR ADD ARTIST COMPONENT */
 
-.addArtistStyle {
+.addNewDataStyle {
   margin-top: 5px;
   margin-Left: 25%;
   margin-right: 15%
 }
 
-.addArtistStyle h2 {
+.addNewDataStyle h2 {
   text-align: center;
+  margin-left: 5%;
+  width: 100%;
   font-size: 50px;
   font-weight: 90
 }
 
-.addArtistTextStyle {
+#addNewDataExhibitionH2 {
+  width: 200%
+}
+
+.addNewDataTextStyle {
   padding-top: 25px;
   padding-right: 15px;
   font-size: 25px;
 }
 
-.addArtistInputStyle {
+.addNewDataInputStyle {
   padding: 10px;
   font-size: 15px;
-  width: 100%;
+  width: 150%;
   margin: 8px 0
 }
+
+#addNewDataExhibitionInput {
+  width: 250%;
+  font-size: 20px;
+}
+
 
 .checkBox {
   position: relative;
@@ -371,17 +408,23 @@ textarea:focus, input:focus{
 .addArtistFileStyle {
     width: 70%;
     box-sizing: border-box;
-    margin-left: 12%;
+    margin-left: 50%;
     margin-top: 7%;
    
 }
 
-div.addArtistStyle .btn {
+div.addNewDataStyle .btn {
   display: block;
-  width: 113%;
+  width: 65%;
   padding: 13px 28px;
   font-size: 20px;
-  text-align: center
+  text-align: center;
+  margin-left: 54%
+}
+
+#addNewDataExhibitionBtn {
+  margin-Left: 35% ;
+  width: 160%;
 }
 
 /* CSS FOR ADD ARTWORK COMPONENT */
@@ -405,13 +448,11 @@ div.addArtistStyle .btn {
   font-size: 16px;
 }
 
-
-
 .addArtworkFileStyle {
   width: 7.5%;
 }
 
-#addArtworkbtn {
+#addArtWorkBtn {
   padding: 4px;
   width: 80px;
   font-size: medium;
@@ -490,57 +531,6 @@ div.addArtistStyle .btn {
     height: 30px;
 }
 
-
-/* CSS FOR ADD EXHIBITION COMPONENT */
-
-
-.addExhibitionStyle {
-  margin-top: 10%;
-  max-width: 80%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
-
-.exhibitionH1 {
-  text-align: center;
-  margin-bottom: -3.7%;
-  font-size: 50px;
-  font-weight: 100;
-}
-
-.exhibitionInputStyle {
-  padding: 10px;
-  font-size: 20px;
-  width: 250%;
-  margin: 8px 0
-}
-
-.exhibitionFont {
-font-size: 30px;
-padding-top: 12px;
- padding-right: 10px;
-}
-
-.addExhibitionStyle .btn {
-  display: block;
-  width: 256%;
-  padding: 13px 28px;
-  font-size: 20px;
-  text-align: center
-}
-
-.exhibitionAvatar {
-  position: absolute;
-  transform: translateY(-50%);
-  left: 32%;
-  bottom: 49%;
-}
-
-div.exhibitionAvatar > img {
-  width: 120%;
-  border: 2px solid #6699CC
-}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

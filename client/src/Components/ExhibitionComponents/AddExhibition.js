@@ -1,4 +1,4 @@
-import React, { Fragment, useContext} from 'react'
+import React, { useContext} from 'react'
 import {UserContext} from '../../Context/User'
 import { ExhibitionContext } from '../../Context/Exhibition'
 import { useNavigate } from 'react-router-dom'
@@ -10,7 +10,7 @@ import ErrorHandling from '../ErrorHandling'
 export default function AddExhibition() {
 
 
-  const {currentUser, handleCurrentUserNewExhibition} = useContext (UserContext)
+  const {handleCurrentUserNewExhibition} = useContext (UserContext)
   const {handleNewExhibition} = useContext(ExhibitionContext)
 
   const navigate = useNavigate()
@@ -34,7 +34,6 @@ export default function AddExhibition() {
           if (res.ok) {
             return res.json().then((data) => {
               resolve(data)
-             // console.log(data)
               handleCurrentUserNewExhibition(data)
               handleNewExhibition(data)
               document.getElementById("addExhibitionForm").reset()
@@ -69,72 +68,67 @@ export default function AddExhibition() {
   }
 
   return (
-    <Fragment>
-      <div className='exhibitionAvatar'>
-        <img src={currentUser.avatar_url} alt={currentUser.username} />
-      </div>
-      <h1 className='exhibitionH1'>Create A New Exhibition</h1>
-    <form id='addExhibitionForm' onSubmit={handleSubmit}>
-      <table className='addExhibitionStyle'>
-        <tbody>
-          <tr>
-            <td className='exhibitionFont'>Title:</td>
+    <div  className='addNewDataStyle'>
+       <h2 id ='addNewDataExhibitionH2' >Create A New Exhibition</h2>
+       <form id='addExhibitionForm' onSubmit={handleSubmit}>
+        <table>
+          <tbody>
+            <tr>
+            <td className='addNewDataTextStyle'>Title:</td>
             <td>
-              <input
-              className='exhibitionInputStyle'
+              <input 
+              className='addNewDataInputStyle'
               type='text'
-              name='exhibitionTitle' 
+              name='exhibitionTitle'
+              id='addNewDataExhibitionInput'
               />
             </td>
-          </tr>
-
-          <tr>
-            <td className='exhibitionFont'>Gallery:</td>
+            </tr>
+            <tr>
+            <td className='addNewDataTextStyle'>Gallery:</td>
             <td>
-              <input
-              className='exhibitionInputStyle'
+              <input 
+              className='addNewDataInputStyle'
               type='text'
-              name='gallery' 
-              />
+              name='gallery'
+              id='addNewDataExhibitionInput'/>
             </td>
-          </tr>
-
-          <tr>
-            <td className='exhibitionFont'>Starts:</td>
+            </tr>
+            <tr>
+            <td className='addNewDataTextStyle'>Starts:</td>
             <td>
               <input
-              className='exhibitionInputStyle'
+              className='addNewDataInputStyle'
               type='date'
               name='starts'
-              />
+              id='addNewDataExhibitionInput'/>
             </td>
           </tr>
-
           <tr>
-            <td className='exhibitionFont'>Ends:</td>
+            <td className='addNewDataTextStyle'>Ends:</td>
             <td>
               <input
-              className='exhibitionInputStyle'
+              className='addNewDataInputStyle'
               type='date'
-              name='ends' 
-              />
+              name='ends'
+              id='addNewDataExhibitionInput'/>
             </td>
           </tr>
-          
           <tr>
-            <td></td>
-            <td>
+      
+            <td colSpan={2}>
               <button
-                className='btn' 
+                className='btn'
+                id='addNewDataExhibitionBtn'
                 type='submit'>
-                Submit
+                SUBMIT
               </button>
             </td>
           </tr>
-        </tbody>
-      </table>
-    </form>
-    <ToastContainer
+          </tbody>
+        </table>
+       </form>
+       <ToastContainer
       position="top-center"
       autoClose={2000}
       hideProgressBar={false}
@@ -146,7 +140,9 @@ export default function AddExhibition() {
       pauseOnHover
       theme="light"
       />
+    </div>
 
-    </Fragment>
+
+    
   )
 }
