@@ -18,7 +18,7 @@ export default function ArtistDetails() {
   const {id} = useParams()
   const parsedId = parseInt(id)
 
-  const [delIsClicked, setDelIsClicked ] = useState(false)
+  const [dialogBoxVisible, setDialogBoxVisible ] = useState(false)
   const [message, setMessage] = useState("")
   
   const {handleDeletedArtworkInExhibitionArray} = useContext(ExhibitionContext)
@@ -32,24 +32,28 @@ export default function ArtistDetails() {
 
 
 const handleDeleteBtnClick = (art) => {
-  if(!art.exhibition_id) {
-    console.log("first if", 'nope')
-     fetch(`/artworks/${art.id}`, {
-      method: 'DELETE'
-    }).then(() => {
+  fetch(`/artworks/${art.id}`, {
+    method: 'DELETE'
+  }).then((res) => {
+    if (res.ok) {
       handleDeletedArtworkInArtistList(art)
       handleDeletedArtworkInExhibitionArray(art)
-    })
-  } 
-  else {
-    setDelIsClicked(true)
-    setMessage(`Warning! '${art.title}' is part of '${art.exhibition_title}' exhibition. It will be deleted from ${art.exhibition_title}, if you continue.`)
-    artRef.current = art
-  }
+
+    }
+    else {
+      return res.json().then((data)=> {
+        console.error(data)
+        let msg = data.errors
+        setMessage(msg)
+        setDialogBoxVisible(true)
+        artRef.current = art
+      })
+    }
+  })
 }
 
-const handleDecline = () => {
-  setDelIsClicked(false)
+const handleClearDialog = () => {
+  setDialogBoxVisible(false)
   setMessage('')
 }
 
@@ -61,7 +65,7 @@ const handleDecline = () => {
   </div>
   <div className='displaySelectedPaintingWrapper'>
     <DisplaySelectedPaintings handleDeleteBtnClick={handleDeleteBtnClick} selectedArtist={selectedArtist} />
-    {delIsClicked === true ? <DialogBox artRef={artRef} message={message} handleDecline={handleDecline} /> : null }
+    {dialogBoxVisible === true ? <DialogBox message={message} artRef={artRef} handleClearDialog={handleClearDialog}/> : null } 
 
   </div>
   </>

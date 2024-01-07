@@ -6,18 +6,33 @@ class ArtworksController < ApplicationController
     end
 
     def create
-      byebug
         artwork = @artist.artworks.create!(artwork_params)
         render json: artwork
     end
 
+
     def destroy
       art = Artwork.find(params[:id])
-      art.destroy
-      head :no_content
+
+      #if art has an exhibition id that is NOT nil
+      if art.exhibition_id.present?
+        #check that confirm_delete is true
+        if params[:confirm_delete] == 'true'
+          art.destroy
+          head :ok
+        else 
+          render json: { errors: "Warning! #{art.title} is currently displayed in #{art.exhibition.title}. Do you wish to proceed?" }, status: :unprocessable_entity
+        end
+        #if art has an exhibition id that is nil, just delete it with no confirmation
+      else
+        art.destroy
+        head :ok
+      end
+  
     end
     
-    
+ 
+
       private
     
       def set_artist
@@ -27,6 +42,5 @@ class ArtworksController < ApplicationController
       def artwork_params
         params.permit(:title, :medium, :paintings)
       end
-
 
 end

@@ -9,7 +9,7 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
 
   const {selectedArtist} = useContext(ArtistContext)
 
-  //const {exhibitionsArray} = useContext(ExhibitionContext)
+  console.log(selectedArtist)
 
     const breakpointColumnsObj = {
         //default number of columns
@@ -19,8 +19,6 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
         //700px and down reduce to 2 columns
         700: 1,
       };
-
- console.log('in dis', formValues)
  
   return (
   <>
@@ -44,7 +42,6 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
             <div key={art.id}>
               <h2>
                 {art.title}
-
                 {formValues === undefined ? 
                   <button type='button' 
                   className='btn'

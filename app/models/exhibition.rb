@@ -3,7 +3,10 @@ class Exhibition < ApplicationRecord
     has_many :artworks
 
     validates :title, :gallery, :start_date, :end_date, :user_id, presence: true
-    validates :title, uniqueness: true
+    validates :title, uniqueness: {
+      scope: [:start_date, :end_date],
+      message: "already in use during those dates"
+    }
     #validates that a gallery is not in use during the specified dates 
     validates :start_date, :end_date, :overlap => {:scope => :gallery, :message_title => [:gallery], :message_content => "already in use during those dates" }
     validate :dates_cannot_be_in_the_past

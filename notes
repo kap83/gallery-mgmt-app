@@ -2,62 +2,6 @@
 
 //Photo by <a href="https://unsplash.com/@mejlivg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Guillaume Didelet</a> on <a href="https://unsplash.com/photos/a-room-filled-with-lots-of-art-and-paintings-h86S6CGiqJA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 //Photo by <a href="https://unsplash.com/@zalfaimani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Zalfa Imani</a> on <a href="https://unsplash.com/photos/woman-in-black-coat-standing-in-front-of-paintings-1xp5VxvyKL0?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  
-
-
-// <tr>
-//     <td>
-//     <label htmlFor='uploadFields'/>
-//     </td>
-// </tr>
-
-
-
-// <tr>
-//     <td>How Many?</td>
-//     <td>
-//     <input 
-//         type='text' 
-//         value={number}
-//         pattern='[1-9]|10'
-//         maxLength='2'
-//         onChange={handleNumberOfPaintingSubmissions}
-
-//         />
-//     </td>
-// </tr>
-
-
-
-//const handleAddInput = () => {
-    //     setUploadFields([...uploadFields, {uploadFields: ''}])
-    // }
-    
-    // const handleRemoveInput = (index) => {
-    //     const inputField = [...uploadFields]
-    //     inputField.splice(index, 1)
-    //     setUploadFields(inputField)
-    // }
-
-    //const filterOutNull = uploadFields.filter(Boolean)
-   
-    // for (let index = 0; index < filterOutNull.length; index++) {
-    //     //const fields = filterOutNull[index]
-    //     formData.append('artwork[title]', fields.title)
-    //     formData.append('artwork[description]', fields.description)
-    //     formData.append('artwork[paintings_url]', fields.paintings_url)
-    // }
-
-
-    // <!-- {uploadFields.length -1 === index && uploadFields.length < 10 && 
-    //     <td>
-    //         <button type='button' onClick={handleAddInput}>+</button> 
-    //     </td>}
-    //     {uploadFields.length > 1 && 
-    //     <td> 
-    //        <button type='button' onClick={()=> handleRemoveInput(index)}>-</button> 
-    //     </td>  -->
-
 
 
 
