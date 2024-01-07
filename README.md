@@ -12,7 +12,11 @@ Along with extensive in-house CSS, this tool uses react-masonry-css and react-to
 ## Citations
 
 overlap: https://github.com/robinbortlik/validates_overlap
+
 masonry css: https://github.com/paulcollett/react-masonry-css
+
 react-toastify: https://fkhadra.github.io/react-toastify/introduction
+
 login in photo by Zalfa Imani at Unsplash  
+
 gallery icon generated with canva
