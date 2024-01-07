@@ -5,7 +5,6 @@ class ArtistsController < ApplicationController
         render json: artists
      end
 
-    
      def create
       artist = Artist.create!(artist_params)
       if params[:artwork].present?

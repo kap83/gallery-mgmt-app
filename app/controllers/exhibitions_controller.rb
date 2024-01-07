@@ -12,7 +12,6 @@ class ExhibitionsController < ApplicationController
        render json: exhibition
      end
 
-   
       def update
         exhibition = find_exhibition
         exhibition.update!(exhibition_params)

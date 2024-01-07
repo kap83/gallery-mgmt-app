@@ -10,17 +10,13 @@ export default function ArtistDropdownMenu() {
 
     const handleSelectChange = (e) => {
         setArtistId(e.target.value)
+      
       }
     
     useEffect(() => {
     let parsedId = parseInt(artistId)
     findArtist(parsedId)
 
-    // Scroll down when an option is chosen
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    })
     // eslint-disable-next-line
     }, [artistId])
 

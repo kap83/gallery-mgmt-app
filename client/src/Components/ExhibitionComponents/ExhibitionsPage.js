@@ -7,7 +7,6 @@ export default function DisplayAllExhibitions() {
    
 const {exhibitionsArray} = useContext(ExhibitionContext)
 
-
 //create filter and sort options
 
 return (
