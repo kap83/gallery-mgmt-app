@@ -13,7 +13,6 @@ class ArtworksController < ApplicationController
 
     def destroy
       art = Artwork.find(params[:id])
-
       #if art has an exhibition id that is NOT nil
       if art.exhibition_id.present?
         #check that confirm_delete is true

@@ -6,12 +6,10 @@ import AddArtwork from '../AddArtwork'
 import DisplaySelectedPaintings from '../DisplaySelectedPaintings'
 import DialogBox from '../DialogBox'
 
-
-
 export default function ArtistDetails() {
 
   const {findArtist, artistList, selectedArtist, handleDeletedArtworkInArtistList} = useContext(ArtistContext)
- 
+  const {handleDeletedArtworkInExhibitionArray} = useContext(ExhibitionContext)
 
   const artRef = useRef(null)
 
@@ -21,8 +19,6 @@ export default function ArtistDetails() {
   const [dialogBoxVisible, setDialogBoxVisible ] = useState(false)
   const [message, setMessage] = useState("")
   
-  const {handleDeletedArtworkInExhibitionArray} = useContext(ExhibitionContext)
-
 
   useEffect(() => {
       findArtist(parsedId)
@@ -32,6 +28,7 @@ export default function ArtistDetails() {
 
 
 const handleDeleteBtnClick = (art) => {
+  
   fetch(`/artworks/${art.id}`, {
     method: 'DELETE'
   }).then((res) => {

@@ -7,8 +7,6 @@ export default function DialogBox({artRef, message, handleClearDialog}) {
     const {handleDeletedArtworkInExhibitionArray} = useContext(ExhibitionContext)
     const { handleDeletedArtworkInArtistList} = useContext(ArtistContext)
 
-console.log( message)
-
 
 const handlePermDeleteArtwork = () => {
     const art = artRef.current;

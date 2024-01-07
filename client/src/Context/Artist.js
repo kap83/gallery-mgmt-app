@@ -6,7 +6,6 @@ export function ArtistProvider({children}) {
 
 const [artistList, setArtistList] = useState([])
 const [selectedArtist, setSelectedArtist] = useState([])
-//console.log("in context", artistList)
 
 useEffect(() => {
   fetch('/artists')
@@ -19,13 +18,13 @@ const findArtist = (artistId) => {
   setSelectedArtist(artist)
 }
 
-//works
+
 const handleAddedArtist = (newArtist) => {
     const updatedArtistData = [...artistList, newArtist ]
     setArtistList(updatedArtistData)
 }
 
-//this works
+
 const handleArtistAddedArtwork = (addedArtwork) => {
     //addedArtworks is an obj with an artworks array of objs. artist_id is in array indexed 0
     const artistId = addedArtwork.artist_id;
@@ -46,7 +45,7 @@ const handleArtistAddedArtwork = (addedArtwork) => {
   };
 
 const handleDeletedArtworkInArtistList = (deletedArtwork) => {
-  //console.log(deletedArtwork)
+  console.log("deleted", deletedArtwork)
   const updateArtistList = artistList.map(artist => {
     if(artist.id === deletedArtwork.artist_id){
       const updatedArtwork = artist.artworks.filter(art => art.id !== deletedArtwork.id)
@@ -57,10 +56,9 @@ const handleDeletedArtworkInArtistList = (deletedArtwork) => {
     }
     return artist
   })
+  setArtistList(updateArtistList)
 
-  console.log("in artistContext", updateArtistList)
 }
-
 
 const artistValues = {
     artistList,
@@ -72,8 +70,6 @@ const artistValues = {
 }
 
 
-
 return <ArtistContext.Provider value={artistValues}>{children}</ArtistContext.Provider>;
-
     
 }
