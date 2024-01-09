@@ -4,7 +4,6 @@ class Artwork < ApplicationRecord
     has_many_attached :paintings
 
     validates :title, :medium, presence: true
-    validate :check_if_painting_belong_to_an_exhibtion, on: :destroy
 
 
 

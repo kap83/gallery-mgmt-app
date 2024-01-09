@@ -8,6 +8,13 @@ This tool is perfect for a museum with one or more project managers. Robust vali
 
 Along with extensive in-house CSS, this tool uses react-masonry-css and react-toastify to render a beautiful and easy to use app. 
 
+## Functionality
+
+This tool includes seed data for project managers, exhibitions, artists, and artworks. As this tool is intended for project managers, there is no registration form. For testing purposes, use one of the username and passwords included in the project manager seed file to sign in. Then feel free to add your own artists and art and/or create your own exhibitions, or edit or delete existing ones (only the manager who created the particular exhibition can edit/delete it). 
+
+## Installation issues
+
+If you're having any issues, installing vips using rails commands. Use brew install vips. 
 
 ## Citations
 

@@ -26,7 +26,6 @@ const handleSubmit = (e) => {
       formData.append('artwork[title]', e.target.elements.title.value)
       formData.append('artwork[medium]', e.target.elements.medium.value)
       formData.append('artwork[paintings]', e.target.elements.paintings.files[0])
-
     } else {
       formData.append('name', e.target.elements.artistName.value)
       formData.append('date_of_birth', e.target.elements.dob.value)
@@ -119,6 +118,7 @@ const handleSubmit = (e) => {
                         className='addNewDataInputStyle' 
                         type='text'
                         name='title'
+                        required
                         />
                       </td>
                     </tr>
@@ -131,6 +131,7 @@ const handleSubmit = (e) => {
                         className='addNewDataInputStyle' 
                         type='text'
                         name='medium'
+                        required
                         />
                       </td>
                           <td>
@@ -139,6 +140,7 @@ const handleSubmit = (e) => {
                             className='addArtistFileStyle'
                             type='file'
                             name='paintings'
+                            required
                             />
                             </span>
                           </td>
@@ -149,7 +151,9 @@ const handleSubmit = (e) => {
             <td colSpan={2}>
               <button
                 className='btn'
-                type='submit'>
+                type='submit'
+                
+                >
                 SUBMIT
               </button>
             </td>
