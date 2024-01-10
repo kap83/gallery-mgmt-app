@@ -9,8 +9,6 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
 
   const {selectedArtist} = useContext(ArtistContext)
 
-  console.log(selectedArtist)
-
     const breakpointColumnsObj = {
         //default number of columns
         default: 3,

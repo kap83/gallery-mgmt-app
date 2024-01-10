@@ -1,4 +1,4 @@
-puts "🌱 Seeding spices..."
+puts "Populating database..."
 
 
 user1 = User.create(name: 'Sophie Devereaux', username: "grifter", password: "testing")
@@ -39,4 +39,4 @@ art8.paintings.attach(io: File.open(Rails.root.join('db/artworks/Franz_Marc_005.
 art9.paintings.attach(io: File.open(Rails.root.join('db/artworks/Franz_Marc-The_Yellow_Cow-1911.jpg')), filename: 'Franz_Marc-The_Yellow_Cow-1911.jpg')
 art10.paintings.attach(io: File.open(Rails.root.join('db/artworks/Marc_Franz_-_The_Tiger.jpg')), filename: 'Marc_Franz_-_The_Tiger.jpg')
 
-puts "✅ Done seeding!"
+puts "✅ Done populating!"

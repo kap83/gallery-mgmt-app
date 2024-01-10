@@ -28,7 +28,9 @@ export default function ExhibitionDetails({ selectedExhibition }) {
     artworks: []
   });
 
-  //console.log("form", formValues)
+  const [isArtSelected, setIsArtSelected] = useState(false)
+
+
 
   useEffect(() => {
     setFormValues(selectedExhibition)
@@ -46,12 +48,15 @@ export default function ExhibitionDetails({ selectedExhibition }) {
     })) 
   }
   
-  const handleSelectedPaintings = (artId, title, painting ) => {
-    // console.log("in handleSelectedPainting fn", artId, title)
+  const handleSelectedPaintings = (artId) => {
+    //console.log("in handleSelectedPainting fn", artId, title)
 
+    //checks to see if the painting was previously selected
      const isSelected = formValues.artworks.some(
        (painting) => painting.id === artId
      )
+
+     setIsArtSelected(!isSelected)
 
      //adds artwork ids to formValues
      setFormValues((prevFormValues) => {
@@ -65,11 +70,16 @@ export default function ExhibitionDetails({ selectedExhibition }) {
          artworks: newArtworks,
        }
      })
+
    }
+
+
 
 
       const handleSubmit = (e) => {
       e.preventDefault()
+
+      console.log("in handle", formValues)
 
       const myPromise = new Promise((resolve, reject) => {
         fetch(`/exhibitions/${selectedExhibition.id}`, {
@@ -80,6 +90,7 @@ export default function ExhibitionDetails({ selectedExhibition }) {
           .then((res) => {
             if (res.ok) {
               return res.json().then((data) => {
+                console.log("in fetch", data)
                 resolve(data)
                 handleUpdatedExhibition(data)
                 setIsEditing(false)
@@ -130,7 +141,7 @@ export default function ExhibitionDetails({ selectedExhibition }) {
                 selectedExhibition={selectedExhibition}
               />
             )}
-          <PreviouslyChosenPaintings selectedExhibition={selectedExhibition} />
+          <PreviouslyChosenPaintings isArtSelected={isArtSelected} selectedExhibition={selectedExhibition} />
           <ArtistDropdownMenu  />
           <DisplaySelectedPaintings
             formValues={formValues}

@@ -1,16 +1,19 @@
 import React, {useContext} from 'react'
 
-export default function PreviouslyChosenPaintings({selectedExhibition}) {
+export default function PreviouslyChosenPaintings({selectedExhibition, isArtSelected}) {
 
     //console.log("in previously", typeof selectedExhibition.artworks)
-
-    
-    
 
   return (
     <div className='selectedPaintingsGalleryMargin'>
     <h3>Exhibited Paintings</h3>
-    <button className='btn' id='selectedPaintingsGalleryBtnStyle' type='submit'>
+    <button 
+      className='btn' 
+      id='selectedPaintingsGalleryBtnStyle' 
+      type='submit'
+      disabled={!isArtSelected}
+      style={{background: isArtSelected ? '#6699CC' : 'grey'}}
+      >
       Submit Artwork
     </button>
     <div className='selectedPaintingsGallery'>
