@@ -105,7 +105,7 @@ textarea:focus, input:focus{
   position: absolute;
   border-radius: 50%;
   top: 50%;
-  left: 95.7%;
+  left: 90%;
   transform: translateY(-50%);
   max-width: 1.5%;
   border: 1px solid black;
@@ -127,6 +127,7 @@ textarea:focus, input:focus{
   align-items: center;
   margin-top: 5%;
   max-width: 500%;
+ 
 }
 
 /* CSS FOR ADD EXHIBITION COMPONENT */

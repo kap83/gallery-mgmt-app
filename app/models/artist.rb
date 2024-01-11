@@ -9,6 +9,8 @@ class Artist < ApplicationRecord
     def birth_date_limitation
         if date_of_birth <= Date.parse('1000-01-01')
             errors.add(:base, "this database currently only accepts birth years dating back to 1000 CE")
+        elsif date_of_birth >= Date.parse('2023-01-01')
+            errors.add(:base, "Only accepting one year old wunderkinds")
         end
     end
 
