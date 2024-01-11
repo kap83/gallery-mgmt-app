@@ -127,7 +127,6 @@ textarea:focus, input:focus{
   align-items: center;
   margin-top: 5%;
   max-width: 500%;
- 
 }
 
 /* CSS FOR ADD EXHIBITION COMPONENT */
@@ -142,7 +141,8 @@ textarea:focus, input:focus{
 
 .exhibitionContainer {
   margin-top: 5%;
-  margin-right: 25%;
+  margin-right: 15%;
+  
 }
 
 .exhibitionItem {
