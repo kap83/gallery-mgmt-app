@@ -28,9 +28,9 @@ export default function ExhibitionDetails({ selectedExhibition }) {
     artworks: []
   });
 
-  const [isArtSelected, setIsArtSelected] = useState(false)
+  //const [isArtSelected, setIsArtSelected] = useState(false)
 
-
+console.log("in ex deets", formValues)
 
   useEffect(() => {
     setFormValues(selectedExhibition)
@@ -56,7 +56,9 @@ export default function ExhibitionDetails({ selectedExhibition }) {
        (painting) => painting.id === artId
      )
 
-     setIsArtSelected(!isSelected)
+     console.log("in handle", isSelected)
+
+    //  setIsArtSelected(!isSelected)
 
      //adds artwork ids to formValues
      setFormValues((prevFormValues) => {
@@ -72,9 +74,6 @@ export default function ExhibitionDetails({ selectedExhibition }) {
      })
 
    }
-
-
-
 
       const handleSubmit = (e) => {
       e.preventDefault()
@@ -141,7 +140,8 @@ export default function ExhibitionDetails({ selectedExhibition }) {
                 selectedExhibition={selectedExhibition}
               />
             )}
-          <PreviouslyChosenPaintings isArtSelected={isArtSelected} selectedExhibition={selectedExhibition} />
+          {/* <PreviouslyChosenPaintings isArtSelected={isArtSelected} selectedExhibition={selectedExhibition} /> */}
+          <PreviouslyChosenPaintings selectedExhibition={selectedExhibition} />
           <ArtistDropdownMenu  />
           <DisplaySelectedPaintings
             formValues={formValues}

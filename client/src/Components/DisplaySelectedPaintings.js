@@ -1,13 +1,20 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import Masonry from 'react-masonry-css'
-import { format, parseISO } from 'date-fns'
 import {ArtistContext} from '../Context/Artist'
+import ReadOnlyArtistHeader from './ArtistComponents/ReadOnlyArtistHeader'
+import EditArtistHeader from './ArtistComponents/EditArtistHeader'
 //import { ExhibitionContext } from '../../Context/Exhibition'
 
 
 export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formValues, handleSelectedPaintings}) {
 
   const {selectedArtist} = useContext(ArtistContext)
+  const [isEditing, setIsEditing] = useState(false)
+
+  const handleEditToggleClick = () => {
+    setIsEditing(!isEditing)
+  }
+
 
     const breakpointColumnsObj = {
         //default number of columns
@@ -22,14 +29,14 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
   <>
  {
   selectedArtist?.map((artist) => {
-    const dob = artist.date_of_birth
-    const isoDOB = parseISO(dob)
-    const formattedDOB = format(isoDOB, 'MM/dd/yyyy')
     return (
       <div className='displayPaintingsStyle' key={artist.id}>
         <hr />
-        <h1>{artist.name}</h1>
-        <h2 id='dob'>{formattedDOB}</h2>
+        {isEditing ? 
+        <EditArtistHeader artist={artist} /> :
+           <ReadOnlyArtistHeader handleEditToggleClick={handleEditToggleClick} artist={artist} />
+           
+      }
         <hr />
         <Masonry
           breakpointCols={breakpointColumnsObj}
@@ -54,7 +61,7 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
                     id='selectPaintingCheckbox'
                     type="checkbox"
                     value={art.id}
-                    checked={ formValues.artworks?.some((painting) => painting.id === art.id)}
+                    checked={formValues.artworks?.some((painting) => painting.id === art.id)}
                     onChange={() => {
                       //const painting = art.paintings_url[0];
                       handleSelectedPaintings(art.id, art.exhibition_id)

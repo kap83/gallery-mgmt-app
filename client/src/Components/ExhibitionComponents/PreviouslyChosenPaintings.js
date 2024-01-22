@@ -11,8 +11,8 @@ export default function PreviouslyChosenPaintings({selectedExhibition, isArtSele
       className='btn' 
       id='selectedPaintingsGalleryBtnStyle' 
       type='submit'
-      disabled={!isArtSelected}
-      style={{background: isArtSelected ? '#6699CC' : 'grey'}}
+      // disabled={!isArtSelected}
+      // style={{background: isArtSelected ? '#6699CC' : 'grey'}}
       >
       Submit Artwork
     </button>
@@ -27,17 +27,6 @@ export default function PreviouslyChosenPaintings({selectedExhibition, isArtSele
                 </div>
             ))
         }
-
-      {/* {selectedPaintings?.map((painting) => (
-        <div key={painting.id}>
-          <img
-            key={painting.id}
-            src={Array.isArray(painting.paintings_url) ? painting.paintings_url[0] : painting.paintings_url}
-            alt={painting.title}
-            className="selectedPaintingsGalleryItem"
-          />
-        </div>
-      ))} */}
     </div>
   </div>
   )

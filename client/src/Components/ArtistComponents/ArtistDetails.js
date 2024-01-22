@@ -18,6 +18,7 @@ export default function ArtistDetails() {
 
   const [dialogBoxVisible, setDialogBoxVisible ] = useState(false)
   const [message, setMessage] = useState("")
+ 
   
 
   useEffect(() => {

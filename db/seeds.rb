@@ -7,8 +7,8 @@ user2 = User.create(name: 'Alec Hardison', username: "geek", password: "password
 user1.avatar.attach(io: File.open(Rails.root.join('db/avatars/sophie.jpg')), filename: 'sophie.jpg')
 user2.avatar.attach(io: File.open(Rails.root.join('db/avatars/hardison.jpg')), filename: 'hardison.jpg')
 
-Exhibition.create(title: 'Animals', gallery: 'A', start_date: '2024-10-01', end_date: '2025-06-30', user_id: 1 )
-Exhibition.create(title: 'Women in Art', gallery: 'B', start_date: '2024-01-13', end_date: '2024-12-01', user_id: 2 )
+Exhibition.create(id: 1, title: 'Animals', gallery: 'A', start_date: '2024-10-01', end_date: '2025-06-30', user_id: 1 )
+Exhibition.create(id: 2, title: 'Women in Art', gallery: 'B', start_date: '2024-02-13', end_date: '2024-09-01', user_id: 2 )
 
 
 Artist.create(name: 'Paul Klee', date_of_birth: '1879-12-18')

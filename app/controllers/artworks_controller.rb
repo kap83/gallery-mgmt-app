@@ -29,9 +29,7 @@ class ArtworksController < ApplicationController
       end
   
     end
-    
  
-
       private
     
       def set_artist
