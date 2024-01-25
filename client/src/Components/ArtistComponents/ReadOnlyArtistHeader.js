@@ -7,10 +7,10 @@ export default function ReadOnlyArtistHeader({artist, handleEditToggleClick}) {
     const formattedDOB = format(isoDOB, 'MM/dd/yyyy')
 
   return (
-    <>
-      <h1 >{artist.name}</h1>
+    <div className='artistHeaderReadOnly'>
+      <h1>{artist.name}</h1>
       <h2 id='dob'>{formattedDOB}</h2>
-      <button className='btn' onClick={handleEditToggleClick} >Edit</button>
-    </>
+      <button id='artistHeaderEditBtn' onClick={handleEditToggleClick}>Edit</button>
+    </div>
   )
 }

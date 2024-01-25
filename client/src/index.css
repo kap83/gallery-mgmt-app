@@ -24,8 +24,9 @@ ul {
 .btn, 
 .logOutBtnStyle, 
 .loginBtnStyle,
-#button,
-#paintingsDelBtn {
+#artistHeaderEditBtn,
+#paintingsDelBtn,
+artistHeaderEditBtn {
   border-radius: 3px;
   border: none;
   background-color: #6699CC;
@@ -185,12 +186,13 @@ textarea:focus, input:focus{
 
 /* CSS FOR EXHIBITION EDIT & READONLY COMPONENT */
 
-.exhibitionHeaderData,
-.exhibitionHeaderEdit {
+.exhibitionHeaderReadOnly,
+.exhibitionHeaderEdit, 
+.artistHeaderEditStyle {
   text-align: center;
 }
 
-.exhibitionHeaderData h1 {
+.exhibitionHeaderReadOnly h1 {
   font-weight: lighter;
   font-style: italic;
   font-size: 50px;
@@ -199,7 +201,7 @@ textarea:focus, input:focus{
   padding:0px;
 }
 
-.exhibitionHeaderData h2 {
+.exhibitionHeaderReadOnly h2 {
   margin: 0px;
   padding: 0px;
   font-weight: lighter
@@ -455,7 +457,6 @@ div.addNewDataStyle .btn {
 
 .displayAllArtistsStyle {
   flex-grow: 1;
-  
 }
 
 .displayAllArtistsStyle h2 {
@@ -469,7 +470,7 @@ div.addNewDataStyle .btn {
 
 /* CSS FOR DISPLAY SELECTED PAINTINGS COMPONENT */
 
-.displayPaintingsStyle h1 {
+.artistHeaderReadOnly h1 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 55px;
@@ -477,10 +478,27 @@ div.addNewDataStyle .btn {
   font-style: italic;
 }
 
-.displayPaintingsStyle #dob {
+.artistHeaderReadOnly #dob {
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
+}
+
+#artistHeaderEditBtn {
+  text-align: center;
+  padding: 6px;
+  margin-right: 3px;
+  font-size: 15px;
+}
+
+.artistHeaderEditStyleInput  {
+  border: none;
+  text-align: center;
+  font-size: 50px;
+  width: 15%;
+  font-weight: 5;
+  font-style: italic;
+  border-bottom: 2px solid#6699CC;
 }
 
 .displayPaintingsStyle hr {
@@ -489,9 +507,9 @@ div.addNewDataStyle .btn {
   margin-bottom: 30px;
 }
 
-.displayPaintingsStyle input  {
+/* .displayPaintingsStyle input  {
   float: left
-}
+} */
 
 .displayPaintingsStyle h2 {
   margin-bottom: 10px;

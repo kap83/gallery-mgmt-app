@@ -34,7 +34,7 @@ export default function ReadOnlyExhibitionInputFields({selectedExhibition, handl
 
 
   return (
-  <div className='exhibitionHeaderData'>
+  <div className='exhibitionHeaderReadOnly'>
     <h1>
       {selectedExhibition.title}
     </h1>

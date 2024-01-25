@@ -43,8 +43,8 @@ export default function EditExhibitionInputFields({selectedExhibition, handleFor
         onChange={(e) => handleFormChanges(e)}
         />
       </h2>
-      <button className='btn' id='exhibitionHeaderBtnsStyle' type='submit'>SUBMIT CHANGES</button>
-      <button className='btn' id='exhibitionHeaderBtnsStyle' onClick={handleEditToggleClick}>CANCEL CHANGES</button>
+      <button className='btn' id='exhibitionHeaderBtnsStyle' type='submit'>Submit Changes</button>
+      <button className='btn' id='exhibitionHeaderBtnsStyle' onClick={handleEditToggleClick}>Cancel Changes</button>
   </div>
   )
 }

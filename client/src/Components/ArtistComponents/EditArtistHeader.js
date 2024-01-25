@@ -1,15 +1,15 @@
 import React from 'react'
 
 
-export default function EditArtistHeader({artist}) {
+export default function EditArtistHeader({artist, handleEditToggleClick}) {
 
-    //needs css
 
   return (
-    <>
+    <div className='artistHeaderEditStyle' >
       <h1>
-        <input
+      <input
         type='text'
+        className='artistHeaderEditStyleInput'
         defaultValue={artist.name}
         name='name'
         required='required'
@@ -17,12 +17,13 @@ export default function EditArtistHeader({artist}) {
       </h1>
       <h2>
         <input 
+        className='artistHeaderEditStyleInput'
         type='date'
         defaultValue={artist.date_of_birth}
         />
       </h2>
-      <button>Cancel</button>
-      <button>Submit</button>
-    </>
+      <button onClick={handleEditToggleClick}>Cancel Changes</button>
+      <button>Submit Changes</button>
+    </div>
   )
 }

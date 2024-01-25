@@ -33,9 +33,11 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
       <div className='displayPaintingsStyle' key={artist.id}>
         <hr />
         {isEditing ? 
-        <EditArtistHeader artist={artist} /> :
-           <ReadOnlyArtistHeader handleEditToggleClick={handleEditToggleClick} artist={artist} />
-           
+        <EditArtistHeader artist={artist} 
+          handleEditToggleClick={handleEditToggleClick} /> :
+        <ReadOnlyArtistHeader 
+            handleEditToggleClick={handleEditToggleClick} 
+            artist={artist} />  
       }
         <hr />
         <Masonry
