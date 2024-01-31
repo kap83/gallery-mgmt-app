@@ -10,7 +10,7 @@ export default function ReadOnlyArtistHeader({artist, handleEditToggleClick}) {
     <div className='artistHeaderReadOnly'>
       <h1>{artist.name}</h1>
       <h2 id='dob'>{formattedDOB}</h2>
-      <button id='artistHeaderEditBtn' onClick={handleEditToggleClick}>Edit</button>
+      {/* <button id='artistHeaderEditBtn' onClick={handleEditToggleClick}>Edit</button> */}
     </div>
   )
 }

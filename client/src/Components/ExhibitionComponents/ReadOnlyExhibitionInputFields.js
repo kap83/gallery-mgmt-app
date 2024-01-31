@@ -44,7 +44,7 @@ export default function ReadOnlyExhibitionInputFields({selectedExhibition, handl
     <h2>
      Gallery: {selectedExhibition.gallery}
     </h2>
-    <button className='btn' id='exhibitionHeaderBtnsStyle' type='button' onClick={handleEditToggleClick}>Edit header</button>
+    <button className='btn' id='exhibitionHeaderBtnsStyle' type='button' onClick={handleEditToggleClick}>Edit Header</button>
     <button className='btn' id='exhibitionHeaderBtnsStyle' type='button' onClick={handleDeleteClick}>Delete Exhibition</button>
   </div>
   )
