@@ -14,8 +14,6 @@ export default function DisplaySelectedPaintings({ handleDeleteBtnClick, formVal
   const handleEditToggleClick = () => {
     setIsEditing(!isEditing)
   }
-
-
     const breakpointColumnsObj = {
         //default number of columns
         default: 3,

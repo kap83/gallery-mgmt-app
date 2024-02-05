@@ -27,14 +27,14 @@ const breakpointColumnsObj = {
 
   return (
     <>
-    <div className='exhibitionHeaderData'>
+    <div className='exhibitionHeaderReadOnly'>
       <h1>{selectedExhibition.title}</h1>
       <h2>
         {formattedStartDate} - {formattedEndDate}
       </h2>
       <h2>Gallery: {selectedExhibition.gallery}</h2>
     </div>
-    <div style={{marginTop:'40px'}}>
+    <div style={{marginTop:'50px'}}>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className='my-masonry-grid'
