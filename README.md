@@ -1,6 +1,6 @@
 # Gallery Management Tool
 
-DEMO: https://youtu.be/fjelaYtEb9M
+Demo: https://youtu.be/fjelaYtEb9M
 
 Utilizing a React Frontend and Ruby on Rails/Postgresql backend, the Museum Management Tool streamlines the management of a museum’s exhibition, as well as the artists in the collection and their work. 
 
