@@ -1,5 +1,7 @@
 # Gallery Management Tool
 
+Demo: https://youtu.be/fjelaYtEb9M
+
 Utilizing a React Frontend and Ruby on Rails/Postgresql backend, the Museum Management Tool streamlines the management of a museum’s exhibition, as well as the artists in the collection and their work. 
 
 Upload image files with confidence. This tool incorporates ActiveStorage to handle the associations between image files and models. ActiveStorage is also prepared to save images locally, or to a cloud service. This tool is programmed to work with Amazon Web Services. 
